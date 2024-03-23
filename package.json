@@ -24,7 +24,7 @@
     "react-paginate": "^8.2.0",
     "react-tooltip": "^5.26.3",
     "sass": "^1.71.1",
-    "sonner": "^1.4.32"
+    "sonner": "^1.4.41"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
