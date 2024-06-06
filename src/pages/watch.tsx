@@ -166,12 +166,12 @@ const Watch = () => {
       const provider = process.env.NEXT_PUBLIC_PROVIDER_URL;
       fetch(
         type === "movie"
-          ? `${provider}/${id}`
-          : `${provider}/${id}/${season}/${episode}`,
+          ? `${provider}/movie/${id}`
+          : `${provider}/tv/${id}/${season}/${episode}`,
       )
         .then((req) => req.json())
         .then((res: any) => {
-          res.sources.map((ele: any) => {
+          res.result.sources.map((ele: any) => {
             if (typeof ele === "object" && ele !== null && ele?.url !== null) {
               fetch(ele.url)
                 .then((i) => i.text())
@@ -190,8 +190,8 @@ const Watch = () => {
               }, 10000);
             }
           });
-          setNonEmbedSources(res?.sources);
-          setnonEmbedCaptions(res?.captions);
+          setNonEmbedSources(res?.result?.sources);
+          setnonEmbedCaptions(res?.result?.captions);
         })
         .catch((err: any) => {
           console.error(err);
@@ -200,20 +200,6 @@ const Watch = () => {
       // if (nonEmbedURl === "") setEmbedMode(true);
     }
   }, [params, id, season, episode, embedMode]);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     console.log({ id });
-  //     setLoading(false);
-  //   }, 1000);
-  // }, [id]);
-
-  // useEffect(() => {
-  //   // Override window.open to prevent opening new tabs
-  //   window.open = function (url, target, features, replace) {
-  //     console.log("window.open is blocked:", url);
-  //     return null; // Return null to prevent opening new tabs
-  //   };
-  // }, [window]);
 
   function handleBackward() {
     // setEpisode(parseInt(episode)+1);
@@ -370,7 +356,7 @@ const Watch = () => {
                 if (typeof ele === "object" && ele !== null) {
                   return (
                     <option value={ele?.url}>
-                      {ele?.source} ({ele?.lang})
+                      {ele?.source} ({ele?.quality})
                     </option>
                   );
                 }
