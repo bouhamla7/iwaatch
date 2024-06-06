@@ -21,6 +21,7 @@ Rive is a cutting-edge platform for streaming movies and TV shows online. Our pr
 <div align="left">
  <p>
 
+![App Downloads](https://img.shields.io/github/downloads/Developabile/rive-next/total)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Developabile/rive-next)
 ![Github LOC](https://tokei.rs/b1/github/Developabile/rive-next)
 ![Github Files](https://tokei.rs/b1/github/Developabile/rive-next?category=files)
