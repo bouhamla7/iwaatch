@@ -31,6 +31,7 @@ const Watch = () => {
   const [nonEmbedURL, setNonEmbedURL] = useState<any>("");
   const [nonEmbedSources, setNonEmbedSources] = useState<any>("");
   const [nonEmbedCaptions, setnonEmbedCaptions] = useState<any>();
+  const [nonEmbedFormat, setnonEmbedFormat] = useState<any>();
   const nextBtn: any = useRef(null);
   const backBtn: any = useRef(null);
   const moreBtn: any = useRef(null);
@@ -171,27 +172,38 @@ const Watch = () => {
       )
         .then((req) => req.json())
         .then((res: any) => {
-          res.result.sources.map((ele: any) => {
-            if (typeof ele === "object" && ele !== null && ele?.url !== null) {
-              fetch(ele.url)
-                .then((i) => i.text())
-                .then((r) => {
-                  setNonEmbedURL(ele.url);
-                  clearTimeout(autoEmbedMode);
-                })
-                .catch((err: any) => {
-                  autoEmbedMode = setTimeout(() => {
-                    setEmbedMode(true);
-                  }, 10000);
-                });
-            } else {
-              autoEmbedMode = setTimeout(() => {
-                setEmbedMode(true);
-              }, 10000);
-            }
-          });
-          setNonEmbedSources(res?.result?.sources);
-          setnonEmbedCaptions(res?.result?.captions);
+          // res.result.sources.map((ele: any) => {
+          //   if (typeof ele === "object" && ele !== null && ele?.url !== null) {
+          //     fetch(ele.url)
+          //       .then((i) => i.text())
+          //       .then((r) => {
+          //         setNonEmbedURL(ele.url);
+          //         clearTimeout(autoEmbedMode);
+          //       })
+          //       .catch((err: any) => {
+          //         autoEmbedMode = setTimeout(() => {
+          //           setEmbedMode(true);
+          //         }, 10000);
+          //       });
+          //   } else {
+          //     autoEmbedMode = setTimeout(() => {
+          //       setEmbedMode(true);
+          //     }, 10000);
+          //   }
+          // });
+          if (res?.result?.sources?.length > 0) {
+            setNonEmbedSources(res?.result?.sources);
+            res?.result?.sources?.length > 0
+              ? setNonEmbedURL(res?.result?.sources[0]?.url)
+              : null;
+            setnonEmbedCaptions(res?.result?.captions);
+            setnonEmbedFormat(res?.result?.format);
+            clearTimeout(autoEmbedMode);
+          } else {
+            autoEmbedMode = setTimeout(() => {
+              setEmbedMode(true);
+            }, 10000);
+          }
         })
         .catch((err: any) => {
           console.error(err);
@@ -355,7 +367,7 @@ const Watch = () => {
               nonEmbedSources?.map((ele: any) => {
                 if (typeof ele === "object" && ele !== null) {
                   return (
-                    <option value={ele?.url}>
+                    <option value={ele?.url} defaultChecked>
                       {ele?.source} ({ele?.quality})
                     </option>
                   );
@@ -383,6 +395,7 @@ const Watch = () => {
           option={{
             url: nonEmbedURL,
           }}
+          format={nonEmbedFormat}
           captions={nonEmbedCaptions}
           className={styles.videoPlayer}
         />

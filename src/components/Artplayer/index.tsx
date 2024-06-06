@@ -8,6 +8,7 @@ export default function Player({
   option,
   captions,
   getInstance,
+  format,
   ...rest
 }: any) {
   const artRef = useRef<any>();
@@ -49,7 +50,7 @@ export default function Player({
       pip: true,
       playbackRate: true,
       aspectRatio: true,
-      type: "m3u8",
+      type: format === "hls" ? "m3u8" : "mp4",
       captions: true,
       airplay: true,
       mutex: true,
@@ -58,9 +59,12 @@ export default function Player({
       autoplay: true,
       hotkey: true,
       screenshot: true,
-      customType: {
-        m3u8: playM3u8,
-      },
+      customType:
+        format === "hls"
+          ? {
+              m3u8: playM3u8,
+            }
+          : {},
       // controls: [
       //   {
       //     position: "right",
@@ -96,18 +100,27 @@ export default function Player({
           width: 250,
           height: 500,
           icon: '<img src="/images/logo512.svg" alt="download"/>',
-          selector: [
-            {
-              html: "Download HLS (mediatools)",
-              url: option.url,
-              opt: 1,
-            },
-            {
-              html: "Download HLS (thetuhin)",
-              url: option.url,
-              opt: 2,
-            },
-          ],
+          selector:
+            format === "hls"
+              ? [
+                  {
+                    html: "Download HLS (mediatools)",
+                    url: option.url,
+                    opt: 1,
+                  },
+                  {
+                    html: "Download HLS (thetuhin)",
+                    url: option.url,
+                    opt: 2,
+                  },
+                ]
+              : [
+                  {
+                    html: "Download mp4",
+                    url: option.url,
+                    opt: 3,
+                  },
+                ],
           onSelect: function (item: any) {
             if (item.opt === 1)
               window.open(
@@ -119,25 +132,32 @@ export default function Player({
                 `https://hlsdownloader.thetuhin.com/?text=${option.url}`,
               );
             }
+            if (item.opt === 3) {
+              navigator?.clipboard?.writeText(option.url);
+              window.open(`${option.url}`);
+            }
           },
         },
       ],
-      plugins: [
-        artplayerPluginHlsQuality({
-          // Show quality in control
-          // control: true,
+      plugins:
+        format === "hls"
+          ? [
+              artplayerPluginHlsQuality({
+                // Show quality in control
+                // control: true,
 
-          // Show quality in setting
-          setting: true,
+                // Show quality in setting
+                setting: true,
 
-          // Get the resolution text from level
-          getResolution: (level: any) => level.height + "P",
+                // Get the resolution text from level
+                getResolution: (level: any) => level.height + "P",
 
-          // I18n
-          title: "Quality",
-          auto: "Auto",
-        }),
-      ],
+                // I18n
+                title: "Quality",
+                auto: "Auto",
+              }),
+            ]
+          : [],
     });
 
     if (getInstance && typeof getInstance === "function") {
