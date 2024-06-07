@@ -164,51 +164,74 @@ const Watch = () => {
   useEffect(() => {
     let autoEmbedMode: NodeJS.Timeout;
     if (embedMode === false && id !== undefined && id !== null) {
-      const provider = process.env.NEXT_PUBLIC_PROVIDER_URL;
-      fetch(
-        type === "movie"
-          ? `${provider}/movie/${id}`
-          : `${provider}/tv/${id}/${season}/${episode}`,
-      )
-        .then((req) => req.json())
-        .then((res: any) => {
-          // res.result.sources.map((ele: any) => {
-          //   if (typeof ele === "object" && ele !== null && ele?.url !== null) {
-          //     fetch(ele.url)
-          //       .then((i) => i.text())
-          //       .then((r) => {
-          //         setNonEmbedURL(ele.url);
-          //         clearTimeout(autoEmbedMode);
-          //       })
-          //       .catch((err: any) => {
-          //         autoEmbedMode = setTimeout(() => {
-          //           setEmbedMode(true);
-          //         }, 10000);
-          //       });
-          //   } else {
-          //     autoEmbedMode = setTimeout(() => {
-          //       setEmbedMode(true);
-          //     }, 10000);
-          //   }
-          // });
-          if (res?.result?.sources?.length > 0) {
-            setNonEmbedSources(res?.result?.sources);
-            res?.result?.sources?.length > 0
-              ? setNonEmbedURL(res?.result?.sources[0]?.url)
-              : null;
-            setnonEmbedCaptions(res?.result?.captions);
-            setnonEmbedFormat(res?.result?.format);
-            clearTimeout(autoEmbedMode);
-          } else {
-            autoEmbedMode = setTimeout(() => {
-              setEmbedMode(true);
-            }, 10000);
-          }
-        })
-        .catch((err: any) => {
-          console.error(err);
-          setEmbedMode(true);
+      // const provider = process.env.NEXT_PUBLIC_PROVIDER_URL;
+      // fetch(
+      //   type === "movie"
+      //     ? `${provider}/movie/${id}`
+      //     : `${provider}/tv/${id}/${season}/${episode}`,
+      // )
+      //   .then((req) => req.json())
+      //   .then((res: any) => {
+      //     // res.result.sources.map((ele: any) => {
+      //     //   if (typeof ele === "object" && ele !== null && ele?.url !== null) {
+      //     //     fetch(ele.url)
+      //     //       .then((i) => i.text())
+      //     //       .then((r) => {
+      //     //         setNonEmbedURL(ele.url);
+      //     //         clearTimeout(autoEmbedMode);
+      //     //       })
+      //     //       .catch((err: any) => {
+      //     //         autoEmbedMode = setTimeout(() => {
+      //     //           setEmbedMode(true);
+      //     //         }, 10000);
+      //     //       });
+      //     //   } else {
+      //     //     autoEmbedMode = setTimeout(() => {
+      //     //       setEmbedMode(true);
+      //     //     }, 10000);
+      //     //   }
+      //     // });
+      //     if (res?.data?.sources?.length > 0) {
+      //       setNonEmbedSources(res?.data?.sources);
+      //       res?.data?.sources?.length > 0
+      //         ? setNonEmbedURL(res?.data?.sources[0]?.url)
+      //         : null;
+      //       setnonEmbedCaptions(res?.data?.captions);
+      //       setnonEmbedFormat(res?.data?.format);
+      //       clearTimeout(autoEmbedMode);
+      //     } else {
+      //       autoEmbedMode = setTimeout(() => {
+      //         setEmbedMode(true);
+      //       }, 10000);
+      //     }
+      //   })
+      //   .catch((err: any) => {
+      //     console.error(err);
+      //     setEmbedMode(true);
+      //   });
+      const fetch = async () => {
+        const res: any = await axiosFetch({
+          requestID: `${type}VideoProvider`,
+          id: id,
+          season: season,
+          episode: episode,
         });
+        // console.log({ res });
+        if (res?.data?.sources?.length > 0) {
+          setNonEmbedSources(res?.data?.sources);
+          res?.data?.sources?.length > 0
+            ? setNonEmbedURL(res?.data?.sources[0]?.url)
+            : null;
+          setnonEmbedCaptions(res?.data?.captions);
+          setnonEmbedFormat(res?.data?.format);
+          clearTimeout(autoEmbedMode);
+        } else {
+          autoEmbedMode = setTimeout(() => {
+            setEmbedMode(true);
+          }, 10000);
+        }
+      };
+      fetch();
       // if (nonEmbedURl === "") setEmbedMode(true);
     }
   }, [params, id, season, episode, embedMode]);
@@ -435,8 +458,8 @@ const Watch = () => {
           scrolling="no"
           src={
             type === "movie"
-              ? `${STREAM_URL_PRO}/embed/${type}/${id}`
-              : `${STREAM_URL_PRO}/embed/${type}/${id}/${season}/${episode}`
+              ? `${STREAM_URL_PRO}/embed/${type}/${id}?&theme=00c1db`
+              : `${STREAM_URL_PRO}/embed/${type}/${id}/${season}/${episode}?&theme=00c1db`
           }
           className={styles.iframe}
           allowFullScreen

@@ -88,6 +88,10 @@ export default async function axiosFetch({
     // withKeywords
     withKeywordsTv: `${baseURL}?requestID=withKeywordsTv&genreKeywords=${genreKeywords}&language=${language}&sortBy=${sortBy}${year != undefined ? "&year=" + year : ""}${country != undefined ? "&country=" + country : ""}&page=${page}`,
     withKeywordsMovie: `${baseURL}?requestID=withKeywordsMovie&genreKeywords=${genreKeywords}&language=${language}&sortBy=${sortBy}${year != undefined ? "&year=" + year : ""}${country != undefined ? "&country=" + country : ""}&page=${page}`,
+
+    // provider
+    movieVideoProvider: `${baseURL}?requestID=movieVideoProvider&id=${id}`,
+    tvVideoProvider: `${baseURL}?requestID=tvVideoProvider&id=${id}&season=${season}&episode=${episode}`,
   };
   const final_request = requests[request];
   // console.log({ final_request });
@@ -106,8 +110,8 @@ export default async function axiosFetch({
 
   try {
     const response = await axios.get(final_request);
-    setCache(cacheKey, response?.data);
-    return await response.data; // Return the resolved data from the response
+    if (response?.data?.data !== null) setCache(cacheKey, response?.data);
+    return await response?.data; // Return the resolved data from the response
   } catch (error) {
     console.error("Error fetching data:", error);
     // Handle errors appropriately (e.g., throw a custom error or return null)

@@ -30,6 +30,7 @@ export default async function axiosFetch({
   const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const baseURL = process.env.NEXT_PUBLIC_TMDB_API;
   const randomURL = process.env.NEXT_PUBLIC_RANDOM_URL;
+  const ProviderURL = process.env.NEXT_PUBLIC_PROVIDER_URL;
   const requests: any = {
     latestMovie: `${baseURL}/movie/now_playing?language=${language}&page=${page}`, //nowPlayingMovie
     latestTv: `${baseURL}/tv/airing_today?language=${language}&page=${page}`, // airingTodayTv
@@ -90,6 +91,10 @@ export default async function axiosFetch({
     // withKeywords
     withKeywordsTv: `${baseURL}/discover/tv?with_keywords=${genreKeywords}&language=${language}&sort_by=${sortBy}${year != undefined ? "&first_air_date_year=" + year : ""}${country != undefined ? "&with_origin_country=" + country : ""}&page=${page}&air_date.lte=${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}${sortBy === "first_air_date.desc" ? "&with_runtime.gte=1" : null}`,
     withKeywordsMovie: `${baseURL}/discover/movie?with_keywords=${genreKeywords}&language=${language}&sort_by=${sortBy}${year != undefined ? "&first_air_date_year=" + year : ""}${country != undefined ? "&with_origin_country=" + country : ""}&page=${page}&release_date.lte=${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}&with_runtime.gte=1`,
+
+    // provider
+    movieVideoProvider: `${ProviderURL}/movie/${id}`,
+    tvVideoProvider: `${ProviderURL}/tv/${id}/${season}/${episode}`,
   };
   const final_request = requests[request];
   // console.log({ final_request });
@@ -98,7 +103,7 @@ export default async function axiosFetch({
     const response = await axios.get(final_request, {
       params: { api_key: API_KEY },
     });
-    return await response.data; // Return the resolved data from the response
+    return await response?.data; // Return the resolved data from the response
   } catch (error) {
     console.error("Error fetching data:", error);
     // Handle errors appropriately (e.g., throw a custom error or return null)
