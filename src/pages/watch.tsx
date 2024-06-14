@@ -225,6 +225,7 @@ const Watch = () => {
           setnonEmbedCaptions(res?.data?.captions);
           setnonEmbedFormat(res?.data?.format);
           clearTimeout(autoEmbedMode);
+          if (res?.data?.format == "hls") setEmbedMode(true);
         } else {
           autoEmbedMode = setTimeout(() => {
             setEmbedMode(true);
