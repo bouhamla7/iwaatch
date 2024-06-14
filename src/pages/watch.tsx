@@ -217,6 +217,7 @@ const Watch = () => {
           episode: episode,
         });
         // console.log({ res });
+        if (res?.data?.format == "hls") setEmbedMode(true);
         if (res?.data?.sources?.length > 0) {
           setNonEmbedSources(res?.data?.sources);
           res?.data?.sources?.length > 0
