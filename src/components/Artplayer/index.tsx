@@ -28,17 +28,25 @@ export default function Player({
     }
   }
   useEffect(() => {
-    const subtitles = captions.map((ele: any, ind: any) => {
-      let def = false;
-      if (ele?.label?.toLowerCase()?.includes("english")) {
-        def = true;
-      }
-      return {
-        // default: def,
-        html: ele?.label,
-        url: ele?.file,
-      };
-    });
+    const subtitles =
+      captions?.length > 0
+        ? captions?.map((ele: any, ind: any) => {
+            let def = false;
+            if (ele?.label?.toLowerCase()?.includes("english")) {
+              def = true;
+            }
+            return {
+              // default: def,
+              html: ele?.label,
+              url: ele?.file,
+            };
+          })
+        : [
+            {
+              html: "No Captions",
+              url: "",
+            },
+          ];
     Artplayer.MOBILE_CLICK_PLAY = true;
     const art = new Artplayer({
       ...option,
@@ -91,8 +99,8 @@ export default function Player({
           selector: subtitles,
           onSelect: function (item, $dom, event) {
             console.info(item, $dom, event);
-            art.subtitle.url = item.url;
-            return item.html;
+            art.subtitle.url = item?.url;
+            return item?.html;
           },
         },
         {
@@ -104,35 +112,44 @@ export default function Player({
             format === "hls"
               ? [
                   {
-                    html: "Download HLS (mediatools)",
+                    html: "Download HLS (Recommended)",
                     url: option.url,
                     opt: 1,
                   },
                   {
-                    html: "Download HLS (thetuhin)",
+                    html: "Download HLS (mediatools)",
                     url: option.url,
                     opt: 2,
+                  },
+                  {
+                    html: "Download HLS (thetuhin)",
+                    url: option.url,
+                    opt: 3,
                   },
                 ]
               : [
                   {
                     html: "Download mp4",
                     url: option.url,
-                    opt: 3,
+                    opt: 4,
                   },
                 ],
           onSelect: function (item: any) {
             if (item.opt === 1)
               window.open(
+                `https://hlsdownload.vidbinge.com/?url=${option.url}`,
+              );
+            if (item.opt === 2)
+              window.open(
                 `https://mediatools.cc/hlsDownloader?query=${option.url}`,
               );
-            if (item.opt === 2) {
+            if (item.opt === 3) {
               navigator?.clipboard?.writeText(option.url);
               window.open(
                 `https://hlsdownloader.thetuhin.com/?text=${option.url}`,
               );
             }
-            if (item.opt === 3) {
+            if (item.opt === 4) {
               navigator?.clipboard?.writeText(option.url);
               window.open(`${option.url}`);
             }

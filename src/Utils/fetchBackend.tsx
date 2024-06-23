@@ -92,6 +92,10 @@ export default async function axiosFetch({
     // provider
     movieVideoProvider: `${baseURL}?requestID=movieVideoProvider&id=${id}`,
     tvVideoProvider: `${baseURL}?requestID=tvVideoProvider&id=${id}&season=${season}&episode=${episode}`,
+
+    // EXTERNAL provider
+    movieExternalVideoProvider: `${baseURL}?requestID=movieExternalVideoProvider&id=${id}`,
+    tvExternalVideoProvider: `${baseURL}?requestID=tvExternalVideoProvider&id=${id}&season=${season}&episode=${episode}`,
   };
   const final_request = requests[request];
   // console.log({ final_request });

@@ -31,6 +31,7 @@ export default async function axiosFetch({
   const baseURL = process.env.NEXT_PUBLIC_TMDB_API;
   const randomURL = process.env.NEXT_PUBLIC_RANDOM_URL;
   const ProviderURL = process.env.NEXT_PUBLIC_PROVIDER_URL;
+  const ExternalProviderURL = process.env.NEXT_PUBLIC_EXTERNAL_PROVIDER_URL;
   const requests: any = {
     latestMovie: `${baseURL}/movie/now_playing?language=${language}&page=${page}`, //nowPlayingMovie
     latestTv: `${baseURL}/tv/airing_today?language=${language}&page=${page}`, // airingTodayTv
@@ -95,6 +96,10 @@ export default async function axiosFetch({
     // provider
     movieVideoProvider: `${ProviderURL}/movie/${id}`,
     tvVideoProvider: `${ProviderURL}/tv/${id}/${season}/${episode}`,
+
+    // External provider
+    movieExternalVideoProvider: `${ExternalProviderURL}/${id}?s=0&e=0`,
+    tvExternalVideoProvider: `${ExternalProviderURL}/${id}?s=${season}e=${episode}&e=0`,
   };
   const final_request = requests[request];
   // console.log({ final_request });

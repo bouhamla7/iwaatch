@@ -28,10 +28,11 @@ const Watch = () => {
   const [seasondata, setseasonData] = useState<any>();
   const [source, setSource] = useState("SUP");
   const [embedMode, setEmbedMode] = useState<any>();
-  const [nonEmbedURL, setNonEmbedURL] = useState<any>("");
+  // const [nonEmbedURL, setNonEmbedURL] = useState<any>("");
+  const [nonEmbedSourcesIndex, setNonEmbedSourcesIndex] = useState<any>("");
   const [nonEmbedSources, setNonEmbedSources] = useState<any>("");
   const [nonEmbedCaptions, setnonEmbedCaptions] = useState<any>();
-  const [nonEmbedFormat, setnonEmbedFormat] = useState<any>();
+  // const [nonEmbedFormat, setnonEmbedFormat] = useState<any>();
   const nextBtn: any = useRef(null);
   const backBtn: any = useRef(null);
   const moreBtn: any = useRef(null);
@@ -210,23 +211,44 @@ const Watch = () => {
       //     setEmbedMode(true);
       //   });
       const fetch = async () => {
-        const res: any = await axiosFetch({
+        const res: any = { sources: [] };
+        const res1: any = await axiosFetch({
+          requestID: `${type}ExternalVideoProvider`,
+          id: id,
+          season: season,
+          episode: episode,
+        });
+        res1?.sources?.map((ele: any) => {
+          let temp: any = {};
+          temp["quality"] = ele?.label;
+          temp["url"] = ele?.file;
+          temp["source"] = "NSBX";
+          temp["format"] = ele?.file?.includes("mp4") ? "mp4" : "hls";
+          res["sources"].push(temp);
+        });
+        const res2: any = await axiosFetch({
           requestID: `${type}VideoProvider`,
           id: id,
           season: season,
           episode: episode,
         });
+        if (res2?.data?.sources?.length > 0) {
+          res2?.data?.sources?.map((ele: any) => {
+            res["sources"].push(ele);
+          });
+          res["thumbnails"] = res2?.data?.thumbnails;
+          res["captions"] = res2?.data?.captions;
+          res["format"] = res2?.data?.format;
+        }
         // console.log({ res });
-        if (res?.data?.format == "hls") setEmbedMode(true);
-        if (res?.data?.sources?.length > 0) {
-          setNonEmbedSources(res?.data?.sources);
-          res?.data?.sources?.length > 0
-            ? setNonEmbedURL(res?.data?.sources[0]?.url)
-            : null;
-          setnonEmbedCaptions(res?.data?.captions);
-          setnonEmbedFormat(res?.data?.format);
+        // if (res?.data?.format == "hls") setEmbedMode(true);
+        if (res?.sources?.length > 0) {
+          setNonEmbedSources(res?.sources);
+          res?.sources?.length > 0 ? setNonEmbedSourcesIndex(0) : null;
+          setnonEmbedCaptions(res?.captions);
+          // setnonEmbedFormat(res?.data?.format);
           clearTimeout(autoEmbedMode);
-          if (res?.data?.format == "hls") setEmbedMode(true);
+          // if (res?.data?.format == "hls") setEmbedMode(true);
         } else {
           autoEmbedMode = setTimeout(() => {
             setEmbedMode(true);
@@ -379,9 +401,9 @@ const Watch = () => {
             name="embedModesource"
             id="embedModesource"
             className={styles.embedMode}
-            value={nonEmbedURL}
+            value={nonEmbedSourcesIndex}
             onChange={(e) => {
-              setNonEmbedURL(e.target.value);
+              setNonEmbedSourcesIndex(e.target.value);
             }}
             aria-placeholder="servers"
           >
@@ -389,10 +411,10 @@ const Watch = () => {
               servers
             </option>
             {nonEmbedSources?.length > 0 &&
-              nonEmbedSources?.map((ele: any) => {
+              nonEmbedSources?.map((ele: any, ind: any) => {
                 if (typeof ele === "object" && ele !== null) {
                   return (
-                    <option value={ele?.url} defaultChecked>
+                    <option value={ind} defaultChecked>
                       {ele?.source} ({ele?.quality})
                     </option>
                   );
@@ -415,12 +437,12 @@ const Watch = () => {
         </select>
       </div>
       <div className={`${styles.loader} skeleton`}>Loading</div>
-      {embedMode === false && nonEmbedURL !== "" && (
+      {embedMode === false && nonEmbedSourcesIndex !== "" && (
         <Player
           option={{
-            url: nonEmbedURL,
+            url: nonEmbedSources[nonEmbedSourcesIndex]?.url,
           }}
-          format={nonEmbedFormat}
+          format={nonEmbedSources[nonEmbedSourcesIndex]?.format}
           captions={nonEmbedCaptions}
           className={styles.videoPlayer}
         />
