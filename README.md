@@ -23,8 +23,12 @@ Rive is a cutting-edge platform for streaming movies and TV shows online. Our pr
 
 ![App Downloads](https://img.shields.io/github/downloads/Developabile/rive-next/total)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Developabile/rive-next)
-![Github LOC](https://tokei.rs/b1/github/Developabile/rive-next)
-![Github Files](https://tokei.rs/b1/github/Developabile/rive-next?category=files)
+
+<!-- ![Github LOC](https://tokei.rs/b1/github/Developabile/rive-next) -->
+
+![Github Files](https://img.shields.io/github/directory-file-count/Developabile/rive-next)
+![Github Release](https://img.shields.io/github/v/release/Developabile/rive-next)
+![Github License](https://img.shields.io/github/license/Developabile/rive-next)
 
 [![CodeQL](https://github.com/Developabile/rive-next/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Developabile/rive-next/actions/workflows/github-code-scanning/codeql)
 [![Weekly Update TMDB Collections](https://github.com/Developabile/rive-next/actions/workflows/weekly_update.yml/badge.svg)](https://github.com/Developabile/rive-next/actions/workflows/weekly_update.yml)
