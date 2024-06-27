@@ -218,14 +218,6 @@ const Watch = () => {
           season: season,
           episode: episode,
         });
-        res1?.sources?.map((ele: any) => {
-          let temp: any = {};
-          temp["quality"] = ele?.label;
-          temp["url"] = ele?.file;
-          temp["source"] = "NSBX";
-          temp["format"] = ele?.file?.includes("mp4") ? "mp4" : "hls";
-          res["sources"].push(temp);
-        });
         const res2: any = await axiosFetch({
           requestID: `${type}VideoProvider`,
           id: id,
@@ -240,6 +232,14 @@ const Watch = () => {
           res["captions"] = res2?.data?.captions;
           res["format"] = res2?.data?.format;
         }
+        res1?.sources?.map((ele: any) => {
+          let temp: any = {};
+          temp["quality"] = ele?.label;
+          temp["url"] = ele?.file;
+          temp["source"] = "Febbox";
+          temp["format"] = ele?.file?.includes("mp4") ? "mp4" : "hls";
+          res["sources"].push(temp);
+        });
         // console.log({ res });
         // if (res?.data?.format == "hls") setEmbedMode(true);
         if (res?.sources?.length > 0) {
