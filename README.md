@@ -21,17 +21,20 @@ Rive is a cutting-edge platform for streaming movies and TV shows online. Our pr
 <div align="left">
  <p>
 
-![App Downloads](https://img.shields.io/github/downloads/Developabile/rive-next/total)
-![GitHub repo size](https://img.shields.io/github/repo-size/Developabile/rive-next)
+![App Downloads](https://img.shields.io/github/downloads/Developabile/rive-next/total?style=for-the-badge&labelColor=576B87&logoColor=white&color=7c3aed&cacheSeconds=3600)
+![GitHub repo size](https://img.shields.io/github/repo-size/Developabile/rive-next?style=for-the-badge&labelColor=576B87&logoColor=white&color=7c3aed&cacheSeconds=3600)
 
 <!-- ![Github LOC](https://tokei.rs/b1/github/Developabile/rive-next) -->
 
-![Github Files](https://img.shields.io/github/directory-file-count/Developabile/rive-next)
-![Github Release](https://img.shields.io/github/v/release/Developabile/rive-next)
-![Github License](https://img.shields.io/github/license/Developabile/rive-next)
+![Github Files](https://img.shields.io/github/directory-file-count/Developabile/rive-next?style=for-the-badge&labelColor=576B87&logoColor=white&color=7c3aed&cacheSeconds=3600)
+![Github Release](https://img.shields.io/github/v/release/Developabile/rive-next?style=for-the-badge&labelColor=576B87&logoColor=white&color=7c3aed&cacheSeconds=3600)
+![Github License](https://img.shields.io/github/license/Developabile/rive-next?style=for-the-badge&labelColor=576B87&logoColor=white&color=7c3aed&cacheSeconds=3600)
 
-[![CodeQL](https://github.com/Developabile/rive-next/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Developabile/rive-next/actions/workflows/github-code-scanning/codeql)
-[![Weekly Update TMDB Collections](https://github.com/Developabile/rive-next/actions/workflows/weekly_update.yml/badge.svg)](https://github.com/Developabile/rive-next/actions/workflows/weekly_update.yml)
+<!-- [![CodeQL](https://github.com/Developabile/rive-next/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Developabile/rive-next/actions/workflows/github-code-scanning/codeql)
+[![Weekly Update TMDB Collections](https://github.com/Developabile/rive-next/actions/workflows/weekly_update.yml/badge.svg)](https://github.com/Developabile/rive-next/actions/workflows/weekly_update.yml) -->
+
+![CodeQL](https://img.shields.io/github/actions/workflow/status/Developabile/rive-next/github-code-scanning%2Fcodeql?label=CodeQL&style=for-the-badge&labelColor=576B87&logo=githubactions&logoColor=white&color=7c3aed&cacheSeconds=3600)
+![Weekly Update TMDB Collections](https://img.shields.io/github/actions/workflow/status/Developabile/rive-next/weekly_update.yml?label=Weekly%20Update%20TMDB%20Collections&style=for-the-badge&labelColor=576B87&logo=githubactions&logoColor=white&color=7c3aed&cacheSeconds=3600)
 
  </p>
 </div>
@@ -103,6 +106,7 @@ Rive is a cutting-edge platform for streaming movies and TV shows online. Our pr
     <img src="https://img.shields.io/badge/sass-7c3aed?style=for-the-badge&logo=sass&logoColor=white" alt="react official Website"/>
     <img src="https://img.shields.io/badge/firebase-7c3aed?style=for-the-badge&logo=firebase&logoColor=white" alt="react official Website"/>
     <img src="https://img.shields.io/badge/node.js-7c3aed?style=for-the-badge&logo=node.js&logoColor=white" alt="react official Website"/>
+    <img src="https://img.shields.io/badge/tmdb-7c3aed?style=for-the-badge&logo=themoviedatabase&logoColor=white" alt="react official Website"/>
 </p>
 
 ## **Screenshots**
