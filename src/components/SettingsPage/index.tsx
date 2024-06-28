@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "@/styles/Settings.module.scss";
 import Link from "next/link";
-import { FaGithub, FaGlobe } from "react-icons/fa";
+import { FaGithub, FaGlobe, FaDiscord } from "react-icons/fa";
 import { getSettings, setSettings } from "@/Utils/settings";
 import { usePathname } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
@@ -182,6 +182,9 @@ const SettingsPage = ({
         <div className={styles.group}>
           <Link href={"https://github.com/Developabile/rive-next"}>
             <FaGithub /> Github
+          </Link>
+          <Link href={"https://discord.gg/6xJmJja8fV"}>
+            <FaDiscord /> Discord
           </Link>
           <Link href={"/"}>
             <FaGlobe /> Website
