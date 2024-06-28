@@ -39,6 +39,17 @@ Rive is a cutting-edge platform for streaming movies and TV shows online. Our pr
  </p>
 </div>
 
+## **Domains**:
+
+- https://rivestream.tech
+- https://rivestream.vercel.app
+- https://rive-next.vercel.app
+
+**connect**:
+
+[![Discord](https://img.shields.io/badge/discord-7c3aed?&style=for-the-badge&logo=discord&logoColor=white&color=7c3aed&cacheSeconds=3600)](https://discord.gg/6xJmJja8fV)
+[![Gmail](https://img.shields.io/badge/mail-7c3aed?&style=for-the-badge&logo=gmail&logoColor=white&color=7c3aed&cacheSeconds=3600)](mailto:kumarashishranjan.ofc@gmail.com)
+
 ## **Features**:
 
 - Developed utilizing the **[Next.js](https://nextjs.org/)** framework and **[TypeScript](https://www.typescriptlang.org/)**.
