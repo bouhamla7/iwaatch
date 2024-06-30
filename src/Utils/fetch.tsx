@@ -12,6 +12,7 @@ interface Fetch {
   query?: string;
   season?: number;
   episode?: number;
+  service?: string;
 }
 export default async function axiosFetch({
   requestID,
@@ -25,6 +26,7 @@ export default async function axiosFetch({
   query,
   season,
   episode,
+  service,
 }: Fetch) {
   const request = requestID;
   const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -94,8 +96,9 @@ export default async function axiosFetch({
     withKeywordsMovie: `${baseURL}/discover/movie?with_keywords=${genreKeywords}&language=${language}&sort_by=${sortBy}${year != undefined ? "&first_air_date_year=" + year : ""}${country != undefined ? "&with_origin_country=" + country : ""}&page=${page}&release_date.lte=${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}&with_runtime.gte=1`,
 
     // provider
-    movieVideoProvider: `${ProviderURL}/movie/${id}`,
-    tvVideoProvider: `${ProviderURL}/tv/${id}/${season}/${episode}`,
+    VideoProviderServices: `${ProviderURL}/providers`,
+    movieVideoProvider: `${ProviderURL}/${service}/movie/${id}`,
+    tvVideoProvider: `${ProviderURL}/${service}/tv/${id}/${season}/${episode}`,
 
     // External provider
     movieExternalVideoProvider: `${ExternalProviderURL}/${id}?s=0&e=0`,

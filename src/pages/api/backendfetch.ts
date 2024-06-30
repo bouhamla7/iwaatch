@@ -25,6 +25,7 @@ export default async function handler(
     query,
     season,
     episode,
+    service,
   }: any = req?.query;
   // console.log({
   //   requestID,
@@ -51,6 +52,7 @@ export default async function handler(
     query,
     season,
     episode,
+    service,
   });
   // Cache the result
   setCache(cacheKey, result);
