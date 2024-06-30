@@ -33,6 +33,8 @@ const Watch = () => {
   const [nonEmbedSources, setNonEmbedSources] = useState<any>("");
   const [nonEmbedCaptions, setnonEmbedCaptions] = useState<any>();
   const [nonEmbedVideoProviders, setNonEmbedVideoProviders] = useState([]);
+  const [nonEmbedSourcesNotFound, setNonEmbedSourcesNotFound] =
+    useState<any>(false);
   // const [nonEmbedFormat, setnonEmbedFormat] = useState<any>();
   const nextBtn: any = useRef(null);
   const backBtn: any = useRef(null);
@@ -175,12 +177,23 @@ const Watch = () => {
           providers?.data?.map((ele: any) => {
             return {
               name: ele,
-              status: "fetching",
+              status: "available",
             };
           }),
         );
         const res: any = { sources: [], captions: [] };
-        const fetchPromises = providers?.data?.map(async (ele: any) => {
+        for (const ele of providers?.data || []) {
+          setNonEmbedVideoProviders((prevProviders: any) =>
+            prevProviders.map((provider: any) => {
+              if (provider.name === ele) {
+                return {
+                  ...provider,
+                  status: "fetching",
+                };
+              }
+              return provider;
+            }),
+          );
           try {
             const tempRes: any = await axiosFetch({
               requestID: `${type}VideoProvider`,
@@ -224,9 +237,6 @@ const Watch = () => {
               }),
             );
           }
-        });
-        if (fetchPromises) {
-          await Promise.all(fetchPromises);
         }
         console.log({ res });
         if (res?.sources?.length > 0) {
@@ -234,7 +244,9 @@ const Watch = () => {
           res?.sources?.length > 0 ? setNonEmbedSourcesIndex(0) : null;
           setnonEmbedCaptions(res?.captions);
           clearTimeout(autoEmbedMode);
+          setNonEmbedSourcesNotFound(false);
         } else {
+          setNonEmbedSourcesNotFound(true);
           autoEmbedMode = setTimeout(() => {
             setEmbedMode(true);
           }, 10000);
@@ -429,18 +441,28 @@ const Watch = () => {
               return (
                 <div className={styles.videoProvider}>
                   <div
-                    className={`${styles.videoProviderName} ${ele?.status === "fetching" ? styles.fetching : null} ${ele?.status === "success" ? styles.success : null} ${ele?.status === "error" ? styles.error : null}`}
+                    className={`${styles.videoProviderName} ${ele?.status === "available" ? styles.available : null} ${ele?.status === "fetching" ? styles.fetching : null} ${ele?.status === "success" ? styles.success : null} ${ele?.status === "error" ? styles.error : null}`}
                   >
                     {ele?.name?.toUpperCase()}
                   </div>
                   <div
-                    className={`${styles.videoProviderStatus} ${ele?.status === "fetching" ? styles.fetching : null} ${ele?.status === "success" ? styles.success : null} ${ele?.status === "error" ? styles.error : null}`}
+                    className={`${styles.videoProviderStatus} ${ele?.status === "available" ? styles.available : null} ${ele?.status === "fetching" ? styles.fetching : null} ${ele?.status === "success" ? styles.success : null} ${ele?.status === "error" ? styles.error : null}`}
                   >
                     {ele?.status}
                   </div>
                 </div>
               );
             })}
+            {nonEmbedSourcesNotFound ? (
+              <p className={`${styles.para2} ${styles.success}`}>
+                Server not found. Automatically switching to Embed Mode.
+              </p>
+            ) : (
+              <p className={styles.para}>
+                If Server not found, Then system will automatically switch to
+                Embed Mode in 10 seconds
+              </p>
+            )}
           </div>
         ) : (
           "Loading"
