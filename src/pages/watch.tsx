@@ -287,6 +287,8 @@ const Watch = () => {
   const STREAM_URL_SMASH = process.env.NEXT_PUBLIC_STREAM_URL_SMASH;
   const STREAM_URL_ONE = process.env.NEXT_PUBLIC_STREAM_URL_ONE;
   const STREAM_URL_ANY = process.env.NEXT_PUBLIC_STREAM_URL_ANY;
+  const STREAM_URL_PRIME = process.env.NEXT_PUBLIC_STREAM_URL_PRIME;
+  const STREAM_URL_RGS = process.env.NEXT_PUBLIC_STREAM_URL_RGS;
   const STREAM_URL_WEB = process.env.NEXT_PUBLIC_STREAM_URL_WEB;
 
   return (
@@ -390,7 +392,9 @@ const Watch = () => {
             <option value="SMASH">Aggregator : 8</option>
             <option value="ONE">Aggregator : 9</option>
             <option value="ANY">Aggregator : 10 (Multi-Server)</option>
-            <option value="WEB">Aggregator : 11 (Ad-Free)</option>
+            <option value="PRIME">Aggregator : 11 (Multi-Server)</option>
+            <option value="RGS">Aggregator : 12 (Multi-Lang)</option>
+            <option value="WEB">Aggregator : 13 (Ad-Free)</option>
           </select>
         )}
 
@@ -620,6 +624,36 @@ const Watch = () => {
             type === "movie"
               ? `${STREAM_URL_ANY}/movie/${id}`
               : `${STREAM_URL_ANY}/tv/${id}/${season}/${episode}`
+          }
+          className={styles.iframe}
+          allowFullScreen
+          allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+          referrerPolicy="origin"
+        ></iframe>
+      ) : null}
+
+      {source === "PRIME" && id !== "" && id !== null && embedMode === true ? (
+        <iframe
+          scrolling="no"
+          src={
+            type === "movie"
+              ? `${STREAM_URL_PRIME}/movie?tmdb=${id}`
+              : `${STREAM_URL_PRIME}/tv?tmdb=${id}&season=${season}&episode=${episode}`
+          }
+          className={styles.iframe}
+          allowFullScreen
+          allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+          referrerPolicy="origin"
+        ></iframe>
+      ) : null}
+
+      {source === "RGS" && id !== "" && id !== null && embedMode === true ? (
+        <iframe
+          scrolling="no"
+          src={
+            type === "movie"
+              ? `${STREAM_URL_RGS}/movies/api2/index.html?id=${id}`
+              : `${STREAM_URL_RGS}/series/api2/index.html?id=${id}&s=${season}&e=${episode}`
           }
           className={styles.iframe}
           allowFullScreen
