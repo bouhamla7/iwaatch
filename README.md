@@ -41,7 +41,8 @@ Rive is a cutting-edge platform for streaming movies and TV shows online. Our pr
 
 ## **Domains**:
 
-- https://rivestream.tech
+<!-- - https://rivestream.tech -->
+
 - https://rivestream.vercel.app
 - https://rive-next.vercel.app
 
