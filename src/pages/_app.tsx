@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import NProgress from "nprogress";
 import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App({ Component, pageProps }: any) {
   const [isLoading, setIsLoading] = useState(false);
@@ -75,6 +76,7 @@ export default function App({ Component, pageProps }: any) {
         <Tooltip id="tooltip" className="react-tooltip" />
         <Component {...pageProps} />
       </Layout>
+      <Analytics />
     </>
   );
 }
