@@ -8,6 +8,7 @@ import { MdFilterAlt, MdFilterAltOff } from "react-icons/md";
 import Filter from "../Filter";
 import Skeleton from "react-loading-skeleton";
 import NProgress from "nprogress";
+import { toast } from "sonner";
 // import MoviePoster from '@/components/MoviePoster';
 
 function capitalizeFirstLetter(string: string) {
@@ -198,6 +199,30 @@ const CategorywisePage = ({ categoryDiv, categoryPage = null }: any) => {
           dummyList.map((ele) => <Skeleton className={styles.loading} />)}
         {/* {data?.total_results === 0 &&
           <h1>No Data Found</h1>} */}
+      </div>
+      <div className={styles.jumpTo}>
+        <h3>Jump to</h3>
+        <input
+          type="number"
+          className={styles.pageInput}
+          value={currentPage}
+          min={"1"}
+          max={totalpages}
+          minLength={1}
+          onChange={(e: any) => {
+            // console.log({ val: e.target.value });
+            if (e.target.value === "") setCurrentPage(e.target.value);
+            else if (e.target.value === "0") {
+              toast.error(`Page number should be greater than 0`);
+            } else if (e.target.value <= totalpages)
+              setCurrentPage(e.target.value);
+            else {
+              toast.error(
+                `Page number should be less than Total pages: ${totalpages}`,
+              );
+            }
+          }}
+        />
       </div>
       <ReactPaginate
         containerClassName={styles.pagination}

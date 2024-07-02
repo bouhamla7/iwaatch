@@ -8,6 +8,7 @@ import Skeleton from "react-loading-skeleton";
 import NProgress from "nprogress";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import CollectionIDs from "@/assets/collection_ids.json";
+import { toast } from "sonner";
 // import MoviePoster from '@/components/MoviePoster';
 
 const dummyList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -177,6 +178,30 @@ const Collections = ({ categoryType }: any) => {
           dummyList.map((ele) => <Skeleton className={styles.loading} />)}
         {/* {data?.total_results === 0 &&
           <h1>No Data Found</h1>} */}
+      </div>
+      <div className={styles.jumpTo}>
+        <h3>Jump to</h3>
+        <input
+          type="number"
+          className={styles.pageInput}
+          value={currentPage}
+          min={"1"}
+          max={totalpages}
+          minLength={1}
+          onChange={(e: any) => {
+            // console.log({ val: e.target.value });
+            if (e.target.value === "") setCurrentPage(e.target.value);
+            else if (e.target.value === "0") {
+              toast.error(`Page number should be greater than 0`);
+            } else if (e.target.value <= totalpages)
+              setCurrentPage(e.target.value);
+            else {
+              toast.error(
+                `Page number should be less than Total pages: ${totalpages}`,
+              );
+            }
+          }}
+        />
       </div>
       <ReactPaginate
         containerClassName={styles.pagination}

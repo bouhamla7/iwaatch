@@ -443,15 +443,13 @@ const Watch = () => {
           <div className={styles.videoProviders}>
             {nonEmbedVideoProviders?.map((ele: any) => {
               return (
-                <div className={styles.videoProvider}>
-                  <div
-                    className={`${styles.videoProviderName} ${ele?.status === "available" ? styles.available : null} ${ele?.status === "fetching" ? styles.fetching : null} ${ele?.status === "success" ? styles.success : null} ${ele?.status === "error" ? styles.error : null}`}
-                  >
+                <div
+                  className={`${styles.videoProvider} ${ele?.status === "available" ? styles.available : null} ${ele?.status === "fetching" ? styles.fetching : null} ${ele?.status === "success" ? styles.success : null} ${ele?.status === "error" ? styles.error : null}`}
+                >
+                  <div className={`${styles.videoProviderName}`}>
                     {ele?.name?.toUpperCase()}
                   </div>
-                  <div
-                    className={`${styles.videoProviderStatus} ${ele?.status === "available" ? styles.available : null} ${ele?.status === "fetching" ? styles.fetching : null} ${ele?.status === "success" ? styles.success : null} ${ele?.status === "error" ? styles.error : null}`}
-                  >
+                  <div className={`${styles.videoProviderStatus} `}>
                     {ele?.status}
                   </div>
                 </div>
@@ -469,7 +467,11 @@ const Watch = () => {
             )}
           </div>
         ) : (
-          "Loading"
+          <div className={`${styles.loader}`}>
+            <div className={`${styles.scanner}`}>
+              <span>Loading..</span>
+            </div>
+          </div>
         )}
       </div>
       {embedMode === false && nonEmbedSourcesIndex !== "" && (

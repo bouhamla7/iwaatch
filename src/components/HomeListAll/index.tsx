@@ -121,9 +121,9 @@ const HomeListAll = () => {
           const usedIds = new Set();
 
           shuffledArray.forEach((item: any) => {
-            if (!usedIds.has(item.id)) {
+            if (!usedIds.has(item?.id)) {
               uniqueArray.push(item);
-              usedIds.add(item.id);
+              usedIds.add(item?.id);
             }
           });
           // console.log({ uniqueArray });

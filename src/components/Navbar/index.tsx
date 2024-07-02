@@ -45,7 +45,7 @@ const Navbar = ({ children }: any) => {
   useEffect(() => {
     if (params.get("type") !== null) setPathname("/" + params.get("type"));
     // else setPathname(path);
-    else {
+    else if (path !== null) {
       const arr = path?.split("/");
       setPathname("/" + arr[1]);
     }
