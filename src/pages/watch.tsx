@@ -31,7 +31,7 @@ const Watch = () => {
   // const [nonEmbedURL, setNonEmbedURL] = useState<any>("");
   const [nonEmbedSourcesIndex, setNonEmbedSourcesIndex] = useState<any>("");
   const [nonEmbedSources, setNonEmbedSources] = useState<any>("");
-  const [nonEmbedCaptions, setnonEmbedCaptions] = useState<any>();
+  const [nonEmbedCaptions, setnonEmbedCaptions] = useState<any>([]);
   const [nonEmbedVideoProviders, setNonEmbedVideoProviders] = useState([]);
   const [nonEmbedSourcesNotFound, setNonEmbedSourcesNotFound] =
     useState<any>(false);
@@ -224,6 +224,22 @@ const Watch = () => {
                 return provider;
               }),
             );
+            if (tempRes?.data?.sources?.length > 0) {
+              setNonEmbedSources((prev: any) => {
+                return [...prev, ...tempRes?.data?.sources];
+              });
+              tempRes?.data?.sources?.length > 0
+                ? setNonEmbedSourcesIndex(0)
+                : null;
+              setnonEmbedCaptions((prev: any) => {
+                const captions = Array.isArray(tempRes?.data?.captions)
+                  ? tempRes?.data?.captions
+                  : [];
+                return [...prev, ...captions];
+              });
+              clearTimeout(autoEmbedMode);
+              setNonEmbedSourcesNotFound(false);
+            }
           } catch (error) {
             console.error(`Error fetching data for provider ${ele}:`, error);
             setNonEmbedVideoProviders((prevProviders: any) =>
