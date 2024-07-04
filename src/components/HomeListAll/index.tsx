@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import MovieCardSmall from "../MovieCardSmall";
 import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
 
 const externalImageLoader = ({ src }: { src: string }) =>
   `${process.env.NEXT_PUBLIC_TMBD_IMAGE_URL}${src}`;
@@ -310,7 +310,14 @@ const HomeListAll = () => {
       {recommendations.length > 0 ? (
         <>
           <h1>
-            Recommendation
+            <Link
+              className={styles.recommendation}
+              href={`/recommendation`}
+              data-tooltip-id="tooltip"
+              data-tooltip-content="More Detailed Recommendation"
+            >
+              Recommendation <MdLink />
+            </Link>
             <div>
               <MdChevronLeft
                 onClick={() => {

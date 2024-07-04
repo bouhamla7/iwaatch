@@ -20,6 +20,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .recommendation {
+      font-family: sans-serif;
+      color: var(--primary-3);
+      font-size: 1.7rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.3rem;
+    }
     div {
       display: flex;
       align-items: center;
@@ -52,6 +61,9 @@
       }
     }
     h1 {
+      .recommendation {
+        font-size: 1.2rem;
+      }
       div {
         display: none;
       }

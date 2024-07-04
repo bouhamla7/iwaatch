@@ -59,7 +59,7 @@ const Navbar = ({ children }: any) => {
         data-tooltip-id="tooltip"
         data-tooltip-content="Home"
       >
-        {pathname === "/" ? (
+        {pathname === "/" || pathname === "/recommendation" ? (
           <MdHome className={styles.active} />
         ) : (
           <MdOutlineHome className={styles.inactive} />

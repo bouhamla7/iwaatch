@@ -176,6 +176,13 @@ const SettingsPage = ({
           <Link href="mailto:kumarashishranjan4971@hotmail.com">
             Contact Us
           </Link>
+          <Link
+            href="/recommendation"
+            data-tooltip-id="tooltip"
+            data-tooltip-content="More Detailed Recommendation"
+          >
+            Recommendation
+          </Link>
           {/* <Link href="/contact">Contact Us</Link> */}
         </div>
         <h1>Links</h1>
