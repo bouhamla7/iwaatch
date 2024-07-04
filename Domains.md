@@ -1,11 +1,11 @@
 # Domains
 
-| Domain                        | Status |
-| ----------------------------- | ------ |
-| https://rivestream.liv        | ✅     |
-| https://rivestream.vercel.ap  | ✅     |
-| https://rivestream.netlify.ap | ✅     |
-| https://rive-next.vercel.ap   | ✅     |
+| Domain                         | Status |
+| ------------------------------ | ------ |
+| https://rivestream.live        | ✅     |
+| https://rivestream.vercel.app  | ✅     |
+| https://rivestream.netlify.app | ✅     |
+| https://rive-next.vercel.app   | ✅     |
 
 **Legends**:
 
