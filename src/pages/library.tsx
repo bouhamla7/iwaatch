@@ -62,7 +62,13 @@ const Library = () => {
             id: ele,
           });
           if (data !== undefined) await arr.push(data);
-          console.log({ arr });
+          console.log({ data });
+          if (data !== undefined && data !== "") {
+            setData((prev: any) => {
+              return [...prev, data];
+            });
+            setLoading(false);
+          }
           // setLoading(false);
         }
         // if (ids.length === 0 || ids === null || ids === undefined)
@@ -73,17 +79,14 @@ const Library = () => {
       }
       return arr;
     };
-    fetchData().then((res) => {
-      console.log({ res });
-      setData(res);
-      setLoading(false);
-    });
+    fetchData();
   }, [ids]);
 
   useEffect(() => {
     // fetch bookmarks
     // console.log(getBookmarks());
     const fetch = async () => {
+      setData([]);
       if (category === "watchlist") {
         if (user !== null && user !== undefined)
           getBookmarks(user).then((res: any) => {

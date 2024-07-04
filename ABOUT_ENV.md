@@ -78,25 +78,26 @@ NEXT_PUBLIC_EXTERNAL_PROVIDER_URL=
 
 You can find the api, if you search for **vidsrc scrappers**, here we are using a 3rd party API(not ours) which scrapes vidsrc.to and vidsrc.me
 
-## 5. Google Tag Manager
+## 5. Google Analytics
 
 ```.env
 NEXT_PUBLIC_GT_MEASUREMENT_ID=
 ```
 
-Add your Measurement ID from your Google Tag Manager, to track websites for Analytics purposes.  
+Add your Measurement ID from your Google Tag Manager/ Google Analytics, to track websites for Analytics purposes.  
+We are usig Google Analytics with Google Tag Manager to track multiple deployments.  
 This is optional, either add this env variable  
 Or comment out these three lines _(line 13 , 18 & 80)_ in `./src/pages/_app.tsx`:
 
 ```js
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const GTag: any = process.env.NEXT_PUBLIC_GT_MEASUREMENT_ID;
 
-<GoogleTagManager gtmId={GTag} />;
+<GoogleAnalytics gaId={GTag} />
 ```
 
-Steps to generate Google Tag:
+Steps to generate Google Tag in GA:
 
 1. Go to the Admin page in Google Analytics(GA)
 2. Navigate to Data Streams
