@@ -2,7 +2,7 @@
 
 | Domain                         | Status |
 | ------------------------------ | ------ |
-| https://rivestream.live        | ✅     |
+| https://rivestream.liv         | ✅     |
 | https://rivestream.vercel.app  | ✅     |
 | https://rivestream.netlify.app | ✅     |
 | https://rive-next.vercel.app   | ✅     |

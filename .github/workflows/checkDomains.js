@@ -26,6 +26,7 @@ async function checkDomainStatus() {
   for (const row of table) {
     try {
       const response = await axios.get(row.Domain);
+      console.log({ response });
       row.Status = response.status === 200 ? "✅" : "❌";
     } catch (error) {
       row.Status = "❌";
