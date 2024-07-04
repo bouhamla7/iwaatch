@@ -1,0 +1,69 @@
+name: Check Domain Status
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 0"
+
+jobs:
+  check_domains:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install dependencies
+        run: npm install markdown-table-to-json axios
+
+      - name: Create checkDomains.js
+        run: |
+          echo "const fs = require('fs');
+          const axios = require('axios');
+          const markdownTableToJson = require('markdown-table-to-json');
+
+          const filePath = 'Domains.md';
+          const fileContent = fs.readFileSync(filePath, 'utf8');
+          const tableJson = markdownTableToJson.parse(fileContent);
+
+          async function checkDomainStatus() {
+            for (const domain of tableJson[0]) {
+              try {
+                const response = await axios.get(domain.Domain);
+                if (response.status === 200) {
+                  domain.Status = '✅';
+                } else {
+                  domain.Status = '❌';
+                }
+              } catch (error) {
+                domain.Status = '❌';
+              }
+            }
+
+            const updatedTable = markdownTableToJson.toMd(tableJson[0]);
+            const newFileContent = fileContent.replace(
+              /(\| Domain.*\| Status \|\n\|.*\|\n)((?:\|.*\|\n)*)/,
+              '$1' + updatedTable + '\n'
+            );
+            fs.writeFileSync(filePath, newFileContent);
+          }
+
+          checkDomainStatus();" > checkDomains.js
+
+      - name: Run domain check script
+        run: node checkDomains.js
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add Domains.md
+          git commit -m 'Update domain status for $(date -d 'today' +\%m_%d_%Y)'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
