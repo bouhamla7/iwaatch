@@ -6,7 +6,7 @@ const fileContent = fs.readFileSync(filePath, "utf8");
 
 const parseTable = (markdown) => {
   const rows = markdown.split("\n").filter((row) => row.startsWith("|"));
-  console.log({ rows });
+  // console.log({ rows });
   return rows.slice(2).map((row) => {
     const cells = row.split("|").map((cell) => cell.trim());
     return { Domain: cells[1], Status: cells[2] };
