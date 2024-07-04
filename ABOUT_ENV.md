@@ -78,6 +78,37 @@ NEXT_PUBLIC_EXTERNAL_PROVIDER_URL=
 
 You can find the api, if you search for **vidsrc scrappers**, here we are using a 3rd party API(not ours) which scrapes vidsrc.to and vidsrc.me
 
+## 5. Google Tag Manager
+
+```.env
+NEXT_PUBLIC_GT_MEASUREMENT_ID=
+```
+
+Add your Measurement ID from your Google Tag Manager, to track websites for Analytics purposes.  
+This is optional, either add this env variable  
+Or comment out these three lines _(line 13 , 18 & 80)_ in `./src/pages/_app.tsx`:
+
+```js
+import { GoogleTagManager } from "@next/third-parties/google";
+
+const GTag: any = process.env.NEXT_PUBLIC_GT_MEASUREMENT_ID;
+
+<GoogleTagManager gtmId={GTag} />;
+```
+
+Steps to generate Google Tag:
+
+1. Go to the Admin page in Google Analytics(GA)
+2. Navigate to Data Streams
+3. Select the Data Stream of your property
+4. Select Configure Tag Settings
+5. Click Configure your domains
+6. Enter all the domains you want to track
+7. Verify that the tag on each page uses the same tag ID from the same web data stream
+8. Click Save
+
+---
+
 If there are anymore env vars left, give them any random values, as they were used in dev only and not in prod.
 
 ## **Disclaimer**
