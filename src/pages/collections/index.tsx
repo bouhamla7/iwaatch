@@ -11,7 +11,9 @@ import CollectionIDs from "@/assets/collection_ids.json";
 import { toast } from "sonner";
 // import MoviePoster from '@/components/MoviePoster';
 
-const dummyList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const dummyList = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+];
 const Collections = ({ categoryType }: any) => {
   const [ids, setids] = useState<any>([]);
   const [data, setData] = useState<any>([]);
@@ -50,7 +52,6 @@ const Collections = ({ categoryType }: any) => {
     };
   }, []);
   useEffect(() => {
-    setLoading(true);
     // setData([0, 0, 0, 0, 0, 0, 0, 0, 0]);
     const fetchData = async () => {
       let arr: any = [];
@@ -60,28 +61,32 @@ const Collections = ({ categoryType }: any) => {
           i < currentPage * 20 && i < CollectionIDs?.length - 1;
           i++
         ) {
-          const data = await axiosFetch({
+          const tempData = await axiosFetch({
             requestID: `collection`,
             id: JSON.stringify(CollectionIDs[i]?.id),
           });
-          if (data !== undefined) await arr.push(data);
+          if (tempData !== undefined) {
+            await arr.push(tempData);
+            setData((prev: any) => {
+              return [...prev, tempData];
+            });
+            setLoading(false);
+          }
           console.log({ arr });
-          // setLoading(false);
         }
-        // if (ids.length === 0 || ids === null || ids === undefined)
-        //   setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
       }
-      return arr;
+      // return arr;
     };
-    if (searchQuery === null || searchQuery?.length <= 2)
-      fetchData().then((res) => {
-        console.log({ res });
-        setData(res);
-        setLoading(false);
-      });
+    if (searchQuery === null || searchQuery?.length === 0) {
+      setLoading(true);
+      setData([]);
+      fetchData();
+    } else if (searchQuery === null || searchQuery?.length <= 2) {
+      fetchData();
+    }
   }, [ids, currentPage, searchQuery]);
   useEffect(() => {
     if (searchQuery === "" || searchQuery === null) {
