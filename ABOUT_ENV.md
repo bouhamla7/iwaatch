@@ -73,7 +73,6 @@ If you do some researching, then you will find the right services here.
 
 ```.env
 NEXT_PUBLIC_PROVIDER_URL=
-NEXT_PUBLIC_EXTERNAL_PROVIDER_URL=
 ```
 
 You can find the api, if you search for **vidsrc scrappers**, here we are using a 3rd party API(not ours) which scrapes vidsrc.to and vidsrc.me
