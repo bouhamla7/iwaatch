@@ -183,6 +183,8 @@ const Watch = () => {
           }),
         );
         const res: any = { sources: [], captions: [] };
+        // setNonEmbedSources([]);
+        // setnonEmbedCaptions([]);
         for (const ele of providers?.data || []) {
           setNonEmbedVideoProviders((prevProviders: any) =>
             prevProviders.map((provider: any) => {

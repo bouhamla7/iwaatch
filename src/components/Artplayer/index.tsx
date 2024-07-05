@@ -76,17 +76,31 @@ export default function Player({
       // controls: [
       //   {
       //     position: "right",
-      //     html: "Download",
+      //     html: '<img src="/images/logo512.svg" height=50 width=50 alt="download"/>',
       //     width: 250,
-      //     icon: '<img src="/images/logo512.svg" alt="download"/>',
-      //     tooltip: "Download HLS (mediatools)",
+      //     tooltip: format === "hls" ? "Download HLS" : "Download MP4",
       //     style: {
       //       color: "var(--ascent-color)",
-      //       width:"clamp(0,10%,250px)"
+      //       width: "clamp(0,10%,250px)"
+      //     },
+      //     click: function () {
+      //       format === "hls" ? window.open(
+      //         `https://hlsdownload.vidbinge.com/?url=${option?.url}`,
+      //       ) : window.open(`${option.url}`);
+      //     },
+      //   },
+      //   {
+      //     position: "right",
+      //     html: '<img src="/images/logo512.svg" height=50 width=50 alt="watchparty"/>',
+      //     width: 250,
+      //     tooltip: "Watch Party",
+      //     style: {
+      //       color: "var(--ascent-color)",
+      //       width: "clamp(0,10%,250px)"
       //     },
       //     click: function () {
       //       window.open(
-      //         `https://mediatools.cc/hlsDownloader?query=${option.url}`,
+      //         "https://www.watchparty.me/create?video=" + option?.url,
       //       );
       //     },
       //   },
@@ -101,6 +115,32 @@ export default function Player({
             console.info(item, $dom, event);
             art.subtitle.url = item?.url;
             return item?.html;
+          },
+        },
+        {
+          html: "Watch Party",
+          width: 250,
+          height: 500,
+          icon: '<img src="/images/logo512.svg" alt="download"/>',
+          selector: [
+            {
+              html: "watchparty.me",
+              url: "https://www.watchparty.me/create?video=" + option?.url,
+            },
+          ],
+          onSelect: function (item: any) {
+            // window.open("https://www.watchparty.me/create?video=" + option?.url);
+            // window.location.href = "https://www.watchparty.me/create?video=" + option?.url;
+            let url = `https://www.watchparty.me/create?video=${option.url}`;
+            let event = new MouseEvent("click", {
+              bubbles: true,
+              cancelable: true,
+              view: window,
+            });
+            let a = document.createElement("a");
+            a.href = url;
+            a.target = "_blank";
+            a.dispatchEvent(event);
           },
         },
         {
@@ -135,23 +175,65 @@ export default function Player({
                   },
                 ],
           onSelect: function (item: any) {
-            if (item.opt === 1)
-              window.open(
-                `https://hlsdownload.vidbinge.com/?url=${option.url}`,
-              );
-            if (item.opt === 2)
-              window.open(
-                `https://mediatools.cc/hlsDownloader?query=${option.url}`,
-              );
+            if (item.opt === 1) {
+              // window.open(
+              //   `https://hlsdownload.vidbinge.com/?url=${option.url}`,
+              // );
+              let url = `https://hlsdownload.vidbinge.com/?url=${option.url}`;
+              let event = new MouseEvent("click", {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+              });
+              let a = document.createElement("a");
+              a.href = url;
+              a.target = "_blank";
+              a.dispatchEvent(event);
+            }
+            if (item.opt === 2) {
+              // window.open(
+              //   `https://mediatools.cc/hlsDownloader?query=${option.url}`,
+              // );
+              let url = `https://mediatools.cc/hlsDownloader?query=${option.url}`;
+              let event = new MouseEvent("click", {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+              });
+              let a = document.createElement("a");
+              a.href = url;
+              a.target = "_blank";
+              a.dispatchEvent(event);
+            }
             if (item.opt === 3) {
               navigator?.clipboard?.writeText(option.url);
-              window.open(
-                `https://hlsdownloader.thetuhin.com/?text=${option.url}`,
-              );
+              // window.open(
+              //   `https://hlsdownloader.thetuhin.com/?text=${option.url}`,
+              // );
+              let url = `https://hlsdownloader.thetuhin.com/?text=${option.url}`;
+              let event = new MouseEvent("click", {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+              });
+              let a = document.createElement("a");
+              a.href = url;
+              a.target = "_blank";
+              a.dispatchEvent(event);
             }
             if (item.opt === 4) {
               navigator?.clipboard?.writeText(option.url);
-              window.open(`${option.url}`);
+              // window.open(`${option.url}`);
+              let url = `${option.url}`;
+              let event = new MouseEvent("click", {
+                bubbles: true,
+                cancelable: true,
+                view: window,
+              });
+              let a = document.createElement("a");
+              a.href = url;
+              a.target = "_blank";
+              a.dispatchEvent(event);
             }
           },
         },
