@@ -197,16 +197,17 @@ const WatchDetails = ({
                     }
                     key={ele?.id}
                   >
-                    <Link
-                      href={`/watch?type=tv&id=${ele?.show_id}&season=${ele?.season_number}&episode=${ele?.episode_number}`}
-                      className={styles.CardSmall}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <div
-                        className={`${styles.img} ${imageLoading ? "skeleton" : null}`}
+                    <div className={styles.episodeHeader}>
+                      <Link
+                        href={`/watch?type=tv&id=${ele?.show_id}&season=${ele?.season_number}&episode=${ele?.episode_number}`}
+                        className={styles.CardSmall}
+                        onClick={(e) => e.stopPropagation()}
                       >
-                        {/* if rllic package is not available, then start using this code again, and comment/delete the rllic code */}
-                        {/* <AnimatePresence mode="sync">
+                        <div
+                          className={`${styles.img} ${imageLoading ? "skeleton" : null}`}
+                        >
+                          {/* if rllic package is not available, then start using this code again, and comment/delete the rllic code */}
+                          {/* <AnimatePresence mode="sync">
                           <motion.img
                             key={ele?.id}
                             src={`${ele?.still_path !== null && ele?.still_path !== undefined ? process.env.NEXT_PUBLIC_TMBD_IMAGE_URL + ele?.still_path : "/images/logo.svg"}`}
@@ -226,56 +227,57 @@ const WatchDetails = ({
                           />
                         </AnimatePresence> */}
 
-                        {/* react-lazy-load-image-component */}
-                        <LazyLoadImage
-                          key={ele?.id}
-                          src={`${imagePlaceholder ? "/images/logo.svg" : ele?.still_path !== null && ele?.still_path !== undefined ? process.env.NEXT_PUBLIC_TMBD_IMAGE_URL?.replace("/original", "/w342") + ele?.still_path : "/images/logo.svg"}`}
-                          height="100%"
-                          width="100%"
-                          useIntersectionObserver={true}
-                          effect="opacity"
-                          className={`${styles.img} ${imageLoading ? "skeleton" : null}`}
-                          onLoad={() => {
-                            setImageLoading(false);
-                          }}
-                          onError={(e) => {
-                            // console.log({ e });
-                            setImagePlaceholder(true);
-                            setImageLoading(false);
-                          }}
-                          loading="lazy"
-                          // style={!imageLoading ? { opacity: 1 } : { opacity: 0 }}
-                        />
-                      </div>
-                    </Link>
-                    <div className={styles.details}>
-                      <h4>
-                        {`EP ${ele.episode_number}`}
-                        {`${ele?.name ? " : " + ele?.name : null}`}
-                      </h4>
-                      <p>
-                        {`${ele?.vote_average >= 0 ? "• " + ele?.vote_average.toFixed(1) : null}`}{" "}
-                        {ele?.runtime >= 60
-                          ? `• ${Math.floor(ele?.runtime / 60)}hr ${(ele?.runtime % 60).toFixed(0)}min`
-                          : null}
-                        {ele?.runtime < 60
-                          ? `• ${(ele?.runtime % 60).toFixed(0)}min`
-                          : null}
-                        {new Date(ele?.air_date) >= new Date() ? (
-                          <span
-                            className={styles.notAiredTag}
-                          >{`• ${new Date(ele?.air_date).getDate()} ${monthNames[new Date(ele?.air_date).getMonth()]} ${new Date(ele?.air_date).getFullYear()}`}</span>
-                        ) : null}
-                      </p>
-                      <Link
-                        className={`${styles.links} btn`}
-                        href={`/watch?type=tv&id=${ele?.show_id}&season=${ele?.season_number}&episode=${ele?.episode_number}`}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        watch <FaPlay />
+                          {/* react-lazy-load-image-component */}
+                          <LazyLoadImage
+                            key={ele?.id}
+                            src={`${imagePlaceholder ? "/images/logo.svg" : ele?.still_path !== null && ele?.still_path !== undefined ? process.env.NEXT_PUBLIC_TMBD_IMAGE_URL?.replace("/original", "/w342") + ele?.still_path : "/images/logo.svg"}`}
+                            height="100%"
+                            width="100%"
+                            useIntersectionObserver={true}
+                            effect="opacity"
+                            className={`${styles.img} ${imageLoading ? "skeleton" : null}`}
+                            onLoad={() => {
+                              setImageLoading(false);
+                            }}
+                            onError={(e) => {
+                              // console.log({ e });
+                              setImagePlaceholder(true);
+                              setImageLoading(false);
+                            }}
+                            loading="lazy"
+                            // style={!imageLoading ? { opacity: 1 } : { opacity: 0 }}
+                          />
+                        </div>
                       </Link>
-                      <p>{ele?.overview}</p>
+                      <div className={styles.details}>
+                        <h4>
+                          {`EP ${ele.episode_number}`}
+                          {`${ele?.name ? " : " + ele?.name : null}`}
+                        </h4>
+                        <p>
+                          {`${ele?.vote_average >= 0 ? "• " + ele?.vote_average.toFixed(1) : null}`}{" "}
+                          {ele?.runtime >= 60
+                            ? `• ${Math.floor(ele?.runtime / 60)}hr ${(ele?.runtime % 60).toFixed(0)}min`
+                            : null}
+                          {ele?.runtime < 60
+                            ? `• ${(ele?.runtime % 60).toFixed(0)}min`
+                            : null}
+                          {new Date(ele?.air_date) >= new Date() ? (
+                            <span
+                              className={styles.notAiredTag}
+                            >{`• ${new Date(ele?.air_date).getDate()} ${monthNames[new Date(ele?.air_date).getMonth()]} ${new Date(ele?.air_date).getFullYear()}`}</span>
+                          ) : null}
+                        </p>
+                        <Link
+                          className={`${styles.links} btn`}
+                          href={`/watch?type=tv&id=${ele?.show_id}&season=${ele?.season_number}&episode=${ele?.episode_number}`}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          watch <FaPlay />
+                        </Link>
+                      </div>
                     </div>
+                    <p>{ele?.overview}</p>
                   </div>
                 );
               })}

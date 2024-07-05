@@ -130,8 +130,9 @@
 
       .episode {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
+        flex-direction: column;
         margin: 1rem 0;
         padding: 1rem;
         background: var(--bg-color);
@@ -143,9 +144,15 @@
         h4 {
           margin-top: 0;
         }
+        .CardSmall {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
         .img {
-          height: 10rem !important;
-          width: 10rem !important;
+          height: 8rem !important;
+          width: 8rem !important;
           object-fit: cover;
         }
         .details {
@@ -156,6 +163,12 @@
           .links {
             margin-bottom: 1rem;
           }
+        }
+        .episodeHeader {
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 1rem;
         }
       }
     }
@@ -259,16 +272,15 @@
     }
     .EpisodeList {
       .episode {
-        display: block !important;
+        // display: block !important;
         width: 100%;
-        .img,
-        .CardSmall {
-          height: 8rem !important;
+        .img {
+          height: 7rem !important;
           width: 7rem !important;
-          display: inline-block;
+          // display: inline-block;
         }
         .details {
-          margin-top: 1rem;
+          // margin-top: 1rem;
           justify-content: flex-start;
           align-items: flex-start;
         }
