@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axiosFetch from "@/Utils/fetch";
 import { getCache, setCache } from "@/Utils/cache";
-
+export const runtime = "edge";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>,
