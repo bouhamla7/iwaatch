@@ -22,6 +22,7 @@ import { navigatorShare } from "@/Utils/share";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/Utils/firebase";
 import { toast } from "sonner";
+import Head from "next/head";
 
 const DetailPage = () => {
   const params = useSearchParams();
@@ -128,103 +129,113 @@ const DetailPage = () => {
   return (
     // carousel
     // detail
-    <div className={styles.DetailPage}>
-      <div className={styles.biggerPic}>
-        {
-          images?.length > 0 ? (
-            <Carousel
-              imageArr={images}
-              setIndex={setIndex}
-              mobileHeight="60vh"
-              desktopHeight="95vh"
-              objectFit={"cover"}
-            />
-          ) : (
-            <Skeleton className={styles.CarouselLoading} />
-          ) // if no images array, then use backdrop poster
-        }
-        <div className={styles.curvy}></div>
-        <div className={styles.curvy2}></div>
-        <div className={styles.DetailBanner}>
-          <div className={styles.poster}>
-            <div className={styles.curvy3}></div>
-            <div className={styles.curvy4}></div>
-            <div
-              className={styles.rating}
-              data-tooltip-id="tooltip"
-              data-tooltip-content="Rating"
-            >
-              {data?.vote_average?.toFixed(1)}
+    <>
+      <Head>
+        <title>
+          Rive | Detail{" "}
+          {id !== undefined && id !== null
+            ? `| ${data?.name || data?.title || id}`
+            : null}
+        </title>
+      </Head>
+      <div className={styles.DetailPage}>
+        <div className={styles.biggerPic}>
+          {
+            images?.length > 0 ? (
+              <Carousel
+                imageArr={images}
+                setIndex={setIndex}
+                mobileHeight="60vh"
+                desktopHeight="95vh"
+                objectFit={"cover"}
+              />
+            ) : (
+              <Skeleton className={styles.CarouselLoading} />
+            ) // if no images array, then use backdrop poster
+          }
+          <div className={styles.curvy}></div>
+          <div className={styles.curvy2}></div>
+          <div className={styles.DetailBanner}>
+            <div className={styles.poster}>
+              <div className={styles.curvy3}></div>
+              <div className={styles.curvy4}></div>
+              <div
+                className={styles.rating}
+                data-tooltip-id="tooltip"
+                data-tooltip-content="Rating"
+              >
+                {data?.vote_average?.toFixed(1)}
+              </div>
+              <MoviePoster data={data} />
             </div>
-            <MoviePoster data={data} />
-          </div>
-          <div className={styles.HomeHeroMeta}>
-            <h1
-              data-tooltip-id="tooltip"
-              data-tooltip-content={data?.title || data?.name || "name"}
-            >
-              {data?.title || data?.name || <Skeleton />}
-            </h1>
-            <div className={styles.HomeHeroMetaRow2}>
-              <p className={styles.type}>
-                {data ? (type == "movie" ? "MOVIE" : "SHOW") : null}
-              </p>
-              {data ? (
-                <>
-                  <Link
-                    className={styles.links}
-                    data-tooltip-id="tooltip"
-                    data-tooltip-content="Watch Online"
-                    href={`${type === "movie" ? `/watch?type=${type}&id=${data?.id}` : `/watch?type=${type}&id=${data?.id}&season=1&episode=1`}`}
-                  >
-                    watch <FaPlay className={styles.IconsMobileNone} />
-                  </Link>
-                  {trailer && (
+            <div className={styles.HomeHeroMeta}>
+              <h1
+                data-tooltip-id="tooltip"
+                data-tooltip-content={data?.title || data?.name || "name"}
+              >
+                {data?.title || data?.name || <Skeleton />}
+              </h1>
+              <div className={styles.HomeHeroMetaRow2}>
+                <p className={styles.type}>
+                  {data ? (type == "movie" ? "MOVIE" : "SHOW") : null}
+                </p>
+                {data ? (
+                  <>
                     <Link
                       className={styles.links}
                       data-tooltip-id="tooltip"
-                      data-tooltip-content="Watch Trailer"
-                      href={`https://youtube.com/watch?v=${trailer.key}`}
-                      target="_blank"
+                      data-tooltip-content="Watch Online"
+                      href={`${type === "movie" ? `/watch?type=${type}&id=${data?.id}` : `/watch?type=${type}&id=${data?.id}&season=1&episode=1`}`}
                     >
-                      trailer <FaYoutube className={styles.IconsMobileNone} />
+                      watch <FaPlay className={styles.IconsMobileNone} />
                     </Link>
-                  )}
-                  {bookmarked ? (
-                    <BsFillBookmarkCheckFill
+                    {trailer && (
+                      <Link
+                        className={styles.links}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Watch Trailer"
+                        href={`https://youtube.com/watch?v=${trailer.key}`}
+                        target="_blank"
+                      >
+                        trailer <FaYoutube className={styles.IconsMobileNone} />
+                      </Link>
+                    )}
+                    {bookmarked ? (
+                      <BsFillBookmarkCheckFill
+                        className={styles.HomeHeroIcons}
+                        onClick={handleBookmarkRemove}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Remove from Watchlist"
+                      />
+                    ) : (
+                      <BsBookmarkPlus
+                        className={styles.HomeHeroIcons}
+                        onClick={handleBookmarkAdd}
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content="Add to Watchlist"
+                      />
+                    )}
+                    <BsShare
                       className={styles.HomeHeroIcons}
-                      onClick={handleBookmarkRemove}
+                      onClick={handleShare}
                       data-tooltip-id="tooltip"
-                      data-tooltip-content="Remove from Watchlist"
+                      data-tooltip-content="Share"
                     />
-                  ) : (
-                    <BsBookmarkPlus
-                      className={styles.HomeHeroIcons}
-                      onClick={handleBookmarkAdd}
-                      data-tooltip-id="tooltip"
-                      data-tooltip-content="Add to Watchlist"
-                    />
-                  )}
-                  <BsShare
-                    className={styles.HomeHeroIcons}
-                    onClick={handleShare}
-                    data-tooltip-id="tooltip"
-                    data-tooltip-content="Share"
-                  />
-                </>
-              ) : (
-                <div>
-                  <Skeleton width={200} count={1} />
-                </div>
-              )}
+                  </>
+                ) : (
+                  <div>
+                    <Skeleton width={200} count={1} />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
+        <div className={styles.biggerDetail}>
+          <MetaDetails id={id} type={type} data={data} />
+        </div>
       </div>
-      <div className={styles.biggerDetail}>
-        <MetaDetails id={id} type={type} data={data} />
-      </div>
-    </div>
+    </>
   );
 };
 

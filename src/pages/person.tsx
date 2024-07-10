@@ -10,6 +10,7 @@ import Link from "next/link";
 import { BsShare } from "react-icons/bs";
 import { CgWebsite } from "react-icons/cg";
 import { navigatorShare } from "@/Utils/share";
+import Head from "next/head";
 
 const PersonPage = () => {
   const params = useSearchParams();
@@ -59,61 +60,71 @@ const PersonPage = () => {
   return (
     // carousel
     // detail
-    <div className={`${styles.DetailPage} ${styles.PersonPage}`}>
-      <div className={`${styles.biggerPic} ${styles.detailBiggerPic}`}>
-        {images.length > 0 ? (
-          <Carousel
-            imageArr={images}
-            setIndex={setIndex}
-            mobileHeight="60vh"
-            desktopHeight="95vh"
-            objectFit={"contain"}
-          />
-        ) : (
-          <Skeleton className={styles.CarouselLoading} />
-        )}
-        <div className={styles.DetailBanner}>
-          <div className={styles.curvy5}></div>
-          <div className={styles.HomeHeroMeta} key={data?.id}>
-            <h1
-              data-tooltip-id="tooltip"
-              data-tooltip-content={data?.name || "name"}
-            >
-              {data?.name || <Skeleton />}
-            </h1>
-            <div className={styles.HomeHeroMetaRow2}>
-              <p className={styles.type}>{data?.known_for_department}</p>
-              {data?.homepage !== null ? (
-                <Link
-                  href={data?.homepage || "#"}
-                  target="_blank"
-                  data-tooltip-id="tooltip"
-                  data-tooltip-content="Homepage"
-                >
-                  <CgWebsite />
-                </Link>
-              ) : null}
-              {data ? (
-                <>
-                  <BsShare
-                    onClick={handleShare}
+    <>
+      <Head>
+        <title>
+          Rive | Person{" "}
+          {id !== undefined && id !== null
+            ? `| ${data?.name || data?.title || id}`
+            : null}
+        </title>
+      </Head>
+      <div className={`${styles.DetailPage} ${styles.PersonPage}`}>
+        <div className={`${styles.biggerPic} ${styles.detailBiggerPic}`}>
+          {images.length > 0 ? (
+            <Carousel
+              imageArr={images}
+              setIndex={setIndex}
+              mobileHeight="60vh"
+              desktopHeight="95vh"
+              objectFit={"contain"}
+            />
+          ) : (
+            <Skeleton className={styles.CarouselLoading} />
+          )}
+          <div className={styles.DetailBanner}>
+            <div className={styles.curvy5}></div>
+            <div className={styles.HomeHeroMeta} key={data?.id}>
+              <h1
+                data-tooltip-id="tooltip"
+                data-tooltip-content={data?.name || "name"}
+              >
+                {data?.name || <Skeleton />}
+              </h1>
+              <div className={styles.HomeHeroMetaRow2}>
+                <p className={styles.type}>{data?.known_for_department}</p>
+                {data?.homepage !== null ? (
+                  <Link
+                    href={data?.homepage || "#"}
+                    target="_blank"
                     data-tooltip-id="tooltip"
-                    data-tooltip-content="Share"
-                  />
-                </>
-              ) : (
-                <div>
-                  <Skeleton width={200} count={1} />
-                </div>
-              )}
+                    data-tooltip-content="Homepage"
+                  >
+                    <CgWebsite />
+                  </Link>
+                ) : null}
+                {data ? (
+                  <>
+                    <BsShare
+                      onClick={handleShare}
+                      data-tooltip-id="tooltip"
+                      data-tooltip-content="Share"
+                    />
+                  </>
+                ) : (
+                  <div>
+                    <Skeleton width={200} count={1} />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
+        <div className={styles.biggerDetail}>
+          <MetaDetails id={id} type={type} data={data} />
+        </div>
       </div>
-      <div className={styles.biggerDetail}>
-        <MetaDetails id={id} type={type} data={data} />
-      </div>
-    </div>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import MovieCardSmall from "@/components/MovieCardSmall";
 import Skeleton from "react-loading-skeleton";
 import NProgress from "nprogress";
 import { useRouter } from "next/router";
+import Head from "next/head";
 // import MoviePoster from '@/components/MoviePoster';
 
 const dummyList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -44,23 +45,33 @@ const Collections = ({ categoryType }: any) => {
     if (id !== undefined && id !== null) fetchData();
   }, [id]);
   return (
-    <div className={styles.MoviePage}>
-      <h1>{data?.name || data?.title}</h1>
-      <div className={styles.movieList}>
-        {data?.parts?.map((ele: any) => {
-          return (
-            <MovieCardSmall
-              data={ele}
-              media_type={ele?.media_type || "movie"}
-            />
-          );
-        })}
-        {data?.length === 0 &&
-          dummyList.map((ele) => <Skeleton className={styles.loading} />)}
-        {/* {data?.total_results === 0 &&
+    <>
+      <Head>
+        <title>
+          Rive | Collection{" "}
+          {id !== undefined && id !== null
+            ? `| ${data?.name || data?.title || id}`
+            : null}
+        </title>
+      </Head>
+      <div className={styles.MoviePage}>
+        <h1>{data?.name || data?.title}</h1>
+        <div className={styles.movieList}>
+          {data?.parts?.map((ele: any) => {
+            return (
+              <MovieCardSmall
+                data={ele}
+                media_type={ele?.media_type || "movie"}
+              />
+            );
+          })}
+          {data?.length === 0 &&
+            dummyList.map((ele) => <Skeleton className={styles.loading} />)}
+          {/* {data?.total_results === 0 &&
           <h1>No Data Found</h1>} */}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
