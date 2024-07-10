@@ -33,6 +33,7 @@ export default async function axiosFetch({
   const baseURL = process.env.NEXT_PUBLIC_TMDB_API;
   const randomURL = process.env.NEXT_PUBLIC_RANDOM_URL;
   const ProviderURL = process.env.NEXT_PUBLIC_PROVIDER_URL;
+  const ProviderENV = process.env.NEXT_PUBLIC_PROVIDER_ENV;
   const ExternalProviderURL = process.env.NEXT_PUBLIC_EXTERNAL_PROVIDER_URL;
   const requests: any = {
     latestMovie: `${baseURL}/movie/now_playing?language=${language}&page=${page}`, //nowPlayingMovie
@@ -97,8 +98,14 @@ export default async function axiosFetch({
 
     // provider
     VideoProviderServices: `${ProviderURL}/providers`,
-    movieVideoProvider: `${ProviderURL}/${service}/movie/${id}`,
-    tvVideoProvider: `${ProviderURL}/${service}/tv/${id}/${season}/${episode}`,
+    movieVideoProvider:
+      ProviderENV === "cloudflare"
+        ? `${ProviderURL}/provider?provider=${service}&id=${id}`
+        : `${ProviderURL}/${service}/movie/${id}`,
+    tvVideoProvider:
+      ProviderENV === "cloudflare"
+        ? `${ProviderURL}/provider?provider=${service}&id=${id}&season=${season}&episode=${episode}`
+        : `${ProviderURL}/${service}/tv/${id}/${season}/${episode}`,
 
     // External provider
     movieExternalVideoProvider: `${ExternalProviderURL}/${id}?s=0&e=0`,
