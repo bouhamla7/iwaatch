@@ -86,7 +86,7 @@ NEXT_PUBLIC_GT_MEASUREMENT_ID=
 Add your Measurement ID from your Google Tag Manager/ Google Analytics, to track websites for Analytics purposes.  
 We are usig Google Analytics with Google Tag Manager to track multiple deployments.  
 This is optional, either add this env variable  
-Or comment out these three lines _(line 13 , 18 & 112)_ in `./src/pages/_app.tsx`:
+Or comment out these three lines _(line 14 , 19 & 113)_ in `./src/pages/_app.tsx`:
 
 ```js
 import { GoogleAnalytics } from "@next/third-parties/google";
