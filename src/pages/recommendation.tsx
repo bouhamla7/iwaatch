@@ -50,12 +50,18 @@ const Recommendation = ({ categoryDiv, categoryPage = null }: any) => {
     setLoading(true);
     let tempId;
     if (category === "watchlist") {
-      tempId = getBookmarks(user);
-      setIds(tempId);
+      getBookmarks(user).then((bookmarks: any) => {
+        tempId = bookmarks;
+        setIds(tempId);
+      });
     } else {
       tempId = getContinueWatching();
       setIds(tempId);
     }
+    // setLoading(false);
+  }, [category]);
+
+  useEffect(() => {
     const fetchData = async ({ id, type }: any) => {
       // setData([0, 0, 0, 0, 0, 0, 0, 0, 0]); // for blink loading effect
       if (id !== undefined) {
@@ -79,20 +85,20 @@ const Recommendation = ({ categoryDiv, categoryPage = null }: any) => {
               return [...prev, temp];
             });
           }
+          setLoading(false);
         } catch (error) {
           console.error("Error fetching data:", error);
           setLoading(false);
         }
       }
     };
-    tempId?.tv?.map((ele: any) => {
+    ids?.tv?.map((ele: any) => {
       fetchData({ id: ele, type: "tv" });
     });
-    tempId?.movie?.map((ele: any) => {
+    ids?.movie?.map((ele: any) => {
       fetchData({ id: ele, type: "movie" });
     });
-    setLoading(false);
-  }, [category]);
+  }, [ids]);
 
   return (
     <div className={styles.Recommendation}>
