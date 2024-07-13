@@ -14,9 +14,21 @@ const SettingsPage = ({
   mode,
   theme,
   ascent_color,
+  SFFamily,
+  SFSize,
+  SFColor,
+  SBColor,
+  SBBlur,
+  SOpacity,
   setMode,
   setTheme,
   setAscent_color,
+  setSFFamily,
+  setSFSize,
+  setSFColor,
+  setSBColor,
+  setSBBlur,
+  setSOpacity,
 }: any) => {
   const [user, setUser] = useState<any>(false);
   const [loading, setLoading] = useState(true);
@@ -35,9 +47,31 @@ const SettingsPage = ({
     });
   }, []);
   const handleSelect = ({ type, value }: any) => {
-    const prevVal = { mode, theme, ascent_color };
+    const prevVal = {
+      mode,
+      theme,
+      ascent_color,
+      SFFamily,
+      SFSize,
+      SFColor,
+      SBColor,
+      SBBlur,
+      SOpacity,
+    };
     if (type === "mode") setSettings({ values: { ...prevVal, mode: value } });
     if (type === "theme") setSettings({ values: { ...prevVal, theme: value } });
+    if (type === "SFFamily")
+      setSettings({ values: { ...prevVal, SFFamily: value } });
+    if (type === "SFColor")
+      setSettings({ values: { ...prevVal, SFColor: value } });
+    if (type === "SFSize")
+      setSettings({ values: { ...prevVal, SFSize: value } });
+    if (type === "SBColor")
+      setSettings({ values: { ...prevVal, SBColor: value } });
+    if (type === "SBBlur")
+      setSettings({ values: { ...prevVal, SBBlur: value } });
+    if (type === "SOpacity")
+      setSettings({ values: { ...prevVal, SOpacity: value } });
     if (type === "ascent_color")
       setSettings({ values: { ...prevVal, ascent_color: value } });
   };
@@ -132,6 +166,160 @@ const SettingsPage = ({
               <option value="#ff9800">Orange</option>
               <option value="#ff5722">Deep Orange</option>
               <option value="#795548">Brown</option>
+            </select>
+          </div>
+        </div>
+        <h1>Subtitle</h1>
+        <div className={styles.group}>
+          <div>
+            <label htmlFor="SFFamily">Subtitle Font Family</label>
+            <select
+              name="SFFamily"
+              id="SFFamily"
+              value={SFFamily}
+              onChange={(e) => {
+                setSFFamily(e.target.value);
+                handleSelect({ type: "SFFamily", value: e.target.value });
+              }}
+            >
+              <option value="Roboto Mono" defaultChecked>
+                Roboto Mono
+              </option>
+              <option value="Helvetica">Helvetica</option>
+              <option value="cursive">Cursive</option>
+              <option value="serif">Serif</option>
+              <option value="Times New Roman">Times New Roman</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="SFSize">Subtitle Font Size</label>
+            <select
+              name="SFSize"
+              id="SFSize"
+              value={SFSize}
+              onChange={(e) => {
+                setSFSize(e.target.value);
+                handleSelect({ type: "SFSize", value: e.target.value });
+              }}
+            >
+              <option value="12px">50%</option>
+              <option value="18px">75%</option>
+              <option value="24px" defaultChecked>
+                100%
+              </option>
+              <option value="36px">150%</option>
+              <option value="42px">175%</option>
+              <option value="48px">200%</option>
+              <option value="72px">300%</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="SFColor">Subtitle Font Color</label>
+            <select
+              name="SFColor"
+              id="SFColor"
+              value={SFColor}
+              onChange={(e) => {
+                setSFColor(e.target.value);
+                handleSelect({ type: "SFColor", value: e.target.value });
+              }}
+            >
+              <option value="gold" defaultChecked>
+                Gold
+              </option>
+              <option value="#f44336">Red</option>
+              <option value="#e91e63">Pink</option>
+              <option value="#9c27b0">Purple</option>
+              <option value="#673ab7">Deep Purple</option>
+              <option value="#3f51b5">Indigo</option>
+              <option value="#2196f3">Blue</option>
+              <option value="#03a9f4">Light Blue</option>
+              <option value="#00bcd4">Cyan</option>
+              <option value="#009688">Teal</option>
+              <option value="#4caf50">Green</option>
+              <option value="#8bc34a">Light Green</option>
+              <option value="#ffeb3b">Yellow</option>
+              <option value="#ffc107">Amber</option>
+              <option value="#ff9800">Orange</option>
+              <option value="#ff5722">Deep Orange</option>
+              <option value="#795548">Brown</option>
+              <option value="#000000">Black</option>
+              <option value="#ffffff">White</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="SBColor">Subtitle Background Color</label>
+            <select
+              name="SBColor"
+              id="SBColor"
+              value={SBColor}
+              onChange={(e) => {
+                setSBColor(e.target.value);
+                handleSelect({ type: "SBColor", value: e.target.value });
+              }}
+            >
+              <option value="transparent" defaultChecked>
+                Transparent
+              </option>
+              <option value="gold">Gold</option>
+              <option value="#f44336">Red</option>
+              <option value="#e91e63">Pink</option>
+              <option value="#9c27b0">Purple</option>
+              <option value="#673ab7">Deep Purple</option>
+              <option value="#3f51b5">Indigo</option>
+              <option value="#2196f3">Blue</option>
+              <option value="#03a9f4">Light Blue</option>
+              <option value="#00bcd4">Cyan</option>
+              <option value="#009688">Teal</option>
+              <option value="#4caf50">Green</option>
+              <option value="#8bc34a">Light Green</option>
+              <option value="#ffeb3b">Yellow</option>
+              <option value="#ffc107">Amber</option>
+              <option value="#ff9800">Orange</option>
+              <option value="#ff5722">Deep Orange</option>
+              <option value="#795548">Brown</option>
+              <option value="#000000">Black</option>
+              <option value="#ffffff">White</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="SBBlur">Subtitle Background Blurness</label>
+            <select
+              name="SBBlur"
+              id="SBBlur"
+              value={SBBlur}
+              onChange={(e) => {
+                setSBBlur(e.target.value);
+                handleSelect({ type: "SBBlur", value: e.target.value });
+              }}
+            >
+              <option value="0" defaultChecked>
+                0%
+              </option>
+              <option value="0.5rem">25%</option>
+              <option value="1.5rem">50%</option>
+              <option value="2rem">75%</option>
+              <option value="3rem">100%</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="SOpacity">Subtitle Opacity</label>
+            <select
+              name="SOpacity"
+              id="SOpacity"
+              value={SOpacity}
+              onChange={(e) => {
+                setSOpacity(e.target.value);
+                handleSelect({ type: "SOpacity", value: e.target.value });
+              }}
+            >
+              <option value="0%">0%</option>
+              <option value="25%">25%</option>
+              <option value="50%">50%</option>
+              <option value="75%">75%</option>
+              <option value="100%" defaultChecked>
+                100%
+              </option>
             </select>
           </div>
         </div>

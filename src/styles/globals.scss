@@ -179,6 +179,18 @@ input {
   font-size: 0.8rem;
 }
 
+// subtitle
+.art-subtitle-line {
+  font-size: var(--SFSize) !important;
+  font-family: var(--SFFamily), "Roboto Mono", serif !important;
+  color: var(--SFColor) !important;
+  opacity: var(--SOpacity) !important;
+  background: var(--SBColor) !important;
+  backdrop-filter: blur(var(--SBBlur)) !important;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+}
+
 @media (max-width: 769px) {
   * {
     font-size: 0.9rem;

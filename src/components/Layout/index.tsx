@@ -14,6 +14,12 @@ const Layout = ({ children }: any) => {
   const [theme, setTheme] = useState("system");
   const [mode, setMode] = useState("liquidate");
   const [ascent_color, setAscent_color] = useState("gold");
+  const [SFFamily, setSFFamily] = useState("Roboto Mono");
+  const [SFColor, setSFColor] = useState("gold");
+  const [SFSize, setSFSize] = useState("24px");
+  const [SBColor, setSBColor] = useState("transparent");
+  const [SBBlur, setSBBlur] = useState("0");
+  const [SOpacity, setSOpacity] = useState("100%");
   const [themeColor, setThemeColor] = useState<any>();
   const { push } = useRouter();
 
@@ -31,6 +37,12 @@ const Layout = ({ children }: any) => {
       setTheme(values?.theme);
       setMode(values?.mode);
       setAscent_color(values?.ascent_color);
+      setSFFamily(values?.SFFamily);
+      setSFColor(values?.SFColor);
+      setSFSize(values?.SFSize);
+      setSBColor(values?.SBColor);
+      setSBBlur(values?.SBBlur);
+      setSOpacity(values?.SOpacity);
     }
     console.log({ values });
     const prefersDarkMode =
@@ -54,9 +66,24 @@ const Layout = ({ children }: any) => {
     // metaThemeColor?.setAttribute("content", themeColor);
   }, []);
   useEffect(() => {
-    document.documentElement.style.setProperty("--ascent-color", ascent_color);
     document.documentElement.style.setProperty("--mode", mode);
-  }, [mode, ascent_color]);
+    document.documentElement.style.setProperty("--ascent-color", ascent_color);
+    document.documentElement.style.setProperty("--SFFamily", SFFamily);
+    document.documentElement.style.setProperty("--SFSize", SFSize);
+    document.documentElement.style.setProperty("--SFColor", SFColor);
+    document.documentElement.style.setProperty("--SBColor", SBColor);
+    document.documentElement.style.setProperty("--SBBlur", SBBlur);
+    document.documentElement.style.setProperty("--SOpacity", SOpacity);
+  }, [
+    mode,
+    ascent_color,
+    SFFamily,
+    SFSize,
+    SFColor,
+    SBColor,
+    SBBlur,
+    SOpacity,
+  ]);
   const path = usePathname();
   return (
     <>
@@ -99,9 +126,21 @@ const Layout = ({ children }: any) => {
             mode={mode}
             theme={theme}
             ascent_color={ascent_color}
+            SFFamily={SFFamily}
+            SFColor={SFColor}
+            SFSize={SFSize}
+            SBColor={SBColor}
+            SBBlur={SBBlur}
+            SOpacity={SOpacity}
             setMode={setMode}
             setTheme={setTheme}
             setAscent_color={setAscent_color}
+            setSFFamily={setSFFamily}
+            setSFColor={setSFColor}
+            setSFSize={setSFSize}
+            setSBColor={setSBColor}
+            setSBBlur={setSBBlur}
+            setSOpacity={setSOpacity}
           />
         ) : null}
       </div>

@@ -317,7 +317,7 @@ const MetaDetails = ({ id, type, data }: any) => {
                   <q>{data?.tagline}</q>
                 </h4>
               ) : null}
-              <p>{data?.overview}</p>
+              <p dangerouslySetInnerHTML={{ __html: data?.overview }}></p>
               {release_date.getDate() ? (
                 <>
                   <h3>Release</h3>
@@ -407,7 +407,7 @@ const MetaDetails = ({ id, type, data }: any) => {
           )}
           {category === "overview" && type === "person" && (
             <>
-              <p>{data?.biography}</p>
+              <p dangerouslySetInnerHTML={{ __html: data?.biography }}></p>
               {birthday.getDate() ? (
                 <>
                   <h3>Birthday</h3>
@@ -643,7 +643,7 @@ const MetaDetails = ({ id, type, data }: any) => {
                     <p className={styles.rating}>
                       <FaStar /> {ele?.author_details?.rating}
                     </p>
-                    <p>{ele?.content}</p>
+                    <p dangerouslySetInnerHTML={{ __html: ele?.content }}></p>
                   </div>
                 );
               })}
