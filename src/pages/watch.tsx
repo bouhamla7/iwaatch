@@ -319,6 +319,8 @@ const Watch = () => {
   const STREAM_URL_ANY = process.env.NEXT_PUBLIC_STREAM_URL_ANY;
   const STREAM_URL_PRIME = process.env.NEXT_PUBLIC_STREAM_URL_PRIME;
   const STREAM_URL_RGS = process.env.NEXT_PUBLIC_STREAM_URL_RGS;
+  const STREAM_URL_FRE = process.env.NEXT_PUBLIC_STREAM_URL_FRE;
+  const STREAM_URL_POR = process.env.NEXT_PUBLIC_STREAM_URL_POR;
   const STREAM_URL_WEB = process.env.NEXT_PUBLIC_STREAM_URL_WEB;
 
   return (
@@ -435,8 +437,11 @@ const Watch = () => {
               <option value="ONE">Aggregator : 9</option>
               <option value="ANY">Aggregator : 10 (Multi-Server)</option>
               <option value="PRIME">Aggregator : 11 (Multi-Server)</option>
-              <option value="RGS">Aggregator : 12 (Multi-Lang)</option>
-              <option value="WEB">Aggregator : 13 (Ad-Free)</option>
+              <option value="RGS">Aggregator : 12 (Indian-Lang)</option>
+              <option value="FRE">Aggregator : 13 (French-Server)</option>
+              <option value="POR">Aggregator : 14 (Portuguese-Server)</option>
+              <option value="WEB">Aggregator : 15 (Ad-Free)</option>
+              <option value="ADF">Aggregator : 16 (Fast/Ad-Free)</option>
             </select>
           )}
 
@@ -561,8 +566,8 @@ const Watch = () => {
             scrolling="no"
             src={
               type === "movie"
-                ? `${STREAM_URL_PRO}/embed/${type}/${id}?&theme=00c1db`
-                : `${STREAM_URL_PRO}/embed/${type}/${id}/${season}/${episode}?&theme=00c1db`
+                ? `${STREAM_URL_PRO}/embed/${type}/${id}?theme=00c1db`
+                : `${STREAM_URL_PRO}/embed/${type}/${id}/${season}/${episode}?theme=00c1db`
             }
             className={styles.iframe}
             allowFullScreen
@@ -715,6 +720,36 @@ const Watch = () => {
           ></iframe>
         ) : null}
 
+        {source === "FRE" && id !== "" && id !== null && embedMode === true ? (
+          <iframe
+            scrolling="no"
+            src={
+              type === "movie"
+                ? `${STREAM_URL_FRE}/film.php?id=${id}`
+                : `${STREAM_URL_FRE}/serie.php?id=${id}&sa=${season}&epi=${episode}`
+            }
+            className={styles.iframe}
+            allowFullScreen
+            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+            referrerPolicy="origin"
+          ></iframe>
+        ) : null}
+
+        {source === "POR" && id !== "" && id !== null && embedMode === true ? (
+          <iframe
+            scrolling="no"
+            src={
+              type === "movie"
+                ? `${STREAM_URL_POR}/filme/${id}`
+                : `${STREAM_URL_POR}/serie/${id}/${season}/${episode}`
+            }
+            className={styles.iframe}
+            allowFullScreen
+            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+            referrerPolicy="origin"
+          ></iframe>
+        ) : null}
+
         {source === "WEB" && id !== "" && id !== null && embedMode === true ? (
           <iframe
             scrolling="no"
@@ -724,6 +759,21 @@ const Watch = () => {
                 : seasondata?.episodes?.length > 0
                   ? `${STREAM_URL_WEB}/media/tmdb-tv-${id}/${seasondata.id}/${seasondata.episodes[Math.abs(episode - seasondata.episodes[0].episode_number)].id}`
                   : `${STREAM_URL_WEB}/media/tmdb-tv-${id}`
+            }
+            className={styles.iframe}
+            allowFullScreen
+            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+            referrerPolicy="origin"
+          ></iframe>
+        ) : null}
+
+        {source === "ADF" && id !== "" && id !== null && embedMode === true ? (
+          <iframe
+            scrolling="no"
+            src={
+              type === "movie"
+                ? `${STREAM_URL_PRO}/embed/${type}/${id}?player=new`
+                : `${STREAM_URL_PRO}/embed/${type}/${id}/${season}/${episode}?player=new`
             }
             className={styles.iframe}
             allowFullScreen

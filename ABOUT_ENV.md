@@ -5,7 +5,7 @@ The values to be filled are:
 
 ## 1. Firebase configuration
 
-```.env
+```sh
 NEXT_PUBLIC_FB_API_KEY=
 NEXT_PUBLIC_FB_AUTH_DOMAIN=
 NEXT_PUBLIC_FB_PROJECT_ID=
@@ -41,7 +41,7 @@ Steps to get TMDB API KEY
 
 ## 3. Video Streaming API
 
-```.env
+```sh
 NEXT_PUBLIC_STREAM_URL_AGG=
 NEXT_PUBLIC_STREAM_URL_VID=
 NEXT_PUBLIC_STREAM_URL_PRO=
@@ -52,8 +52,10 @@ NEXT_PUBLIC_STREAM_URL_CLUB=
 NEXT_PUBLIC_STREAM_URL_SMASH=
 NEXT_PUBLIC_STREAM_URL_ONE=
 NEXT_PUBLIC_STREAM_URL_ANY=
+NEXT_PUBLIC_STREAM_URL_PRIME=
 NEXT_PUBLIC_STREAM_URL_RGS=
-NEXT_PUBLIC_STREAM_URL_WEB=
+NEXT_PUBLIC_STREAM_URL_FRE=
+NEXT_PUBLIC_STREAM_URL_POR=
 NEXT_PUBLIC_STREAM_URL_WEB=
 ```
 
@@ -71,7 +73,7 @@ If you do some researching, then you will find the right services here.
 
 ## 4. Vidsrc Scrapper API
 
-```.env
+```sh
 NEXT_PUBLIC_PROVIDER_URL=
 ```
 
@@ -79,7 +81,7 @@ You can find the api, if you search for **vidsrc scrappers**, here we are using 
 
 ## 5. Google Analytics
 
-```.env
+```sh
 NEXT_PUBLIC_GT_MEASUREMENT_ID=
 ```
 
