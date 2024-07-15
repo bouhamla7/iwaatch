@@ -710,8 +710,8 @@ const Watch = () => {
             scrolling="no"
             src={
               type === "movie"
-                ? `${STREAM_URL_RGS}/movies/api2/index.html?id=${id}`
-                : `${STREAM_URL_RGS}/series/api2/index.html?id=${id}&s=${season}&e=${episode}`
+                ? `${STREAM_URL_RGS}/movies/api3/index.html?id=${id}`
+                : `${STREAM_URL_RGS}/series/api3/index.html?id=${id}&s=${season}&e=${episode}`
             }
             className={styles.iframe}
             allowFullScreen
