@@ -361,7 +361,7 @@ const SettingsPage = ({
           >
             Disclaimer
           </Link>
-          <Link href="mailto:aarav4dev@hotmail.com">Contact Us</Link>
+          <Link href="mailto:developer@rivestream.live">Contact Us</Link>
           <Link
             href="/recommendation"
             data-tooltip-id="tooltip"

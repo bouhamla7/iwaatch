@@ -39,7 +39,9 @@ const LoginPage = () => {
             Download using Brave Browser or Chrome if you have ad-blocker on the
             chrome account, for ad-free experience
           </p>
-          <p>If not downloading, refresh this page and try again</p>
+          <p className={styles.highlight}>
+            If it doesn't download, refresh this page and try again
+          </p>
           {/* <p>To download movies/tv shows, go to it's watch page, and use extensions like FetchV</p> */}
           <h4
             className={styles.downloadButton}

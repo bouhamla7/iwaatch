@@ -175,6 +175,10 @@
   display: none;
 }
 
+.highlight {
+  color: var(--ascent-color);
+}
+
 @media (max-width: 1200px) {
   .settingsPage {
     // min-height: 100vh;
