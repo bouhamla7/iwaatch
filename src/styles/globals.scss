@@ -156,6 +156,18 @@ input {
   display: none;
 }
 
+// discord Invitation
+.discordInvitation {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--primary-3);
+}
+// discord Invitation
+
 .react-tooltip,
 .tooltip {
   background-color: var(--bg-gradient) !important;
