@@ -224,15 +224,12 @@ input {
   .sooner-toast-desktop {
     display: none;
   }
-  // .sooner-toast{
-  //   --offset:1rem !important;
-  //   // display: block;
-  //   position: fixed;
-  //   width: fit-content;
-  //   height: fit-content;
-  //   bottom: 5.2rem;
-  //   z-index: 1 !important;
-  // }
+
+  // discord Invitation
+  .discordInvitation {
+    display: none;
+  }
+  // discord Invitation
 }
 
 // reomving some common ads using classes
