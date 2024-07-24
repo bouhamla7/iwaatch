@@ -165,6 +165,10 @@ input {
   justify-content: center;
   gap: 1rem;
   color: var(--primary-3);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 2.5ch;
 }
 // discord Invitation
 

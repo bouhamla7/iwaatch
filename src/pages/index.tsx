@@ -20,7 +20,8 @@ export default function Home() {
         className="discordInvitation"
       >
         <FaDiscord />
-        Be part of our Rive community on Discord
+        Join Rive community on Discord
+        <FaDiscord />
       </a>,
     );
   }, []);
