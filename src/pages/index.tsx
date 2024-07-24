@@ -23,7 +23,7 @@ export default function Home() {
         Be part of our Rive community on Discord
       </a>,
     );
-  });
+  }, []);
   // discord Invitation
   return (
     <div className={styles.Home}>
