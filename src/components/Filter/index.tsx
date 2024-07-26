@@ -52,6 +52,7 @@ const countryData = [
   { name: "United Arab Emirates", abbr: "AE" },
 ];
 const Filter = ({
+  filterRef,
   categoryType,
   setShowFilter,
   setFilterYear,
@@ -114,7 +115,7 @@ const Filter = ({
   };
 
   return (
-    <div className={styles.Filter}>
+    <div className={styles.Filter} ref={filterRef}>
       <h1>Filter</h1>
       <h1
         className={styles.close}

@@ -207,6 +207,17 @@ input {
   padding: 0.3rem;
 }
 
+.modalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: blur(0.05rem) grayscale(0.5);
+  z-index: 2;
+}
+
 @media (max-width: 769px) {
   * {
     font-size: 0.9rem;

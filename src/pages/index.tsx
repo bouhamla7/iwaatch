@@ -8,23 +8,26 @@ import HomeListAll from "@/components/HomeListAll";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { FaDiscord } from "react-icons/fa";
+import useDeviceSize from "@/Utils/useDeviceSize";
 // discord Invitation
 
 export default function Home() {
   // discord Invitation
+  const { isMobile, isTablet, isDesktop, isTV } = useDeviceSize();
   useEffect(() => {
-    toast.info(
-      <a
-        target="_blank"
-        href="https://discord.gg/6xJmJja8fV"
-        className="discordInvitation"
-      >
-        <FaDiscord />
-        Join Rive community on Discord
-        <FaDiscord />
-      </a>,
-    );
-  }, []);
+    (isDesktop || isTV) &&
+      toast.info(
+        <a
+          target="_blank"
+          href="https://discord.gg/6xJmJja8fV"
+          className="discordInvitation"
+        >
+          <FaDiscord />
+          Join Rive community on Discord
+          <FaDiscord />
+        </a>,
+      );
+  }, [isMobile, isTablet, isDesktop, isTV]);
   // discord Invitation
   return (
     <div className={styles.Home}>

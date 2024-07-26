@@ -47,6 +47,30 @@ const Watch = () => {
   if (episode === null && params.get("episode") !== null)
     setEpisode(params.get("episode"));
 
+  const watchDetailRef: any = useRef(null);
+  useEffect(() => {
+    // Function to handle click events
+    const handleClickOutside = (event: any) => {
+      // Check if the click is outside the Filter component
+      if (
+        watchDetailRef.current &&
+        !watchDetailRef?.current?.contains(event?.target)
+      ) {
+        setWatchDetails(false);
+      }
+      console.log({ event });
+      console.log({ watchDetailRef });
+    };
+
+    // Add event listener to document
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Clean up the event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   useEffect(() => {
     if (
       localStorage.getItem("RiveStreamEmbedMode") !== undefined &&
@@ -402,14 +426,18 @@ const Watch = () => {
           </div>
         }
         {watchDetails && (
-          <WatchDetails
-            id={id}
-            type={type}
-            data={data}
-            season={season}
-            episode={episode}
-            setWatchDetails={setWatchDetails}
-          />
+          <>
+            <div className="modalOverlay"></div>
+            <WatchDetails
+              watchDetailRef={watchDetailRef}
+              id={id}
+              type={type}
+              data={data}
+              season={season}
+              episode={episode}
+              setWatchDetails={setWatchDetails}
+            />
+          </>
         )}
         <div className={styles.watchSelects}>
           {embedMode === true && (

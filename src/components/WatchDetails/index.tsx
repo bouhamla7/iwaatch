@@ -19,6 +19,7 @@ function capitalizeFirstLetter(string: string) {
 
 const dummyList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const WatchDetails = ({
+  watchDetailRef,
   id,
   type,
   data,
@@ -116,7 +117,7 @@ const WatchDetails = ({
   };
 
   return (
-    <div className={styles.MetaDetailPage}>
+    <div className={styles.MetaDetailPage} ref={watchDetailRef}>
       <p
         className={`${styles.close} btn`}
         onClick={() => setWatchDetails(false)}

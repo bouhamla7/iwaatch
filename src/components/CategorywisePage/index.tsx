@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axiosFetch from "@/Utils/fetchBackend";
 import styles from "./style.module.scss";
 import MovieCardSmall from "@/components/MovieCardSmall";
@@ -31,11 +31,31 @@ const CategorywisePage = ({ categoryDiv, categoryPage = null }: any) => {
   const [loading, setLoading] = useState(true);
   const CapitalCategoryType = capitalizeFirstLetter(categoryType);
   console.log(capitalizeFirstLetter(categoryType));
+  const filterRef: any = useRef(null);
   useEffect(() => {
     if (loading) {
       NProgress.start();
     } else NProgress.done(false);
   }, [loading]);
+
+  useEffect(() => {
+    // Function to handle click events
+    const handleClickOutside = (event: any) => {
+      // Check if the click is outside the Filter component
+      if (filterRef.current && !filterRef?.current?.contains(event?.target)) {
+        setShowFilter(false);
+      }
+    };
+
+    // Add event listener to document
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Clean up the event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
@@ -175,21 +195,25 @@ const CategorywisePage = ({ categoryDiv, categoryPage = null }: any) => {
       </div>
       {/* <Filter/> */}
       {showFilter && (
-        <Filter
-          categoryType={categoryType}
-          setShowFilter={setShowFilter}
-          setFilterYear={setFilterYear}
-          setFiltercountry={setFiltercountry}
-          setFilterGenreList={setFilterGenreList}
-          filterGenreList={filterGenreList}
-          filterCountry={filterCountry}
-          filterYear={filterYear}
-          sortBy={sortBy}
-          setSortBy={setSortBy}
-          setCategory={setCategory}
-          setTrigger={setTrigger}
-          trigger={trigger}
-        />
+        <>
+          <div className="modalOverlay"></div>
+          <Filter
+            filterRef={filterRef}
+            categoryType={categoryType}
+            setShowFilter={setShowFilter}
+            setFilterYear={setFilterYear}
+            setFiltercountry={setFiltercountry}
+            setFilterGenreList={setFilterGenreList}
+            filterGenreList={filterGenreList}
+            filterCountry={filterCountry}
+            filterYear={filterYear}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            setCategory={setCategory}
+            setTrigger={setTrigger}
+            trigger={trigger}
+          />
+        </>
       )}
       <div className={styles.movieList}>
         {data.map((ele: any) => {
