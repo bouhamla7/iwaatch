@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "@/styles/Settings.module.scss";
-import {
-  SiCapacitor,
-  SiDart,
-  SiFlutter,
-  SiNextdotjs,
-  SiPwa,
-  SiTauri,
-} from "react-icons/si";
+import { SiDart, SiFlutter, SiNextdotjs, SiPwa, SiTauri } from "react-icons/si";
 
 const LoginPage = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<any>();
@@ -122,37 +115,6 @@ const LoginPage = () => {
             onClick={handleDownload}
             data-tooltip-id="tooltip"
             data-tooltip-content="Download Rive Tauri Apps"
-          >
-            Download
-          </a>
-        </div>
-        <div
-          className={`${styles.group2} ${styles.downloadsGroup}`}
-          id="capacitor"
-        >
-          <h1>Rive - Capacitor</h1>
-          <p>
-            Tech Stack : <SiNextdotjs className={styles.highlight} />{" "}
-            <SiCapacitor className={styles.highlight} />
-          </p>
-          <p>
-            Supported Devices :{" "}
-            <span className={styles.highlight}> Android, IOS </span>
-          </p>
-          <p>This will install light-weight app for mobile devices only</p>
-          {/* <p className={styles.highlight}>
-            It uses your default browser
-          </p>
-          <p>
-            So use Ad-Blocker in that browsers
-          </p> */}
-          <a
-            href="https://drive.proton.me/urls/82XE1WX8NW#8eBzXfr6o50f"
-            target="_blank"
-            className={styles.downloadButton}
-            onClick={handleDownload}
-            data-tooltip-id="tooltip"
-            data-tooltip-content="Download Rive Capacitor Apps"
           >
             Download
           </a>
