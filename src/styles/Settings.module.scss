@@ -84,6 +84,7 @@
         width: 7rem;
       }
       .downloadButton {
+        text-decoration: none;
         width: clamp(12rem, 50%, 20rem);
         padding: 1rem 2rem;
         // background: var(--primary-1);
@@ -93,8 +94,10 @@
         border: 1px solid var(--primary-2);
         border-radius: 0.5rem;
         margin: 0rem 0;
-        text-align: center;
+        text-align: center !important;
         cursor: pointer;
+        justify-content: center;
+        align-items: center;
       }
     }
     .group2 {
@@ -130,6 +133,14 @@
       }
     }
   }
+}
+
+.downloadsGroup {
+  margin: 5rem 0 !important;
+  padding-bottom: 5rem !important;
+}
+.downloadsHeading {
+  padding-bottom: 5rem !important;
 }
 
 .authPage {
@@ -200,6 +211,13 @@
       }
     }
   }
+  .downloadsGroup {
+    margin: 5rem 0 !important;
+    padding-bottom: 0rem !important;
+  }
+  .downloadsHeading {
+    padding-bottom: 0rem !important;
+  }
 }
 @media (max-width: 769px) {
   .settingsPage {
@@ -224,5 +242,12 @@
   }
   .errorData {
     margin: 7rem 0;
+  }
+  .downloadsGroup {
+    margin: 5rem 0 !important;
+    padding-bottom: 0rem !important;
+  }
+  .downloadsHeading {
+    padding-bottom: 0rem !important;
   }
 }
