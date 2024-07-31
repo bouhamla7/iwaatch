@@ -166,7 +166,7 @@ export const fetchFbWatchlist = async ({ userID = null }: any) => {
   } catch (error) {
     // Dismiss loading toast and show error toast
     toast.dismiss(loadingToast);
-    toast.error("Error fetching watchlist");
+    // toast.error("Error fetching watchlist");
     throw error; // Re-throw the error for handling upstream if needed
   }
 
@@ -213,6 +213,7 @@ export const checkInFbWatchlist = async ({ userID = null, type, id }: any) => {
     }
   } catch (error) {
     console.error(error);
+    throw error;
     return false;
   }
   return false;

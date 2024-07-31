@@ -30,15 +30,18 @@ const Library = () => {
   const [loading, setLoading] = useState(true);
   const [trigger, setTrigger] = useState(true);
   const [user, setUser] = useState<any>();
+  const [userValidated, setUserValidated] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         const userID = user.uid;
         setUser(userID);
+        setUserValidated(true);
         // setIds(await getBookmarks(userID)?.movie)
         // setLoading(false);
       } else {
+        setUserValidated(true);
         // setLoading(true);
       }
     });
@@ -71,8 +74,7 @@ const Library = () => {
           }
           // setLoading(false);
         }
-        // if (ids.length === 0 || ids === null || ids === undefined)
-        //   setLoading(false);
+        if (ids.length === 0 && userValidated) setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
@@ -103,8 +105,8 @@ const Library = () => {
           : setIds(getContinueWatching()?.tv);
       }
     };
-    if (user !== null) fetch();
-  }, [category, subCategory, trigger, user]);
+    if (userValidated) fetch();
+  }, [category, subCategory, trigger, user, userValidated]);
 
   const handleWatchlistremove = async ({ type, id }: any) => {
     if (user !== null && user !== undefined)
@@ -174,7 +176,9 @@ const Library = () => {
             } else
               return <MovieCardSmall data={ele} media_type={subCategory} />;
           })
-        ) : ids?.length === 0 || ids === undefined ? (
+        ) : (ids?.length === 0 || ids === undefined) &&
+          userValidated &&
+          !loading ? (
           <p>List Is Empty</p>
         ) : (
           dummyList.map((ele) => <Skeleton className={styles.loading} />)
