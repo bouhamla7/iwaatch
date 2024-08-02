@@ -25,7 +25,7 @@
 
 // cache storage
 const CACHE_NAME = "rive-api-data";
-const CACHE_TTL: number = 3600 * 12; // Cache TTL in seconds (12 hour)
+const CACHE_TTL: number = 43200; // Cache TTL in seconds (12 hour)
 
 // Function to set data in the cache
 export async function setCache(key: string, data: any) {
