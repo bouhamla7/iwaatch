@@ -120,6 +120,7 @@ export default async function axiosFetch({
   try {
     const response = await axios.get(final_request, {
       params: { api_key: API_KEY },
+      withCredentials: undefined,
     });
     return await response?.data; // Return the resolved data from the response
   } catch (error) {
