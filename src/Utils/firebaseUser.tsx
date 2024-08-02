@@ -154,6 +154,7 @@ export const logoutUser = () => {
 export const fetchFbWatchlist = async ({ userID = null }: any) => {
   const loadingToast = toast.loading("Connecting to cloud provider...");
   const userWatchlist: any = { movie: [], tv: [] };
+  console.log(":) Running FB fetch (:");
   try {
     const q = query(collection(db, "watchlist"), where("userID", "==", userID));
     const querySnapshot = await getDocs(q);

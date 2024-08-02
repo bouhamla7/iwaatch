@@ -95,9 +95,10 @@ const Library = () => {
             subCategory === "movie" ? setIds(res?.movie) : setIds(res?.tv);
           });
         else {
+          const tempBookmark: any = await getBookmarks(null);
           subCategory === "movie"
-            ? setIds(getBookmarks(null)?.movie)
-            : setIds(getBookmarks(null)?.tv);
+            ? setIds(tempBookmark?.movie)
+            : setIds(tempBookmark?.tv);
         }
       } else if (category === "continueWatching") {
         subCategory === "movie"
