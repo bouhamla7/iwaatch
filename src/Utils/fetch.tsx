@@ -114,7 +114,10 @@ export default async function axiosFetch({
     movieExternalVideoProvider: `${ExternalProviderURL}/${id}?s=0&e=0`,
     tvExternalVideoProvider: `${ExternalProviderURL}/${id}?s=${season}e=${episode}&e=0`,
   };
-  const final_request = requests[request];
+  var final_request = requests[request];
+  final_request =
+    "https://proxy.valhallastream.us.kg/?destination=" +
+    encodeURI(final_request);
   // console.log({ final_request });
 
   try {
