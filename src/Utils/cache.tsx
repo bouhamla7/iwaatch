@@ -1,5 +1,5 @@
 const cache: any = {}; // Object to store cached data
-const CACHE_TTL: number = 1800; // Cache TTL in seconds (1/2 hour)
+const CACHE_TTL: number = 3600 * 12; // Cache TTL in seconds (12 hour)
 
 // Function to set data in the cache
 export function setCache(key: any, data: any) {
