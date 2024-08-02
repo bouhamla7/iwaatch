@@ -1,5 +1,3 @@
-import axios from "axios";
-
 interface Fetch {
   requestID: any;
   id?: string | null;
@@ -29,7 +27,7 @@ export default async function axiosFetch({
   service,
 }: Fetch) {
   const request = requestID;
-  const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+  const API_KEY: any = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const baseURL = process.env.NEXT_PUBLIC_TMDB_API;
   const randomURL = process.env.NEXT_PUBLIC_RANDOM_URL;
   const ProviderURL = process.env.NEXT_PUBLIC_PROVIDER_URL;
@@ -116,13 +114,26 @@ export default async function axiosFetch({
   };
   const final_request = requests[request];
   // console.log({ final_request });
-
+  const options = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  };
+  const url = new URL(final_request);
+  url.searchParams.append("api_key", API_KEY);
+  console.log({ url });
+  // console.log(url.toString());
   try {
-    const response = await axios.get(final_request, {
-      params: { api_key: API_KEY },
-      withCredentials: false,
-    });
-    return await response?.data; // Return the resolved data from the response
+    // const response = await axios.get(final_request, {
+    //   params: { api_key: API_KEY },
+    //   withCredentials: false,
+    // });
+    // console.log({ response });
+    const req = await fetch(url.toString(), options);
+    const response = await req.json();
+    console.log({ response });
+    return await response; // Return the resolved data from the response
   } catch (error) {
     console.error("Error fetching data:", error);
     // Handle errors appropriately (e.g., throw a custom error or return null)
