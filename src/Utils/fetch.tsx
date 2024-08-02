@@ -118,10 +118,11 @@ export default async function axiosFetch({
   final_request =
     "https://proxy.valhallastream.us.kg/?destination=" +
     encodeURI(final_request);
-  // console.log({ final_request });
+  console.log({ final_request });
 
   try {
     const response: any = await fetch(`${final_request}`);
+    console.log({ response });
     return await response?.data; // Return the resolved data from the response
   } catch (error) {
     console.error("Error fetching data:", error);
