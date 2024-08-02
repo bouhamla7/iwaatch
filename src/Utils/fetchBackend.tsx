@@ -116,7 +116,7 @@ export default async function axiosFetch({
   }
 
   try {
-    const response: any = await fetch(final_request);
+    const response = await axios.get(final_request, { withCredentials: false });
     if (response?.data?.data !== null) setCache(cacheKey, response?.data);
     return await response?.data; // Return the resolved data from the response
   } catch (error) {
