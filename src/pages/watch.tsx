@@ -10,6 +10,8 @@ import axiosFetch from "@/Utils/fetchBackend";
 import WatchDetails from "@/components/WatchDetails";
 import Player from "@/components/Artplayer";
 import Head from "next/head";
+import { FaDiscord, FaDonate } from "react-icons/fa";
+import useDeviceSize from "@/Utils/useDeviceSize";
 
 const Watch = () => {
   const params = useSearchParams();
@@ -40,6 +42,8 @@ const Watch = () => {
   const nextBtn: any = useRef(null);
   const backBtn: any = useRef(null);
   const moreBtn: any = useRef(null);
+  const { isMobile, isTablet, isDesktop, isTV } = useDeviceSize();
+
   if (type === null && params.get("id") !== null) setType(params.get("type"));
   if (id === null && params.get("id") !== null) setId(params.get("id"));
   if (season === null && params.get("season") !== null)
@@ -189,10 +193,29 @@ const Watch = () => {
           </a>
         </div>,
       );
+    } else {
+      // discord Invitation
+      (isDesktop || isTV) &&
+        (toast.info(
+          <a href="/donation" className="discordInvitation">
+            <FaDonate />
+            Donate to the Rive community
+            <FaDonate />
+          </a>,
+        ),
+        toast.info(
+          <a
+            target="_blank"
+            href="https://discord.gg/6xJmJja8fV"
+            className="discordInvitation"
+          >
+            <FaDiscord />
+            Join Rive community on Discord
+            <FaDiscord />
+          </a>,
+        ));
+      // discord Invitation
     }
-    // window.addEventListener("keydown", (event) => {
-    //   console.log("Key pressed:", event.key);
-    // });
   }, [embedMode]);
 
   useEffect(() => {

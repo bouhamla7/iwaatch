@@ -355,6 +355,13 @@ const SettingsPage = ({
             Download
           </Link>
           <Link
+            href="/donation"
+            data-tooltip-id="tooltip"
+            data-tooltip-content="Donations"
+          >
+            Donations
+          </Link>
+          <Link
             href="/disclaimer"
             data-tooltip-id="tooltip"
             data-tooltip-content="Disclaimer"

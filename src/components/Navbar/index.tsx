@@ -159,6 +159,8 @@ const Navbar = ({ children }: any) => {
       >
         {pathname === "/settings" ||
         pathname === "/downloads" ||
+        pathname === "/donation" ||
+        pathname === "/wallets" ||
         pathname === "/disclaimer" ||
         pathname === "/signup" ||
         pathname === "/login" ? (

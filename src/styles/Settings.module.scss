@@ -190,6 +190,30 @@
   color: var(--ascent-color);
 }
 
+// donation
+.donation {
+  .logo {
+    cursor: pointer;
+  }
+  img {
+    margin-top: 5rem;
+    height: 20rem;
+    width: 20rem;
+    border-radius: 0.5rem;
+  }
+  .downloadsGroup {
+    margin: 0rem 0 !important;
+    padding-bottom: 5rem !important;
+  }
+  .walletAdd {
+    margin-top: 6rem;
+    width: clamp(10rem, calc(100vw - 2rem), 20rem);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: var(--primary-3);
+  }
+}
+
 @media (max-width: 1200px) {
   .settingsPage {
     // min-height: 100vh;

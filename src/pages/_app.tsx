@@ -100,6 +100,7 @@ export default function App({ Component, pageProps }: any) {
             className: "sooner-toast-desktop",
           }}
           position="bottom-right"
+          expand={true}
         />
         <Toaster
           toastOptions={{

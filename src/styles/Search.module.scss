@@ -157,6 +157,45 @@
   }
 }
 
+// wallet oage
+.WalletPage {
+  color: var(--primary-2);
+  h3 {
+    margin-left: 3rem;
+  }
+  a {
+    color: var(--primary-3);
+  }
+}
+
+.WalletCard {
+  color: var(--primary-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 20rem;
+  overflow: hidden;
+  margin: 1rem;
+  gap: 0.5rem;
+  h3 {
+    margin: 0;
+    color: var(--primary-3);
+  }
+  p {
+    width: clamp(10rem, calc(100vw - 2rem), 20rem);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: var(--primary-3);
+  }
+  img {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 0.5rem;
+  }
+}
+
 @media (max-width: 769px) {
   .MoviePage {
     padding-left: unset;
@@ -182,6 +221,11 @@
     }
     .jumpTo {
       margin-bottom: 0 !important;
+    }
+  }
+  .WalletPage {
+    h3 {
+      margin-left: 0rem;
     }
   }
 }
