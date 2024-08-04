@@ -17,7 +17,12 @@ export default async function handler(
     // return res.status(200).json(cachedResult);
     console.log("got from cache");
 
-    return NextResponse.json(cachedResult);
+    const response = NextResponse.json(cachedResult);
+    response.headers.set(
+      "Cache-Control",
+      "public, max-age=43200, stale-while-revalidate=60",
+    ); // Cache for 12 hours, allow stale cache while revalidating for 1 minute
+    return response;
   }
   // console.log(req);
   const {
@@ -66,6 +71,11 @@ export default async function handler(
   setCache(cacheKey, result);
   // console.log({ result });
   // res?.status(200)?.json(result);
-  return NextResponse.json(result);
+  const response = NextResponse.json(result);
+  response.headers.set(
+    "Cache-Control",
+    "public, max-age=43200, stale-while-revalidate=60",
+  ); // Cache for 12 hours, allow stale cache while revalidating for 1 minute
+  return response;
   // res.status(200).json({ name: "John Doe" });
 }
