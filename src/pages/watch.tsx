@@ -345,6 +345,7 @@ const Watch = () => {
   const STREAM_URL_RGS = process.env.NEXT_PUBLIC_STREAM_URL_RGS;
   const STREAM_URL_FRE = process.env.NEXT_PUBLIC_STREAM_URL_FRE;
   const STREAM_URL_POR = process.env.NEXT_PUBLIC_STREAM_URL_POR;
+  const STREAM_URL_AUTO = process.env.NEXT_PUBLIC_STREAM_URL_AUTO;
   const STREAM_URL_WEB = process.env.NEXT_PUBLIC_STREAM_URL_WEB;
 
   return (
@@ -454,22 +455,25 @@ const Watch = () => {
             >
               <option value="AGG">Aggregator : 1 (Multi-Server)</option>
               <option value="VID">Aggregator : 2 (VidsrcMe)</option>
-              <option value="PRO">Aggregator : 3 (Best-Server)</option>
+              <option value="PRO">Aggregator : 3 (Best-Server) * </option>
               <option value="EMB">Aggregator : 4 (VidSrcTo)</option>
               <option value="MULTI">Aggregator : 5 (Fast-Server)</option>
               <option value="SUP" defaultChecked>
-                Aggregator : 6 (Multi/Most-Server)
+                Aggregator : 6 (Multi/Most-Server) *
               </option>
-              <option value="CLUB">Aggregator : 7 </option>
-              <option value="SMASH">Aggregator : 8</option>
-              <option value="ONE">Aggregator : 9</option>
+              <option value="CLUB">Aggregator : 7 (Latest/HD-server) *</option>
+              <option value="SMASH">Aggregator : 8 (Multi-Server)</option>
+              <option value="ONE">Aggregator : 9 (Multi-Server)</option>
               <option value="ANY">Aggregator : 10 (Multi-Server)</option>
-              <option value="PRIME">Aggregator : 11 (Multi-Server)</option>
-              <option value="RGS">Aggregator : 12 (Indian-Lang)</option>
+              <option value="PRIME">
+                Aggregator : 11 (Multi/Most-Server) *{" "}
+              </option>
+              <option value="RGS">Aggregator : 12 (Indian-server)</option>
               <option value="FRE">Aggregator : 13 (French-Server)</option>
               <option value="POR">Aggregator : 14 (Portuguese-Server)</option>
-              <option value="WEB">Aggregator : 15 (Ad-Free)</option>
-              <option value="ADF">Aggregator : 16 (Fast/Ad-Free)</option>
+              <option value="AUTO">Aggregator : 15 (Multi-Lang) * </option>
+              <option value="WEB">Aggregator : 16 (Ad-Free)</option>
+              <option value="ADF">Aggregator : 17 (Fast/Ad-Free) * </option>
             </select>
           )}
 
@@ -770,6 +774,21 @@ const Watch = () => {
               type === "movie"
                 ? `${STREAM_URL_POR}/filme/${id}`
                 : `${STREAM_URL_POR}/serie/${id}/${season}/${episode}`
+            }
+            className={styles.iframe}
+            allowFullScreen
+            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+            referrerPolicy="origin"
+          ></iframe>
+        ) : null}
+
+        {source === "AUTO" && id !== "" && id !== null && embedMode === true ? (
+          <iframe
+            scrolling="no"
+            src={
+              type === "movie"
+                ? `${STREAM_URL_AUTO}/embed/${type}/${id}?server=1`
+                : `${STREAM_URL_AUTO}/embed/${type}/${id}/${season}/${episode}?server=1`
             }
             className={styles.iframe}
             allowFullScreen
