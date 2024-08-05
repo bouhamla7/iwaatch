@@ -89,7 +89,7 @@ const LoginPage = () => {
             data-tooltip-id="tooltip"
             data-tooltip-content="Download Rive Flutter Apps"
           >
-            Coming Soon
+            Download
           </a>
         </div>
         <div className={`${styles.group2} ${styles.downloadsGroup}`} id="tauri">

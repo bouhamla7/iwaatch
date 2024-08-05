@@ -40,17 +40,24 @@ import { usePathname, useSearchParams } from "next/navigation";
 const Navbar = ({ children }: any) => {
   const path = usePathname();
   const params = useSearchParams();
-  // const query=
   const [pathname, setPathname] = useState(path);
+  const [isDartUserAgent, setIsDartUserAgent] = useState(false);
+
   useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    setIsDartUserAgent(userAgent.includes("dart"));
     if (params.get("type") !== null) setPathname("/" + params.get("type"));
     // else setPathname(path);
     else if (path !== null) {
       const arr = path?.split("/");
       setPathname("/" + arr[1]);
     }
-    // console.log(path);
   }, [path, params]);
+
+  if (isDartUserAgent) {
+    return null;
+  }
+
   return (
     <div className={styles.navbar}>
       <Link
