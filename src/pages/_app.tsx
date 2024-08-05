@@ -86,17 +86,12 @@ export default function App({ Component, pageProps }: any) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Rive" />
+        {/* <link rel="icon" type="image/svg+xml" href="/images/logo512.svg" color="#f4f7fe" /> */}
         <link
           rel="icon"
           type="image/png"
           sizes="192x192"
           href="/icons/icon-192x192.png"
-        />
-        <link
-          rel="icon"
-          type="image/svg+xml"
-          href="/images/logo512.svg"
-          color="#f4f7fe"
         />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -104,6 +99,37 @@ export default function App({ Component, pageProps }: any) {
         <meta name="msapplication-tap-highlight" content="no" />
         <link rel="shortcut icon" href="/images/logo512.png" />
         <link rel="apple-touch-startup-image" href="/images/logo512.svg" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Rive" />
+        <meta
+          property="og:description"
+          content="Your Personal Streaming Oasis"
+        />
+        <meta
+          property="og:image"
+          content="https://rivestream.live/images/MeatImage.jpg"
+        />
+        <meta property="og:url" content="https://rivestream.live" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Rive" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta
+          name="twitter:card"
+          content="https://rivestream.live/images/MeatImage.jpg"
+        />
+        <meta property="twitter:domain" content="rivestream.live" />
+        <meta property="twitter:url" content="https://rivestream.live" />
+        <meta name="twitter:title" content="Rive" />
+        <meta
+          name="twitter:description"
+          content="Your Personal Streaming Oasis"
+        />
+        <meta
+          name="twitter:image"
+          content="https://rivestream.live/images/MeatImage.jpg"
+        />
       </Head>
       <Layout>
         <Toaster
