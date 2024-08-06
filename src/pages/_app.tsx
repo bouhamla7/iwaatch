@@ -108,7 +108,7 @@ export default function App({ Component, pageProps }: any) {
         />
         <meta
           property="og:image"
-          content="https://rivestream.live/images/MeatImage.jpg"
+          content="https://rivestream.live/images/MetaImage.jpg"
         />
         <meta property="og:url" content="https://rivestream.live" />
         <meta property="og:type" content="website" />
@@ -117,7 +117,7 @@ export default function App({ Component, pageProps }: any) {
         {/* Twitter Card Meta Tags */}
         <meta
           name="twitter:card"
-          content="https://rivestream.live/images/MeatImage.jpg"
+          content="https://rivestream.live/images/MetaImage.jpg"
         />
         <meta property="twitter:domain" content="rivestream.live" />
         <meta property="twitter:url" content="https://rivestream.live" />
@@ -128,7 +128,7 @@ export default function App({ Component, pageProps }: any) {
         />
         <meta
           name="twitter:image"
-          content="https://rivestream.live/images/MeatImage.jpg"
+          content="https://rivestream.live/images/MetaImage.jpg"
         />
       </Head>
       <Layout>
