@@ -85,7 +85,6 @@ const LoginPage = () => {
             href="https://drive.proton.me/urls/79691JYEB4#3WXjfaTWJVUK"
             target="_blank"
             className={styles.downloadButton}
-            onClick={handleDownload}
             data-tooltip-id="tooltip"
             data-tooltip-content="Download Rive Flutter Apps"
           >
@@ -112,7 +111,6 @@ const LoginPage = () => {
             href="https://drive.proton.me/urls/0RKC1BF7A8#OfmfxB5YHncu"
             target="_blank"
             className={styles.downloadButton}
-            onClick={handleDownload}
             data-tooltip-id="tooltip"
             data-tooltip-content="Download Rive Tauri Apps"
           >
