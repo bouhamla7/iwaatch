@@ -367,6 +367,7 @@ const Watch = () => {
   const STREAM_URL_PRIME = process.env.NEXT_PUBLIC_STREAM_URL_PRIME;
   const STREAM_URL_RGS = process.env.NEXT_PUBLIC_STREAM_URL_RGS;
   const STREAM_URL_FRE = process.env.NEXT_PUBLIC_STREAM_URL_FRE;
+  const STREAM_URL_RUS = process.env.NEXT_PUBLIC_STREAM_URL_RUS;
   const STREAM_URL_POR = process.env.NEXT_PUBLIC_STREAM_URL_POR;
   const STREAM_URL_AUTO = process.env.NEXT_PUBLIC_STREAM_URL_AUTO;
   const STREAM_URL_WEB = process.env.NEXT_PUBLIC_STREAM_URL_WEB;
@@ -493,10 +494,11 @@ const Watch = () => {
               </option>
               <option value="RGS">Aggregator : 12 (Indian-server)</option>
               <option value="FRE">Aggregator : 13 (French-Server)</option>
-              <option value="POR">Aggregator : 14 (Portuguese-Server)</option>
-              <option value="AUTO">Aggregator : 15 (Multi-Lang) * </option>
-              <option value="WEB">Aggregator : 16 (Ad-Free)</option>
-              <option value="ADF">Aggregator : 17 (Fast/Ad-Free) * </option>
+              <option value="RUS">Aggregator : 14 (Russian-Server)</option>
+              <option value="POR">Aggregator : 15 (Portuguese-Server)</option>
+              <option value="AUTO">Aggregator : 16 (Multi-Lang) * </option>
+              <option value="WEB">Aggregator : 17 (Ad-Free)</option>
+              <option value="ADF">Aggregator : 18 (Fast/Ad-Free) * </option>
             </select>
           )}
 
@@ -636,8 +638,8 @@ const Watch = () => {
             scrolling="no"
             src={
               type === "movie"
-                ? `${STREAM_URL_EMB}/embed/${type}/${id}`
-                : `${STREAM_URL_EMB}/embed/${type}/${id}/${season}/${episode}`
+                ? `${STREAM_URL_EMB}/v2/embed/${type}/${id}`
+                : `${STREAM_URL_EMB}/v2/embed/${type}/${id}/${season}/${episode}`
             }
             className={styles.iframe}
             allowFullScreen
@@ -782,6 +784,21 @@ const Watch = () => {
               type === "movie"
                 ? `${STREAM_URL_FRE}/film.php?id=${id}`
                 : `${STREAM_URL_FRE}/serie.php?id=${id}&sa=${season}&epi=${episode}`
+            }
+            className={styles.iframe}
+            allowFullScreen
+            allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+            referrerPolicy="origin"
+          ></iframe>
+        ) : null}
+
+        {source === "RUS" && id !== "" && id !== null && embedMode === true ? (
+          <iframe
+            scrolling="no"
+            src={
+              type === "movie"
+                ? `${STREAM_URL_RUS}/embed/imdb/${data?.imdbId}`
+                : `${STREAM_URL_RUS}/embed/imdb/${data?.imdbId}?season=${season}&episode=${episode}`
             }
             className={styles.iframe}
             allowFullScreen
