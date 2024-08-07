@@ -1,3 +1,5 @@
+import { getSettings } from "./settings";
+
 interface Fetch {
   requestID: any;
   id?: string | null;
@@ -26,6 +28,7 @@ export default async function axiosFetch({
   episode,
   service,
 }: Fetch) {
+  const proxyMode = await getSettings()?.proxyMode;
   const request = requestID;
   const API_KEY: any = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const baseURL = process.env.NEXT_PUBLIC_TMDB_API;
@@ -120,10 +123,16 @@ export default async function axiosFetch({
       Accept: "application/json",
     },
   };
-  const url = new URL(final_request);
+  let url = new URL(final_request);
   url.searchParams.append("api_key", API_KEY);
   console.log({ url });
-  // console.log(url.toString());
+
+  // proxyfying the all api request
+  if (proxyMode === "reverseProxy" && !requestID.includes("VideoProvider")) {
+    const tempURL = new URL("https://proxy.wafflehacker.io/");
+    tempURL.searchParams.append("destination", url.toString());
+    url = tempURL;
+  }
   try {
     // const response = await axios.get(final_request, {
     //   params: { api_key: API_KEY },

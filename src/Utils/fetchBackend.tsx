@@ -1,4 +1,6 @@
 import { setCache, getCache } from "./clientCache";
+import axiosFetchOriginal from "./fetch";
+import { getSettings } from "./settings";
 
 interface Fetch {
   requestID: any;
@@ -28,6 +30,7 @@ export default async function axiosFetch({
   episode,
   service,
 }: Fetch) {
+  const fetchMode = await getSettings()?.fetchMode;
   const request = requestID;
   // const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const baseURL = "/api/backendfetch";
@@ -119,7 +122,33 @@ export default async function axiosFetch({
       Accept: "application/json",
     },
   };
-  if (final_request !== undefined)
+  if (
+    final_request !== undefined &&
+    !requestID.includes("VideoProvider") &&
+    fetchMode === "client"
+  ) {
+    try {
+      const response: any = await axiosFetchOriginal({
+        requestID,
+        id,
+        language,
+        page,
+        genreKeywords,
+        sortBy,
+        year,
+        country,
+        query,
+        season,
+        episode,
+        service,
+      });
+      // console.log({ response });
+      if (response?.success !== false) setCache(cacheKey, response);
+      return await response;
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  } else if (final_request !== undefined)
     try {
       // const response = await axios.get(final_request, { withCredentials: false });
       const req: any = await fetch(final_request, options);

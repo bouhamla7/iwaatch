@@ -1,6 +1,9 @@
 export const getSettings = () => {
-  const values: any = localStorage.getItem("RiveStreamSettings");
-  return JSON.parse(values);
+  if (typeof window !== "undefined" && window.localStorage) {
+    const values = localStorage.getItem("RiveStreamSettings");
+    return values ? JSON.parse(values) : null;
+  }
+  return null;
 };
 
 export const setSettings = ({ values }: any) => {

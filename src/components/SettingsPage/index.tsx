@@ -22,6 +22,8 @@ const SettingsPage = ({
   SOpacity,
   setMode,
   setTheme,
+  fetchMode,
+  proxyMode,
   setAscent_color,
   setSFFamily,
   setSFSize,
@@ -29,6 +31,8 @@ const SettingsPage = ({
   setSBColor,
   setSBBlur,
   setSOpacity,
+  setFetchMode,
+  setProxyMode,
 }: any) => {
   const [user, setUser] = useState<any>(false);
   const [loading, setLoading] = useState(true);
@@ -57,6 +61,8 @@ const SettingsPage = ({
       SBColor,
       SBBlur,
       SOpacity,
+      fetchMode,
+      proxyMode,
     };
     if (type === "mode") setSettings({ values: { ...prevVal, mode: value } });
     if (type === "theme") setSettings({ values: { ...prevVal, theme: value } });
@@ -74,6 +80,10 @@ const SettingsPage = ({
       setSettings({ values: { ...prevVal, SOpacity: value } });
     if (type === "ascent_color")
       setSettings({ values: { ...prevVal, ascent_color: value } });
+    if (type === "fetchMode")
+      setSettings({ values: { ...prevVal, fetchMode: value } });
+    if (type === "proxyMode")
+      setSettings({ values: { ...prevVal, proxyMode: value } });
   };
   const handleRandom = async () => {
     const res = await fetchRandom();
@@ -320,6 +330,60 @@ const SettingsPage = ({
               <option value="100%" defaultChecked>
                 100%
               </option>
+            </select>
+          </div>
+        </div>
+        <h1
+          data-tooltip-id="tooltip"
+          data-tooltip-html="Tweak these settings, if you're getting only loading screens on any page"
+        >
+          Developer Center
+        </h1>
+        <div className={styles.group}>
+          <div>
+            <label
+              htmlFor="fetchMode"
+              data-tooltip-id="tooltip"
+              data-tooltip-html="Fetch Mode for API Requests </br> Choose Server-side if TMDB is blocked by your ISP"
+            >
+              Fetch Mode
+            </label>
+            <select
+              name="fetchMode"
+              id="fetchMode"
+              value={fetchMode}
+              onChange={(e) => {
+                setFetchMode(e.target.value);
+                handleSelect({ type: "fetchMode", value: e.target.value });
+              }}
+            >
+              <option value="server" defaultChecked>
+                Server-side
+              </option>
+              <option value="client">Client-side</option>
+            </select>
+          </div>
+          <div>
+            <label
+              htmlFor="proxyMode"
+              data-tooltip-id="tooltip"
+              data-tooltip-html="Proxy your API Requests </br> Choose Reverse Proxy if TMDB is blocked by your ISP"
+            >
+              Proxy Mode
+            </label>
+            <select
+              name="proxyMode"
+              id="proxyMode"
+              value={proxyMode}
+              onChange={(e) => {
+                setProxyMode(e.target.value);
+                handleSelect({ type: "proxyMode", value: e.target.value });
+              }}
+            >
+              <option value="noProxy" defaultChecked>
+                No Proxy
+              </option>
+              <option value="reverseProxy">Reverse Proxy</option>
             </select>
           </div>
         </div>

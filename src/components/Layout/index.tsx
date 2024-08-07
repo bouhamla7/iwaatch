@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./style.module.scss";
 import Navbar from "../Navbar";
 import { motion } from "framer-motion";
-import { getSettings } from "@/Utils/settings";
+import { getSettings, setSettings } from "@/Utils/settings";
 import SettingsPage from "../SettingsPage";
 import { usePathname } from "next/navigation";
 import Head from "next/head";
@@ -21,6 +21,8 @@ const Layout = ({ children }: any) => {
   const [SBBlur, setSBBlur] = useState("0");
   const [SOpacity, setSOpacity] = useState("100%");
   const [themeColor, setThemeColor] = useState<any>();
+  const [fetchMode, setFetchMode] = useState<any>("server");
+  const [proxyMode, setProxyMode] = useState("noProxy");
   const { push } = useRouter();
 
   const fetchRandomData = async () => {
@@ -43,6 +45,47 @@ const Layout = ({ children }: any) => {
       setSBColor(values?.SBColor);
       setSBBlur(values?.SBBlur);
       setSOpacity(values?.SOpacity);
+      setFetchMode(values?.fetchMode);
+      setProxyMode(values?.proxyMode);
+    }
+
+    if (values?.fetchMode === undefined) {
+      const prevVal = {
+        mode,
+        theme,
+        ascent_color,
+        SFFamily,
+        SFSize,
+        SFColor,
+        SBColor,
+        SBBlur,
+        SOpacity,
+        fetchMode,
+      };
+      fetch("https://wtfismyip.com/json")
+        .then((req) => req.json())
+        .then((res) => {
+          // console.log({ res });
+          if (
+            res?.YourFuckingCountryCode === "US" ||
+            res?.YourFuckingCountryCode === "CA" ||
+            res?.YourFuckingCountryCode === "GB"
+          ) {
+            setFetchMode("client");
+            setSettings({ values: { ...prevVal, fetchMode: "client" } });
+          } else {
+            setFetchMode("server");
+            setSettings({ values: { ...prevVal, fetchMode: "server" } });
+          }
+          // for ISP carriers that block tmdb
+          // if (res?.YourFuckingISP?.toLowerCase()?.includes("jio")) {
+          //   setProxyMode("reverseProxy");
+          //   setSettings({ values: { ...prevVal, proxyMode: "reverseProxy" } });
+          // } else {
+          //   setProxyMode("noProxy");
+          //   setSettings({ values: { ...prevVal, proxyMode: "noProxy" } });
+          // }
+        });
     }
     console.log({ values });
     const prefersDarkMode =
@@ -132,6 +175,8 @@ const Layout = ({ children }: any) => {
             SBColor={SBColor}
             SBBlur={SBBlur}
             SOpacity={SOpacity}
+            fetchMode={fetchMode}
+            proxyMode={proxyMode}
             setMode={setMode}
             setTheme={setTheme}
             setAscent_color={setAscent_color}
@@ -141,6 +186,8 @@ const Layout = ({ children }: any) => {
             setSBColor={setSBColor}
             setSBBlur={setSBBlur}
             setSOpacity={setSOpacity}
+            setFetchMode={setFetchMode}
+            setProxyMode={setProxyMode}
           />
         ) : null}
       </div>
