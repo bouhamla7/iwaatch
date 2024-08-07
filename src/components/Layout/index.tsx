@@ -14,6 +14,7 @@ const Layout = ({ children }: any) => {
   const [theme, setTheme] = useState("system");
   const [mode, setMode] = useState("liquidate");
   const [ascent_color, setAscent_color] = useState("gold");
+  const [SysFFamily, setSysFFamily] = useState("Roboto Mono");
   const [SFFamily, setSFFamily] = useState("Roboto Mono");
   const [SFColor, setSFColor] = useState("gold");
   const [SFSize, setSFSize] = useState("24px");
@@ -39,6 +40,7 @@ const Layout = ({ children }: any) => {
       setTheme(values?.theme);
       setMode(values?.mode);
       setAscent_color(values?.ascent_color);
+      setSysFFamily(values?.SysFFamily);
       setSFFamily(values?.SFFamily);
       setSFColor(values?.SFColor);
       setSFSize(values?.SFSize);
@@ -111,15 +113,22 @@ const Layout = ({ children }: any) => {
   useEffect(() => {
     document.documentElement.style.setProperty("--mode", mode);
     document.documentElement.style.setProperty("--ascent-color", ascent_color);
+    document.documentElement.style.setProperty("--SysFFamily", SysFFamily);
     document.documentElement.style.setProperty("--SFFamily", SFFamily);
     document.documentElement.style.setProperty("--SFSize", SFSize);
     document.documentElement.style.setProperty("--SFColor", SFColor);
     document.documentElement.style.setProperty("--SBColor", SBColor);
     document.documentElement.style.setProperty("--SBBlur", SBBlur);
     document.documentElement.style.setProperty("--SOpacity", SOpacity);
+    if (SysFFamily === "Roboto Mono") {
+      document.documentElement.classList.add("roboto-mono-active");
+    } else {
+      document.documentElement.classList.remove("roboto-mono-active");
+    }
   }, [
     mode,
     ascent_color,
+    SysFFamily,
     SFFamily,
     SFSize,
     SFColor,
@@ -169,6 +178,7 @@ const Layout = ({ children }: any) => {
             mode={mode}
             theme={theme}
             ascent_color={ascent_color}
+            SysFFamily={SysFFamily}
             SFFamily={SFFamily}
             SFColor={SFColor}
             SFSize={SFSize}
@@ -180,6 +190,7 @@ const Layout = ({ children }: any) => {
             setMode={setMode}
             setTheme={setTheme}
             setAscent_color={setAscent_color}
+            setSysFFamily={setSysFFamily}
             setSFFamily={setSFFamily}
             setSFColor={setSFColor}
             setSFSize={setSFSize}

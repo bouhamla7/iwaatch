@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&family=Abel&family=Montserrat:wght@100..900&family=Ubuntu:wght@300;500;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 // :root{
 //   --ascent-color:gold;
 //   --bg-color:rgb(27, 25, 25);
@@ -69,7 +69,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto Mono", serif;
+  font-family: var(--SysFFamily), "Roboto Mono", serif !important;
   user-select: none;
   scroll-behavior: smooth;
 }
@@ -117,7 +117,11 @@ h1 {
   font-size: 1.7rem;
 }
 
-:not(h1) {
+// :not(h1) {
+//   letter-spacing: -1.5px;
+// }
+
+.roboto-mono-active :not(h1) {
   letter-spacing: -1.5px;
 }
 

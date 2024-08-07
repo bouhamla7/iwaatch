@@ -14,6 +14,7 @@ const SettingsPage = ({
   mode,
   theme,
   ascent_color,
+  SysFFamily,
   SFFamily,
   SFSize,
   SFColor,
@@ -25,6 +26,7 @@ const SettingsPage = ({
   fetchMode,
   proxyMode,
   setAscent_color,
+  setSysFFamily,
   setSFFamily,
   setSFSize,
   setSFColor,
@@ -55,6 +57,7 @@ const SettingsPage = ({
       mode,
       theme,
       ascent_color,
+      SysFFamily,
       SFFamily,
       SFSize,
       SFColor,
@@ -66,6 +69,8 @@ const SettingsPage = ({
     };
     if (type === "mode") setSettings({ values: { ...prevVal, mode: value } });
     if (type === "theme") setSettings({ values: { ...prevVal, theme: value } });
+    if (type === "SysFFamily")
+      setSettings({ values: { ...prevVal, SysFFamily: value } });
     if (type === "SFFamily")
       setSettings({ values: { ...prevVal, SFFamily: value } });
     if (type === "SFColor")
@@ -178,6 +183,30 @@ const SettingsPage = ({
               <option value="#795548">Brown</option>
             </select>
           </div>
+          <div>
+            <label htmlFor="SysFFamily">System Font Family</label>
+            <select
+              name="SysFFamily"
+              id="SFFamily"
+              value={SysFFamily}
+              onChange={(e) => {
+                setSysFFamily(e.target.value);
+                handleSelect({ type: "SysFFamily", value: e.target.value });
+              }}
+            >
+              <option value="Abel">Abel</option>
+              <option value="serif">Serif</option>
+              <option value="Ubuntu">Ubuntu</option>
+              <option value="cursive">Cursive</option>
+              <option value="Helvetica">Helvetica</option>
+              <option value="Montserrat">Montserrat</option>
+              <option value="system-ui">System UI</option>
+              <option value="Open Sans">Open Sans</option>
+              <option value="Roboto Mono" defaultChecked>
+                Roboto Mono
+              </option>
+            </select>
+          </div>
         </div>
         <h1>Subtitle</h1>
         <div className={styles.group}>
@@ -192,13 +221,17 @@ const SettingsPage = ({
                 handleSelect({ type: "SFFamily", value: e.target.value });
               }}
             >
+              <option value="Abel">Abel</option>
+              <option value="serif">Serif</option>
+              <option value="Ubuntu">Ubuntu</option>
+              <option value="cursive">Cursive</option>
+              <option value="Helvetica">Helvetica</option>
+              <option value="Montserrat">Montserrat</option>
+              <option value="system-ui">System UI</option>
+              <option value="Open Sans">Open Sans</option>
               <option value="Roboto Mono" defaultChecked>
                 Roboto Mono
               </option>
-              <option value="Helvetica">Helvetica</option>
-              <option value="cursive">Cursive</option>
-              <option value="serif">Serif</option>
-              <option value="Times New Roman">Times New Roman</option>
             </select>
           </div>
           <div>
