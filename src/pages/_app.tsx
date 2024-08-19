@@ -23,6 +23,8 @@ export default function App({ Component, pageProps }: any) {
   return (
     <>
       <Head>
+      <AdSense pId="ca-pub-9098691343505810"/>
+
         <title>Rive</title>
         <meta name="description" content="Your Personal Streaming Oasis" />
         <meta
@@ -83,7 +85,6 @@ export default function App({ Component, pageProps }: any) {
           name="twitter:image"
           content="https://rivestream.live/images/MetaImage.jpg"
         />
-        <AdSense pId="ca-pub-9098691343505810"/>
 
       </Head>
       <Layout>
