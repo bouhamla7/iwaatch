@@ -43,18 +43,7 @@ export default function App({ Component, pageProps }: any) {
       toast.info("Context Menu has been disabled");
     };
 
-    // Disable DevTools shortcut (CTRL+SHIFT+I)
-    const disableDevToolsShortcut = (event: KeyboardEvent) => {
-      if (
-        (event.ctrlKey && event.shiftKey && event.key === "I") || // CTRL+SHIFT+I
-        (event.ctrlKey && event.shiftKey && event.key === "J") || // CTRL+SHIFT+J
-        (event.ctrlKey && event.shiftKey && event.key === "C") || // CTRL+SHIFT+C
-        event.key === "F12" // F12
-      ) {
-        event.preventDefault();
-        toast.info("Dev Tools has been disabled");
-      }
-    };
+    
 
     // Add event listeners
     window.addEventListener("contextmenu", disableContextMenu);
