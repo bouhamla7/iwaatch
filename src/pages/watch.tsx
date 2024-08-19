@@ -477,9 +477,9 @@ const Watch = () => {
                 localStorage.setItem("RiveStreamLatestAgg", e.target.value);
               }}
             >
+              <option value="PRO">Aggregator : 3 (Best-Server) * </option>
               <option value="AGG">Aggregator : 1 (Multi-Server)</option>
               <option value="VID">Aggregator : 2 (VidsrcMe)</option>
-              <option value="PRO">Aggregator : 3 (Best-Server) * </option>
               <option value="EMB">Aggregator : 4 (VidSrcTo)</option>
               <option value="MULTI">Aggregator : 5 (Fast-Server)</option>
               <option value="SUP" defaultChecked>
