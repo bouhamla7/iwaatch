@@ -17,45 +17,7 @@ export default function App({ Component, pageProps }: any) {
   const [isLoading, setIsLoading] = useState(false);
   NProgress.configure({ showSpinner: false });
   const GTag: any = process.env.NEXT_PUBLIC_GT_MEASUREMENT_ID;
-  // NProgress.configure({
-  //   template: '<div class="bar" role="bar"><div class="peg"></div></div>'
-  // });
-  useEffect(() => {
-    Router.events.on("routeChangeStart", (url) => {
-      setIsLoading(true);
-      NProgress.start();
-    });
-
-    Router.events.on("routeChangeComplete", (url) => {
-      setIsLoading(false);
-      NProgress.done(false);
-    });
-
-    Router.events.on("routeChangeError", (url) => {
-      setIsLoading(false);
-    });
-  }, [Router]);
-
-  useEffect(() => {
-    // Disable context menu
-    const disableContextMenu = (event: MouseEvent) => {
-      event.preventDefault();
-      toast.info("Context Menu has been disabled");
-    };
-
-   // Disable DevTools shortcut (CTRL+SHIFT+I)
- 
-
-    // Add event listeners
-    window.addEventListener("contextmenu", disableContextMenu);
-    window.addEventListener("keydown", disableDevToolsShortcut);
-
-    // Cleanup event listeners on unmount
-    return () => {
-      window.removeEventListener("contextmenu", disableContextMenu);
-      window.removeEventListener("keydown", disableDevToolsShortcut);
-    };
-  }, []);
+  
 
   return (
     <>
