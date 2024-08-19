@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: any) {
       <Head>
       <AdSense pId="ca-pub-9098691343505810"/>
 
-        <title>Rive</title>
+        <title>Hopcorn</title>
         <meta name="description" content="Your Personal Streaming Oasis" />
         <meta
           name="keywords"
