@@ -305,7 +305,11 @@ const HomeListAll = () => {
   //     setRecommendations(shuffledArray);
   //   });
   // }, [continueWatching]);
-
+ <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="7289977903"
+              />
   return (
     <div className={styles.HomeListAll}>
       {recommendations.length > 0 ? (
@@ -340,14 +344,7 @@ const HomeListAll = () => {
                 data-tooltip-content="Swipe Right"
               />
             </div>
-          </h1>
- <AdBanner
-                dataAdFormat="auto"
-                dataFullWidthResponsive={true}
-                dataAdSlot="7289977903"
-              />
-
-          
+          </h1>          
           <div
             className={styles.HomeListSection}
             data-tooltip-id="tooltip"
@@ -390,6 +387,11 @@ const HomeListAll = () => {
           />
         </div>
       </h1>
+
+
+
+
+      
       <div className={styles.HomeListSection}>
         {latestMovie?.map((ele) => {
           return <MovieCardSmall data={ele} media_type="movie" />;
