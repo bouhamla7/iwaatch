@@ -424,39 +424,6 @@ const HomeListAll = () => {
             <Skeleton className={styles.loading} key={i} />
           ))}
       </div>
-      <h1 ref={latestKoreanDramaRef}>
-        Latest K-Dramas
-        <div>
-          <MdChevronLeft
-            onClick={() => {
-              document
-                .querySelectorAll(`.${styles.HomeListSection}`)
-                [recommendations.length > 0 ? 3 : 2].scrollBy(-700, 0);
-            }}
-            data-tooltip-id="tooltip"
-            data-tooltip-content="Swipe Left"
-          />
-          swipe
-          <MdChevronRight
-            onClick={() => {
-              document
-                .querySelectorAll(`.${styles.HomeListSection}`)
-                [recommendations.length > 0 ? 3 : 2].scrollBy(700, 0);
-            }}
-            data-tooltip-id="tooltip"
-            data-tooltip-content="Swipe Right"
-          />
-        </div>
-      </h1>
-      <div className={styles.HomeListSection}>
-        {latestKoreanDrama?.map((ele) => {
-          return <MovieCardSmall data={ele} media_type="tv" />;
-        })}
-        {latestKoreanDrama?.length === 0 &&
-          dummyList.map((ele, i) => (
-            <Skeleton className={styles.loading} key={i} />
-          ))}
-      </div>
       <h1 ref={popularKoreanDramaRef}>
         Popular K-Dramas
         <div>
