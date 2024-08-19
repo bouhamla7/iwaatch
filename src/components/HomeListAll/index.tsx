@@ -7,6 +7,7 @@ import MovieCardSmall from "../MovieCardSmall";
 import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
+import AdBanner from "@/components/AdBanner";
 
 const externalImageLoader = ({ src }: { src: string }) =>
   `${process.env.NEXT_PUBLIC_TMBD_IMAGE_URL}${src}`;
@@ -448,6 +449,11 @@ const HomeListAll = () => {
           />
         </div>
       </h1>
+      <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="2884243974"
+              />
       <div className={styles.HomeListSection}>
         {popularKoreanDrama?.map((ele) => {
           return <MovieCardSmall data={ele} media_type="tv" />;
