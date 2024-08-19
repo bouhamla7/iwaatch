@@ -84,7 +84,8 @@ export default function App({ Component, pageProps }: any) {
           content="https://rivestream.live/images/MetaImage.jpg"
         />
         <AdSense pId="ca-pub-9098691343505810"/>
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9098691343505810"
+     crossorigin="anonymous"></script>
       </Head>
       <Layout>
         <Toaster
