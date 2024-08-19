@@ -477,10 +477,9 @@ const Watch = () => {
                 localStorage.setItem("RiveStreamLatestAgg", e.target.value);
               }}
             >
-              <option value="PRO">Aggregator : 3 (Best-Server) * </option>
-              <option value="AGG">Aggregator : 1 (Multi-Server)</option>
-              <option value="VID">Aggregator : 2 (VidsrcMe)</option>
-              <option value="EMB">Aggregator : 4 (VidSrcTo)</option>
+              <option value="PRO">Server1</option>
+              <option value="VID">Server2</option>
+              <option value="EMB">Server3</option>
               <option value="MULTI">Aggregator : 5 (Fast-Server)</option>
               <option value="SUP" defaultChecked>
                 Aggregator : 6 (Multi/Most-Server) *
@@ -638,8 +637,8 @@ const Watch = () => {
             scrolling="no"
             src={
               type === "movie"
-                ? `${STREAM_URL_EMB}/v2/embed/${type}/${id}`
-                : `${STREAM_URL_EMB}/v2/embed/${type}/${id}/${season}/${episode}`
+                ? `${STREAM_URL_EMB}/${type}/${id}`
+                : `${STREAM_URL_EMB}/${type}/${id}-${season}-${episode}`
             }
             className={styles.iframe}
             allowFullScreen
