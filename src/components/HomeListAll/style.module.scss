@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&family=Paytone+One&family=Rubik&display=swap');
 .HomeListAll {
   .HomeListSection {
     display: flex;
@@ -21,7 +22,7 @@
     justify-content: space-between;
     align-items: center;
     .recommendation {
-      font-family: sans-serif;
+      font-family: "Patua One", serif;
       color: var(--primary-3);
       font-size: 1.7rem;
       display: flex;
