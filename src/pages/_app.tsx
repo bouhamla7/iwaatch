@@ -12,6 +12,7 @@ import NProgress from "nprogress";
 import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import AdSense from "@/components/AdSense";
 
 export default function App({ Component, pageProps }: any) {
   const [isLoading, setIsLoading] = useState(false);
@@ -82,6 +83,8 @@ export default function App({ Component, pageProps }: any) {
           name="twitter:image"
           content="https://rivestream.live/images/MetaImage.jpg"
         />
+        <AdSense pId="ca-pub-9098691343505810"/>
+
       </Head>
       <Layout>
         <Toaster
