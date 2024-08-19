@@ -341,6 +341,13 @@ const HomeListAll = () => {
               />
             </div>
           </h1>
+ <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="7289977903"
+              />
+
+          
           <div
             className={styles.HomeListSection}
             data-tooltip-id="tooltip"
