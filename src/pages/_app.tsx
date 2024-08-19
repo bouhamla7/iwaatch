@@ -43,7 +43,8 @@ export default function App({ Component, pageProps }: any) {
       toast.info("Context Menu has been disabled");
     };
 
-    
+   // Disable DevTools shortcut (CTRL+SHIFT+I)
+ 
 
     // Add event listeners
     window.addEventListener("contextmenu", disableContextMenu);
