@@ -4,6 +4,8 @@ import AdSense from "@/components/AdSense";
 export default function Document() {
   return (
     <Html lang="en">
+    <AdSense pId="ca-pub-9098691343505810"/>
+
       <Head />
       <body>
         <Main />
