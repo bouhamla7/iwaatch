@@ -13,6 +13,7 @@
     .loading {
       height: 15rem;
       width: 10rem;
+      font-family: "Patua One", serif;
     }
   }
 
@@ -21,6 +22,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: "Patua One", serif;
     .recommendation {
       font-family: "Patua One", serif;
       color: var(--primary-3);
