@@ -237,11 +237,12 @@ const DetailPage = () => {
         </div>
       </div>
     </>
-  );
-};
-  <AdBanner
+      <AdBanner
        dataAdFormat="auto"
        dataFullWidthResponsive={true}
        dataAdSlot="7289977903"
      />
+  );
+};
+
 export default DetailPage;
