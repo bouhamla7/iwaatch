@@ -145,10 +145,19 @@ const Watch = () => {
     // Add event listener when component mounts
     window.addEventListener("keydown", handleKeyDown);
 
-    // Remove event listener when component unmounts
+   // Remove event listener when component unmounts
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-          toast.info(
+    };
+  }, [params, id, season, episode]);
+
+  useEffect(() => {
+    if (embedMode !== undefined && embedMode !== null)
+      localStorage.setItem("RiveStreamEmbedMode", embedMode);
+    if (embedMode === true) {
+      const latestAgg: any = localStorage.getItem("RiveStreamLatestAgg");
+      if (latestAgg !== null && latestAgg !== undefined) setSource(latestAgg);
+      toast.info(
         <div>
           Cloud: use AD-Blocker services for AD-free experience, like AD-Blocker
           extension or{" "}
@@ -183,16 +192,6 @@ const Watch = () => {
             The Source{" "}
           </a>
         </div>,
-    };
-  }, [params, id, season, episode]);
-
-  useEffect(() => {
-    if (embedMode !== undefined && embedMode !== null)
-      localStorage.setItem("RiveStreamEmbedMode", embedMode);
-    if (embedMode === true) {
-      const latestAgg: any = localStorage.getItem("RiveStreamLatestAgg");
-      if (latestAgg !== null && latestAgg !== undefined) setSource(latestAgg);
-  
       );
     } else {
       // discord Invitation
