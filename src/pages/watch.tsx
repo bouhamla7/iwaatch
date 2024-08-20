@@ -470,6 +470,7 @@ const Watch = () => {
               name="source"
               id="source"
               aria-placeholder="servers"
+              className={styles.source}
               value={source}
               onChange={(e) => {
                 setSource(e.target.value);
