@@ -13,7 +13,8 @@ import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import AdSense from "@/components/AdSense";
-
+import { AdblockDetector } from 'adblock-detector';
+import { Ads } from "@/components/Ads"
 export default function App({ Component, pageProps }: any) {
   const [isLoading, setIsLoading] = useState(false);
   NProgress.configure({ showSpinner: false });
