@@ -401,12 +401,7 @@ const MetaDetails = ({ id, type, data }: any) => {
                 <>
                   <h3>Production Companies</h3>
                   <p>{production_companies?.join(", ")}</p>
-                </>
-    <AdBanner
-  dataAdFormat="auto"
-  dataFullWidthResponsive={true}
-  dataAdSlot="7289977903"
- />        
+                </>     
               ) : null}
             </>   
           )}
