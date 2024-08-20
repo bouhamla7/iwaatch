@@ -474,7 +474,7 @@ const Watch = () => {
               value={source}
               onChange={(e) => {
                 setSource(e.target.value);
-                localStorage.setItem("RiveStreamLatestPro", e.target.value);
+                localStorage.setItem("RiveStreamLatestAgg", e.target.value);
               }}
             >
               <option value="PRO">Server1</option>
@@ -571,7 +571,7 @@ const Watch = () => {
             className={styles.videoPlayer}
           />
         )}
-        {source === "AGG" && id !== "" && id !== null && embedMode === true ? (
+        {source === "AGG" && id !== "" && id !== null && embedMode === false ? (
           <iframe
             scrolling="no"
             src={
