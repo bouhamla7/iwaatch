@@ -359,6 +359,16 @@ const HomeListAll = () => {
           </div>
         </>
       ) : null}
+
+
+ <AdBanner
+  dataAdFormat="auto"
+  dataFullWidthResponsive={true}
+  dataAdSlot="7289977903"
+ />
+
+
+      
       <h1 ref={latestMovieRef}>
         Latest Movies
         <div>
@@ -394,11 +404,6 @@ const HomeListAll = () => {
       </div>
 
 
- <AdBanner
-  dataAdFormat="auto"
-  dataFullWidthResponsive={true}
-  dataAdSlot="2884243974"
- />
 
 
       
