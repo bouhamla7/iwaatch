@@ -1,6 +1,6 @@
 .MovieCardSmall {
-  min-height: 16rem;
-  width: 11rem;
+  min-height: 15rem;
+  width: 10rem;
   .img {
     height: 16rem;
     width: 11rem;
@@ -25,8 +25,8 @@
 
 @media (max-width: 769px) {
   .MovieCardSmall {
-    min-height: 11rem;
-    width: 8rem;
+    min-height: 10rem;
+    width: 7rem;
     .img {
       height: 11rem;
       width: 8rem;
