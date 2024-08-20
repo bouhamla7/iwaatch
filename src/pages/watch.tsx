@@ -478,7 +478,7 @@ const Watch = () => {
               }}
             >
               <option value="PRO">Server1</option>
-              <option value="VID">Server2</option>
+              <option value="VID" defaultChecked >Server2</option>
               <option value="EMB">Server3</option>
               <option value="CLUB">Server4</option>
               <option value="SMASH">Server5</option>
@@ -571,7 +571,7 @@ const Watch = () => {
             className={styles.videoPlayer}
           />
         )}
-        {source === "AGG" && id !== "" && id !== null && embedMode === false ? (
+        {source === "AGG" && id !== "" && id !== null && embedMode === true ? (
           <iframe
             scrolling="no"
             src={
