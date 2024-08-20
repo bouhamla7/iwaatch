@@ -146,7 +146,20 @@ const Watch = () => {
     window.addEventListener("keydown", handleKeyDown);
 
     // Remove event listener when component unmounts
- 
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [params, id, season, episode]);
+
+  useEffect(() => {
+    if (embedMode !== undefined && embedMode !== null)
+      localStorage.setItem("RiveStreamEmbedMode", embedMode);
+    if (embedMode === true) {
+      const latestAgg: any = localStorage.getItem("RiveStreamLatestAgg");
+      if (latestAgg !== null && latestAgg !== undefined) setSource(latestAgg);
+  
+      );
+    } else {
       // discord Invitation
       (isDesktop || isTV) &&
         (toast.info(
