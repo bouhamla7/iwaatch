@@ -222,7 +222,7 @@ const Watch = () => {
     let autoEmbedMode: NodeJS.Timeout;
     if (embedMode === false && id !== undefined && id !== null) {
       const fetch = async () => {
-        setNonEmbedSourcesNotFound(false);
+        setNonEmbedSourcesNotFound(true);
         const providers: any = await axiosFetch({
           requestID: `VideoProviderServices`,
         });
