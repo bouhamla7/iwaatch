@@ -305,11 +305,7 @@ const HomeListAll = () => {
   //     setRecommendations(shuffledArray);
   //   });
   // }, [continueWatching]);
- <AdBanner
-                dataAdFormat="auto"
-                dataFullWidthResponsive={true}
-                dataAdSlot="7289977903"
-              />
+
   return (
     <div className={styles.HomeListAll}>
       {recommendations.length > 0 ? (
@@ -386,12 +382,7 @@ const HomeListAll = () => {
             data-tooltip-content="Swipe Right"
           />
         </div>
-      </h1>
-
-
-
-
-      
+      </h1>      
       <div className={styles.HomeListSection}>
         {latestMovie?.map((ele) => {
           return <MovieCardSmall data={ele} media_type="movie" />;
@@ -401,6 +392,16 @@ const HomeListAll = () => {
             <Skeleton className={styles.loading} key={i} />
           ))}
       </div>
+
+
+ <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="7289977903"
+              />
+
+
+      
       <h1 ref={latestTvRef}>
         Latest TV Shows
         <div>
