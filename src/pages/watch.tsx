@@ -477,28 +477,12 @@ const Watch = () => {
                 localStorage.setItem("RiveStreamLatestAgg", e.target.value);
               }}
             >
-              <option value="AGG">Aggregator : 1 (Multi-Server)</option>
-              <option value="VID">Aggregator : 2 (VidsrcMe)</option>
-              <option value="PRO">Aggregator : 3 (Best-Server) * </option>
-              <option value="EMB">Aggregator : 4 (VidSrcTo)</option>
-              <option value="MULTI">Aggregator : 5 (Fast-Server)</option>
-              <option value="SUP" defaultChecked>
-                Aggregator : 6 (Multi/Most-Server) *
-              </option>
-              <option value="CLUB">Aggregator : 7 (Latest/HD-server) *</option>
-              <option value="SMASH">Aggregator : 8 (Multi-Server)</option>
-              <option value="ONE">Aggregator : 9 (Multi-Server)</option>
-              <option value="ANY">Aggregator : 10 (Multi-Server)</option>
-              <option value="PRIME">
-                Aggregator : 11 (Multi/Most-Server) *{" "}
-              </option>
-              <option value="RGS">Aggregator : 12 (Indian-server)</option>
-              <option value="FRE">Aggregator : 13 (French-Server)</option>
-              <option value="RUS">Aggregator : 14 (Russian-Server)</option>
-              <option value="POR">Aggregator : 15 (Portuguese-Server)</option>
-              <option value="AUTO">Aggregator : 16 (Multi-Lang) * </option>
-              <option value="WEB">Aggregator : 17 (Ad-Free)</option>
-              <option value="ADF">Aggregator : 18 (Fast/Ad-Free) * </option>
+              <option value="SUP" defaultChecked>Server1</option>
+              <option value="AGG">Server2</option>
+              <option value="VID">Server3</option>
+              <option value="EMB">Server4</option>
+              <option value="CLUB">Server5</option>
+              <option value="SMASH">Server6</option>
             </select>
           )}
 
@@ -671,8 +655,8 @@ const Watch = () => {
             scrolling="no"
             src={
               type === "movie"
-                ? `${STREAM_URL_SUP}/embed/${id}`
-                : `${STREAM_URL_SUP}/embed/${id}/${season}/${episode}`
+                ? `${STREAM_URL_SUP}/embed/${type}/${id}?theme=00c1db`
+                : `${STREAM_URL_SUP}/embed/${type}/${id}/${season}/${episode}?theme=00c1db`
             }
             className={styles.iframe}
             allowFullScreen
