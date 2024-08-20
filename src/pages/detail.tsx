@@ -138,6 +138,14 @@ const DetailPage = () => {
             ? `| ${data?.name || data?.title || id}`
             : null}
         </title>
+    </>
+      <AdBanner
+       dataAdFormat="auto"
+       dataFullWidthResponsive={true}
+       dataAdSlot="7289977903"
+     />
+
+        
       </Head>
       <div className={styles.DetailPage}>
         <div className={styles.biggerPic}>
@@ -236,12 +244,7 @@ const DetailPage = () => {
           <MetaDetails id={id} type={type} data={data} />
         </div>
       </div>
-    </>
-      <AdBanner
-       dataAdFormat="auto"
-       dataFullWidthResponsive={true}
-       dataAdSlot="7289977903"
-     />
+
   );
 };
 
