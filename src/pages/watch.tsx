@@ -514,7 +514,6 @@ const Watch = () => {
           <select
             name="embedMode"
             id="embedMode"
-            className={styles.embedMode}
             value={embedMode}
             onChange={(e) => {
               setEmbedMode(JSON.parse(e.target.value));
