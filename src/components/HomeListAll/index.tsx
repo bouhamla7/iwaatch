@@ -395,9 +395,9 @@ const HomeListAll = () => {
 
 
  <AdBanner
-                dataAdFormat="auto"
+                dataAdFormat="autorelaxed"
                 dataFullWidthResponsive={true}
-                dataAdSlot="7289977903"
+                dataAdSlot="5192819875"
               />
 
 
