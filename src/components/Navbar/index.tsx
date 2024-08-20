@@ -109,7 +109,7 @@ const Navbar = ({ children }: any) => {
         )}
       </Link>
       <Link
-        href="/anime"
+        href="https://v.hopmarks.com/"
         aria-label="Anime"
         data-tooltip-id="tooltip"
         data-tooltip-content="Anime"
