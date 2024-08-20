@@ -404,6 +404,18 @@ const MetaDetails = ({ id, type, data }: any) => {
                 </>
               ) : null}
             </>
+
+
+<AdBanner
+  dataAdFormat="auto"
+  dataFullWidthResponsive={true}
+  dataAdSlot="7289977903"
+ />
+
+
+
+
+      
           )}
           {category === "overview" && type === "person" && (
             <>
@@ -739,10 +751,6 @@ const MetaDetails = ({ id, type, data }: any) => {
     </div>
   );
 };
-<AdBanner
-  dataAdFormat="auto"
-  dataFullWidthResponsive={true}
-  dataAdSlot="7289977903"
- />
+
 
 export default MetaDetails;
