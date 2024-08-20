@@ -293,7 +293,7 @@ const Watch = () => {
                 return [...prev, ...captions];
               });
               clearTimeout(autoEmbedMode);
-              setNonEmbedSourcesNotFound(true);
+              setNonEmbedSourcesNotFound(false);
             }
           } catch (error) {
             console.error(`Error fetching data for provider ${ele}:`, error);
@@ -321,7 +321,7 @@ const Watch = () => {
           setNonEmbedSourcesNotFound(true);
           autoEmbedMode = setTimeout(() => {
             setEmbedMode(true);
-          }, 10000);
+          }, 10);
         }
       };
 
