@@ -395,10 +395,10 @@ const HomeListAll = () => {
 
 
  <AdBanner
-                dataAdFormat="autorelaxed"
-                dataFullWidthResponsive={true}
-                dataAdSlot="5192819875"
-              />
+  dataAdFormat="auto"
+  dataFullWidthResponsive={true}
+  dataAdSlot="2884243974"
+ />
 
 
       
@@ -459,11 +459,6 @@ const HomeListAll = () => {
           />
         </div>
       </h1>
-      <AdBanner
-                dataAdFormat="auto"
-                dataFullWidthResponsive={true}
-                dataAdSlot="2884243974"
-              />
       <div className={styles.HomeListSection}>
         {popularKoreanDrama?.map((ele) => {
           return <MovieCardSmall data={ele} media_type="tv" />;
