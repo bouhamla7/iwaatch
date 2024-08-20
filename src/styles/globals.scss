@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Roboto+Slab&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100..700&family=Abel&family=Montserrat:wght@100..900&family=Ubuntu:wght@300;500;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 // :root{
 //   --ascent-color:gold;
@@ -70,7 +70,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "DM Serif Display", serif;
+  font-family: "Roboto Slab", serif;
   user-select: none;
   scroll-behavior: smooth;
   font-weight: 800;
@@ -114,7 +114,7 @@ a {
 }
 
 h1 {
-  font-family: "DM Serif Display", serif;
+  font-family: "Roboto Slab", serif;
   color: #ffd700;
   font-size: 1.7rem;
 }
@@ -204,7 +204,7 @@ input {
 // subtitle
 .art-subtitle-line {
   font-size: var(--SFSize) !important;
-  font-family: "DM Serif Display", serif;
+  font-family: "Roboto Slab", serif;
   color: var(--SFColor) !important;
   opacity: var(--SOpacity) !important;
   background: var(--SBColor) !important;
