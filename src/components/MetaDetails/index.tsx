@@ -8,7 +8,7 @@ import { FaPlay, FaStar } from "react-icons/fa";
 import Skeleton from "react-loading-skeleton";
 import ReactPaginate from "react-paginate";
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
-
+import AdBanner from "@/components/AdBanner";
 // react-lazy-load-image-component
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
@@ -739,5 +739,10 @@ const MetaDetails = ({ id, type, data }: any) => {
     </div>
   );
 };
+<AdBanner
+  dataAdFormat="auto"
+  dataFullWidthResponsive={true}
+  dataAdSlot="7289977903"
+ />
 
 export default MetaDetails;
