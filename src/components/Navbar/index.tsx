@@ -158,24 +158,6 @@ const Navbar = ({ children }: any) => {
           <IoLibraryOutline className={styles.inactive} />
         )}
       </Link>
-      <Link
-        href="/settings"
-        aria-label="Settings"
-        data-tooltip-id="tooltip"
-        data-tooltip-content="Settings"
-      >
-        {pathname === "/settings" ||
-        pathname === "/downloads" ||
-        pathname === "/donation" ||
-        pathname === "/wallets" ||
-        pathname === "/disclaimer" ||
-        pathname === "/signup" ||
-        pathname === "/login" ? (
-          <MdSettings className={styles.active} />
-        ) : (
-          <MdOutlineSettings className={styles.inactive} />
-        )}
-      </Link>
     </div>
   );
 };
