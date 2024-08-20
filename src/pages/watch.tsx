@@ -474,7 +474,7 @@ const Watch = () => {
               value={source}
               onChange={(e) => {
                 setSource(e.target.value);
-                localStorage.setItem("RiveStreamLatestAgg", e.target.value);
+                localStorage.setItem("RiveStreamLatestPro", e.target.value);
               }}
             >
               <option value="PRO">Server1</option>
