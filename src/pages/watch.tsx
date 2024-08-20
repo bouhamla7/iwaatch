@@ -222,7 +222,7 @@ const Watch = () => {
     let autoEmbedMode: NodeJS.Timeout;
     if (embedMode === false && id !== undefined && id !== null) {
       const fetch = async () => {
-        setNonEmbedSourcesNotFound(true);
+        setNonEmbedSourcesNotFound(false);
         const providers: any = await axiosFetch({
           requestID: `VideoProviderServices`,
         });
@@ -293,7 +293,7 @@ const Watch = () => {
                 return [...prev, ...captions];
               });
               clearTimeout(autoEmbedMode);
-              setNonEmbedSourcesNotFound(false);
+              setNonEmbedSourcesNotFound(true);
             }
           } catch (error) {
             console.error(`Error fetching data for provider ${ele}:`, error);
