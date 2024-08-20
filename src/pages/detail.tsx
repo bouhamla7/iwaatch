@@ -23,6 +23,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/Utils/firebase";
 import { toast } from "sonner";
 import Head from "next/head";
+import AdBanner from "@/components/AdBanner";
 
 const DetailPage = () => {
   const params = useSearchParams();
@@ -238,5 +239,9 @@ const DetailPage = () => {
     </>
   );
 };
-
+  <AdBanner
+       dataAdFormat="auto"
+       dataFullWidthResponsive={true}
+       dataAdSlot="7289977903"
+     />
 export default DetailPage;
