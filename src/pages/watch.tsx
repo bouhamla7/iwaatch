@@ -479,10 +479,10 @@ const Watch = () => {
             >
               <option value="AGG">Aggregator : 1 (Multi-Server)</option>
               <option value="VID">Aggregator : 2 (VidsrcMe)</option>
-              <option value="PRO"defaultChecked>Aggregator : 3 (Best-Server) * </option>
+              <option value="PRO">Aggregator : 3 (Best-Server) * </option>
               <option value="EMB">Aggregator : 4 (VidSrcTo)</option>
               <option value="MULTI">Aggregator : 5 (Fast-Server)</option>
-              <option value="SUP">
+              <option value="SUP" defaultChecked>
                 Aggregator : 6 (Multi/Most-Server) *
               </option>
               <option value="CLUB">Aggregator : 7 (Latest/HD-server) *</option>
@@ -671,8 +671,8 @@ const Watch = () => {
             scrolling="no"
             src={
               type === "movie"
-                ? `${STREAM_URL_SUP}/?video_id=${id}&tmdb=1`
-                : `${STREAM_URL_SUP}/?video_id=${id}&tmdb=1&s=${season}&e=${episode}`
+                ? `${STREAM_URL_SUP}/embed/${id}`
+                : `${STREAM_URL_SUP}/embed/${id}/${season}/${episode}`
             }
             className={styles.iframe}
             allowFullScreen
