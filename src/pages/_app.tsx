@@ -89,7 +89,15 @@ export default function App({ Component, pageProps }: any) {
           content="https://rivestream.live/images/MetaImage.jpg"
         />
 <script defer src="https://cloud.umami.is/script.js" data-website-id="ed6f84c1-0813-4741-89c5-03108615fecf"></script>
+
       </Head>
+
+
+      {userHasAdblock ? <Ads /> : null}
+
+
+
+      
       <Layout>
         <Toaster
           toastOptions={{
@@ -108,9 +116,7 @@ export default function App({ Component, pageProps }: any) {
         <Component {...pageProps} />
       </Layout>
       <GoogleAnalytics gaId={GTag} />
-       {
-            userHasAdblock? <Ads /> : ""
-          }
+    
    
     </>
   );
