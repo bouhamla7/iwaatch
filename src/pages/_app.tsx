@@ -93,7 +93,6 @@ export default function App({ Component, pageProps }: any) {
       </Head>
 
 
-      {userHasAdblock ? <Ads /> : null}
 
 
 
@@ -113,6 +112,7 @@ export default function App({ Component, pageProps }: any) {
           position="top-center"
         />
         <Tooltip id="tooltip" className="react-tooltip" />
+        {userHasAdblock ? <Ads /> : null}
         <Component {...pageProps} />
       </Layout>
       <GoogleAnalytics gaId={GTag} />
