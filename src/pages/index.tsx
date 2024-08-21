@@ -13,11 +13,9 @@ import { FaDiscord, FaDonate } from "react-icons/fa";
 import useDeviceSize from "@/Utils/useDeviceSize";
 // discord Invitation
 
-export default function Home() {
-  // discord Invitation
+export default function Template({ children }: { children: React.ReactNode }) {
 const adbDetector = new AdblockDetector() // call 
 const userHasAdblock = adbDetector.detect() // detect adblock it return ture or false
-  // discord Invitation
   return (
     <div className={styles.Home}>
       <HomeHero />
