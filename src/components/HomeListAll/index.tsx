@@ -440,6 +440,19 @@ const HomeListAll = () => {
             <Skeleton className={styles.loading} key={i} />
           ))}
       </div>
+
+
+
+ <AdBanner
+  dataAdFormat="auto"
+  dataFullWidthResponsive={true}
+  dataAdSlot="9729886794"
+ />
+
+
+
+
+      
       <h1 ref={popularKoreanDramaRef}>
         Popular K-Dramas
         <div>
