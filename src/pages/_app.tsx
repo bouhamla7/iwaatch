@@ -15,6 +15,16 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import AdSense from "@/components/AdSense";
 import { AdblockDetector } from 'adblock-detector';
 import { Ads } from "@/components/Ads"
+
+export default function App({ Cif you using the Page route you need use following example:omponent, pageProps }) {
+  const adbDetector = new AdblockDetector() // call 
+  const userHasAdblock = adbDetector.detect() // detect adblock it return ture or false
+
+
+
+
+
+
 export default function App({ Component, pageProps }: any) {
   const [isLoading, setIsLoading] = useState(false);
   NProgress.configure({ showSpinner: false });
@@ -22,22 +32,9 @@ export default function App({ Component, pageProps }: any) {
   
 
 
-export default function App({ Cif you using the Page route you need use following example:omponent, pageProps }) {
-    
-  const adbDetector = new AdblockDetector() // call 
 
-  const userHasAdblock = adbDetector.detect() // detect adblock it return ture or false
 
-  return ( 
-      <>
-          {
-            userHasAdblock? <Ads /> : ""
-          }
-          <Component {...pageProps} />  
-      </> 
-   )
-}
-
+ 
 
 
 
