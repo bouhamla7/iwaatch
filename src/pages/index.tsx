@@ -14,7 +14,28 @@ import useDeviceSize from "@/Utils/useDeviceSize";
 
 export default function Home() {
   // discord Invitation
-
+  const { isMobile, isTablet, isDesktop, isTV } = useDeviceSize();
+  useEffect(() => {
+    (isDesktop || isTV) &&
+      (toast.info(
+        <a href="/donation" className="discordInvitation">
+          <FaDonate />
+          Donate to the Rive community
+          <FaDonate />
+        </a>,
+      ),
+      toast.info(
+        <a
+          target="_blank"
+          href="https://discord.gg/6xJmJja8fV"
+          className="discordInvitation"
+        >
+          <FaDiscord />
+          Join Rive community on Discord
+          <FaDiscord />
+        </a>,
+      ));
+  }, [isMobile, isTablet, isDesktop, isTV]);
   // discord Invitation
   return (
     <div className={styles.Home}>
