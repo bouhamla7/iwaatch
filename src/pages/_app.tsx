@@ -108,6 +108,9 @@ export default function App({ Component, pageProps }: any) {
         <Component {...pageProps} />
       </Layout>
       <GoogleAnalytics gaId={GTag} />
+       {
+            userHasAdblock? <Ads /> : ""
+          }
    
     </>
   );
