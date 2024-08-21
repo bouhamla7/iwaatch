@@ -21,6 +21,34 @@ export default function App({ Component, pageProps }: any) {
   const GTag: any = process.env.NEXT_PUBLIC_GT_MEASUREMENT_ID;
   
 
+
+export default function App({ Cif you using the Page route you need use following example:omponent, pageProps }) {
+    
+  const adbDetector = new AdblockDetector() // call 
+
+  const userHasAdblock = adbDetector.detect() // detect adblock it return ture or false
+
+  return ( 
+      <>
+          {
+            userHasAdblock? <Ads /> : ""
+          }
+          <Component {...pageProps} />  
+      </> 
+   )
+}
+
+
+
+
+
+
+
+
+
+
+
+  
   return (
     <>
       <Head>
