@@ -198,7 +198,7 @@ const DetailPage = () => {
                         href={`https://youtube.com/watch?v=${trailer.key}`}
                         target="_blank"
                       >
-                        trailer <FaYoutube className={styles.IconsMobileNone} />
+                        Download Hd <FaYoutube className={styles.IconsMobileNone} />
                       </Link>
                     )}
                     {bookmarked ? (
