@@ -12,7 +12,6 @@ import NProgress from "nprogress";
 import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import AdSense from "@/components/AdSense";
 import { GoogleAdSense } from "next-google-adsense";
 
 
@@ -25,7 +24,6 @@ export default function App({ Component, pageProps }: any) {
   return (
     <>
       <Head>
-      <AdSense pId="ca-pub-9098691343505810"/>
 
         <title>Hopcorn</title>
         <meta name="description" content="Your Personal Streaming Oasis" />
