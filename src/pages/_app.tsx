@@ -24,7 +24,6 @@ export default function App({ Component, pageProps }: any) {
   return (
     <>
       <Head>
-      <GoogleAdSense />
         <title>Hopcorn</title>
         <meta name="description" content="Your Personal Streaming Oasis" />
         <meta
@@ -103,7 +102,7 @@ export default function App({ Component, pageProps }: any) {
           position="top-center"
         />
         <Tooltip id="tooltip" className="react-tooltip" />
-
+        <GoogleAdSense publisherId="pub-9098691343505810" />
         <Component {...pageProps} />
       </Layout>
       <GoogleAnalytics gaId={GTag} />
