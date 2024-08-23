@@ -397,16 +397,12 @@ const HomeListAll = () => {
       </div>
 
 
-       <ins
-      className="adsbygoogle"
-      style={{ display: "block" }}
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-      data-ad-client="ca-pub-9098691343505810"
-      data-ad-slot="2884243974"
-    />
 
-
+       <AdUnit
+        publisherId="pub-9098691343505810"  
+        slotId="2884243974"                 
+        layout="display"                    {
+        />
 
 
 
@@ -449,15 +445,11 @@ const HomeListAll = () => {
 
 
 
-       <ins
-      className="adsbygoogle"
-      style={{ display: "block" }}
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-      data-ad-client="ca-pub-9098691343505810"
-      data-ad-slot="7289977903"
-    />
-
+ <AdUnit
+        publisherId="pub-9098691343505810"  
+        slotId="7289977903"                 
+        layout="display"                    {
+        />
       
       <h1 ref={popularKoreanDramaRef}>
         Popular K-Dramas
