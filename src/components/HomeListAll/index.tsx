@@ -7,7 +7,6 @@ import MovieCardSmall from "../MovieCardSmall";
 import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
-import { AdUnit } from "next-google-adsense";
 
 const externalImageLoader = ({ src }: { src: string }) => 
   `${process.env.NEXT_PUBLIC_TMBD_IMAGE_URL}${src}`;
@@ -398,14 +397,6 @@ const HomeListAll = () => {
 
 
 
-       <AdUnit
-        publisherId="pub-9098691343505810"  
-        slotId="2884243974"                 
-        layout="display"                    
-        />
-
-
-
 
 
       
@@ -444,12 +435,6 @@ const HomeListAll = () => {
       </div>
 
 
-
- <AdUnit
-        publisherId="pub-9098691343505810"  
-        slotId="7289977903"                 
-        layout="display"                    
-        />
       
       <h1 ref={popularKoreanDramaRef}>
         Popular K-Dramas
