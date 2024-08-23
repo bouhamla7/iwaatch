@@ -24,6 +24,7 @@ export default function App({ Component, pageProps }: any) {
   return (
     <>
       <Head>
+      <GoogleAdSense publisherId="pub-9098691343505810" />
 
         <title>Hopcorn</title>
         <meta name="description" content="Your Personal Streaming Oasis" />
