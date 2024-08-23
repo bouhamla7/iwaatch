@@ -8,7 +8,7 @@ import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
 
-const externalImageLoader = ({ src }: { src: string }) =>
+const externalImageLoader = ({ src }: { src: string }) => 
   `${process.env.NEXT_PUBLIC_TMBD_IMAGE_URL}${src}`;
 
 function shuffle(array: any) {
