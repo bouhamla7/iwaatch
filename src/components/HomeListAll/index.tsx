@@ -8,6 +8,7 @@ import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
 import { AdUnit } from "next-google-adsense";
+import { GoogleAdSense } from "next-google-adsense";
 
 const externalImageLoader = ({ src }: { src: string }) => 
   `${process.env.NEXT_PUBLIC_TMBD_IMAGE_URL}${src}`;
@@ -395,6 +396,22 @@ const HomeListAll = () => {
             <Skeleton className={styles.loading} key={i} />
           ))}
       </div>
+
+
+       <ins
+      className="adsbygoogle"
+      style={{ display: "block" }}
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+      data-ad-client="ca-pub-9098691343505810"
+      data-ad-slot="2884243974"
+    />
+
+
+
+
+
+
 
       
       <h1 ref={latestTvRef}>
