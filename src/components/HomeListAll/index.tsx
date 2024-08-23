@@ -437,7 +437,6 @@ const HomeListAll = () => {
         publisherId="pub-9098691343505810"  
         slotId="7289977903"                 
         layout="display" 
-        customLayout={InFeedAd}
         />
 
       
