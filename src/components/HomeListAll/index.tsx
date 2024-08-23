@@ -401,7 +401,7 @@ const HomeListAll = () => {
        <AdUnit
         publisherId="pub-9098691343505810"  
         slotId="2884243974"                 
-        layout="display"                    {
+        layout="display"                    
         />
 
 
@@ -448,7 +448,7 @@ const HomeListAll = () => {
  <AdUnit
         publisherId="pub-9098691343505810"  
         slotId="7289977903"                 
-        layout="display"                    {
+        layout="display"                    
         />
       
       <h1 ref={popularKoreanDramaRef}>
