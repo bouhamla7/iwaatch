@@ -397,6 +397,12 @@ const HomeListAll = () => {
       </div>
 
 
+       <AdUnit
+        publisherId="pub-9098691343505810"
+        slotId="2884243974"                
+        layout="display"                  
+        />
+
 
 
       
