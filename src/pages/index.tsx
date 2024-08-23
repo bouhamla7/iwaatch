@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { FaDiscord, FaDonate } from "react-icons/fa";
 import useDeviceSize from "@/Utils/useDeviceSize";
 // discord Invitation
-
+ 
 export default function Home() {
   // discord Invitation
  
