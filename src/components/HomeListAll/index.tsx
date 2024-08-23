@@ -361,12 +361,6 @@ const HomeListAll = () => {
       ) : null}
 
 
-       <AdUnit
-        publisherId="pub-9098691343505810"  {/* 👈 16 digits */}
-        slotId="2884243974"                 {/* 👈 10 digits */}
-        layout="display"                    {/* See the API Reference for more options */}
-        />
-
       
       <h1 ref={latestMovieRef}>
         Latest Movies
