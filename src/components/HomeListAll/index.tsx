@@ -8,7 +8,6 @@ import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
 import { AdUnit } from "next-google-adsense";
-import { GoogleAdSense } from "next-google-adsense";
 
 const externalImageLoader = ({ src }: { src: string }) => 
   `${process.env.NEXT_PUBLIC_TMBD_IMAGE_URL}${src}`;
