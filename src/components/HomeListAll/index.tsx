@@ -7,7 +7,6 @@ import MovieCardSmall from "../MovieCardSmall";
 import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
-import AdBanner from "@/components/AdBanner";
 
 const externalImageLoader = ({ src }: { src: string }) =>
   `${process.env.NEXT_PUBLIC_TMBD_IMAGE_URL}${src}`;
@@ -361,11 +360,6 @@ const HomeListAll = () => {
       ) : null}
 
 
- <AdBanner
-  dataAdFormat="auto"
-  dataFullWidthResponsive={true}
-  dataAdSlot="7289977903"
- />
 
 
       
@@ -441,13 +435,6 @@ const HomeListAll = () => {
           ))}
       </div>
 
-
-
- <AdBanner
-  dataAdFormat="auto"
-  dataFullWidthResponsive={true}
-  dataAdSlot="9729886794"
- />
 
 
 
