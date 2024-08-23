@@ -20,8 +20,7 @@ export default function Home() {
     <div className={styles.Home}>
       <HomeHero />
       <HomeListAll />
-      <GoogleAdSense publisherId="ca-pub-9098691343505810" /> {/* 👈 16 digits */}
-
+      <GoogleAdSense />
     </div>
   );
 }
