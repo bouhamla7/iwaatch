@@ -9,6 +9,8 @@ import Filter from "../Filter";
 import Skeleton from "react-loading-skeleton";
 import NProgress from "nprogress";
 import { toast } from "sonner";
+import { AdUnit } from "next-google-adsense";
+
 // import MoviePoster from '@/components/MoviePoster';
 
 function capitalizeFirstLetter(string: string) {
@@ -147,6 +149,17 @@ const CategorywisePage = ({ categoryDiv, categoryPage = null }: any) => {
           (categoryPage === "anime" && "Anime") ||
           (categoryPage === "kdrama" && "K-Drama")}
       </h1>
+
+
+
+       <AdUnit
+        publisherId="pub-9098691343505810" 
+        slotId="3028978587"                 
+        layout="display"                    
+        />
+
+
+      
       <div className={styles.category}>
         <p
           className={`${category === "latest" ? styles.active : styles.inactive}`}
