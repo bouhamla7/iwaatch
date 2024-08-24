@@ -4,6 +4,7 @@ import styles from "@/styles/Home.module.scss";
 import HomeHero from "@/components/HomeHero";
 import HomeListAll from "@/components/HomeListAll";
 import { GoogleAdSense } from "next-google-adsense";
+import AdSense from "@/components/AdSense";
 
 // discord Invitation
 import { useEffect } from "react";
@@ -42,6 +43,8 @@ export default function Home() {
       <HomeHero />
       <HomeListAll />
       <GoogleAdSense publisherId="pub-9098691343505810" />
+      <AdSense pId="ca-pub-9098691343505810"/>
+
     </div>
   );
 }
