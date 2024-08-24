@@ -11,6 +11,7 @@ import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 // react-lazy-load-image-component
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
+import AdBanner from "@/components/AdBanner";
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -256,6 +257,15 @@ const MetaDetails = ({ id, type, data }: any) => {
                           />
                         </div>
                       </Link>
+
+  <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="3028978587"
+              />
+
+
+                      
                       <div className={styles.details}>
                         <h4>
                           {`EP ${ele.episode_number}`}
