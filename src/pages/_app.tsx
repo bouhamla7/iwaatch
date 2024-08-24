@@ -12,8 +12,6 @@ import NProgress from "nprogress";
 import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { GoogleAdSense } from "next-google-adsense";
-import AdSense from "@/components/AdSense";
 
 
 export default function App({ Component, pageProps }: any) {
@@ -25,6 +23,12 @@ export default function App({ Component, pageProps }: any) {
   return (
     <>
       <Head>
+        <Script
+    async
+    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}
+    strategy="lazyOnload"
+    crossOrigin="anonymous"
+   ></Script>
         <title>Hopcorn</title>
         <meta name="description" content="Your Personal Streaming Oasis" />
         <meta
@@ -102,7 +106,6 @@ export default function App({ Component, pageProps }: any) {
           position="top-center"
         />
         <Tooltip id="tooltip" className="react-tooltip" />
-        <GoogleAdSense publisherId="pub-9098691343505810" />
         <Component {...pageProps} />
       </Layout>
       <GoogleAnalytics gaId={GTag} />
