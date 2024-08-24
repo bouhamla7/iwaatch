@@ -23,21 +23,12 @@ export default function App({ Component, pageProps }: any) {
   return (
     <>
       <Head>
-        <Script
-    async
-    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9098691343505810`}
-    strategy="lazyOnload"
-    crossOrigin="anonymous"
-   ></Script>
+
         <title>Hopcorn</title>
         <meta name="description" content="Your Personal Streaming Oasis" />
         <meta
           name="keywords"
           content="movie, streaming, tv, rive, stream. movie app, tv shows, movie download"
-        />
-        <meta
-          name="google-site-verification"
-          content="J0QUeScQSxufPJqGTaszgnI35U2jN98vVWSOkVR4HrI"
         />
         <link rel="manifest" href="manifest.json" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
