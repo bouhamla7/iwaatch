@@ -315,7 +315,6 @@ const MetaDetails = ({ id, type, data }: any) => {
               {data?.tagline ? (
                 <h4>
                   <q>{data?.tagline}</q>
-                </h4>
 
 
 <AdBanner
@@ -327,7 +326,8 @@ const MetaDetails = ({ id, type, data }: any) => {
 
 
 
-              
+                  
+                </h4>       
               ) : null}
               <p dangerouslySetInnerHTML={{ __html: data?.overview }}></p>
               {release_date.getDate() ? (
