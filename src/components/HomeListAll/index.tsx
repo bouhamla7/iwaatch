@@ -400,7 +400,7 @@ const HomeListAll = () => {
 <ResponsiveAdUnit
         publisherId="pub-9098691343505810"
         slotId="3028978587"
-        type="after-home-hero"/>
+        type="end-of-homepage"/>
 
 
       
