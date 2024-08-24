@@ -9,8 +9,7 @@ import Filter from "../Filter";
 import Skeleton from "react-loading-skeleton";
 import NProgress from "nprogress";
 import { toast } from "sonner";
-import { AdUnit } from "next-google-adsense";
-
+import AdBanner from "@/components/AdBanner";
 // import MoviePoster from '@/components/MoviePoster';
 
 function capitalizeFirstLetter(string: string) {
@@ -151,12 +150,11 @@ const CategorywisePage = ({ categoryDiv, categoryPage = null }: any) => {
       </h1>
 
 
-
-       <AdUnit
-        publisherId="pub-9098691343505810" 
-        slotId="3028978587"                 
-        layout="display"                    
-        />
+        <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="3028978587"
+              />
 
 
       
