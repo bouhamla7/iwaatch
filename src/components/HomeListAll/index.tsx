@@ -8,6 +8,7 @@ import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
 import { ResponsiveAdUnit } from "nextjs-google-adsense";
+import AdBanner from "@/components/AdBanner";
 
 const externalImageLoader = ({ src }: { src: string }) => 
   `${process.env.NEXT_PUBLIC_TMBD_IMAGE_URL}${src}`;
@@ -397,11 +398,11 @@ const HomeListAll = () => {
       </div>
 
 
-<ResponsiveAdUnit
-        publisherId="pub-9098691343505810"
-        slotId="3028978587"
-        type="end-of-homepage"/>
-
+             <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="3028978587"
+              />
 
       
       <h1 ref={latestTvRef}>
