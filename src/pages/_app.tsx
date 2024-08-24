@@ -12,6 +12,7 @@ import NProgress from "nprogress";
 import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAdSense } from "next-google-adsense";
 
 
 export default function App({ Component, pageProps }: any) {
@@ -80,6 +81,7 @@ export default function App({ Component, pageProps }: any) {
           name="twitter:image"
           content="https://rivestream.live/images/MetaImage.jpg"
         />
+        <GoogleAdSense publisherId="pub-9098691343505810" />
       </Head> 
       <Layout>
         <Toaster
