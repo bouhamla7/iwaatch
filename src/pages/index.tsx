@@ -38,15 +38,13 @@ export default function Home() {
   }, [isMobile, isTablet, isDesktop, isTV]);
   // discord Invitation
   return (
+    <Head>
+    </Head>
+
     <div className={styles.Home}>
       <HomeHero />
       <HomeListAll />
-        <Script
-    async
-    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9098691343505810`}
-    strategy="lazyOnload"
-    crossOrigin="anonymous"
-   ></Script>
+
     </div>
   );
 }
