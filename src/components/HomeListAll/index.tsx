@@ -7,6 +7,7 @@ import MovieCardSmall from "../MovieCardSmall";
 import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
+import AdBanner from "@/components/AdBanner";
 
 
 const externalImageLoader = ({ src }: { src: string }) => 
@@ -340,7 +341,16 @@ const HomeListAll = () => {
                 data-tooltip-content="Swipe Right"
               />
             </div>
-          </h1>          
+          </h1>  
+
+
+  <AdBanner
+                dataAdFormat="autorelaxed"
+                dataFullWidthResponsive={true}
+                dataAdSlot="5192819875"
+              />
+
+          
           <div
             className={styles.HomeListSection}
             data-tooltip-id="tooltip"
