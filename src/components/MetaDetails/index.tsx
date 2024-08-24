@@ -256,16 +256,7 @@ const MetaDetails = ({ id, type, data }: any) => {
                             // style={!imageLoading ? { opacity: 1 } : { opacity: 0 }}
                           />
                         </div>
-                      </Link>
-
-  <AdBanner
-                dataAdFormat="auto"
-                dataFullWidthResponsive={true}
-                dataAdSlot="3028978587"
-              />
-
-
-                      
+                      </Link> 
                       <div className={styles.details}>
                         <h4>
                           {`EP ${ele.episode_number}`}
@@ -409,6 +400,23 @@ const MetaDetails = ({ id, type, data }: any) => {
               {production_companies?.length > 0 ? (
                 <>
                   <h3>Production Companies</h3>
+
+
+
+
+  <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="3028978587"
+              />
+
+
+
+
+
+
+
+                  
                   <p>{production_companies?.join(", ")}</p>
                 </>     
               ) : null}
