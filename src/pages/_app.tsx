@@ -12,7 +12,7 @@ import NProgress from "nprogress";
 import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-
+import AdBanner from "@/components/AdBanner";
 
 export default function App({ Component, pageProps }: any) {
   const [isLoading, setIsLoading] = useState(false);
@@ -81,6 +81,15 @@ export default function App({ Component, pageProps }: any) {
           content="https://rivestream.live/images/MetaImage.jpg"
         />
       </Head> 
+
+
+    <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="3028978587"
+              />
+
+      
       <Layout>
         <Toaster
           toastOptions={{
