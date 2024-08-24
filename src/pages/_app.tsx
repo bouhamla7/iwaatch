@@ -13,6 +13,7 @@ import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { GoogleAdSense } from "next-google-adsense";
+import AdSense from "@/components/AdSense";
 
 
 export default function App({ Component, pageProps }: any) {
@@ -84,8 +85,7 @@ export default function App({ Component, pageProps }: any) {
           name="twitter:image"
           content="https://rivestream.live/images/MetaImage.jpg"
         />
-<script defer src="https://cloud.umami.is/script.js" data-website-id="ed6f84c1-0813-4741-89c5-03108615fecf"></script>
-
+      <AdSense pId="ca-pub-9098691343505810"/>
       </Head> 
       <Layout>
         <Toaster
