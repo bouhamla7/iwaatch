@@ -4,7 +4,7 @@ import styles from "@/styles/Home.module.scss";
 import HomeHero from "@/components/HomeHero";
 import HomeListAll from "@/components/HomeListAll";
 import { GoogleAdSense } from "next-google-adsense";
-import { AdUnit } from "next-google-adsense";
+import AdBanner from "@/components/AdBanner";
 
 
 // discord Invitation
@@ -44,11 +44,11 @@ export default function Home() {
       <GoogleAdSense publisherId="pub-9098691343505810" />
       <HomeHero />
 
-       <AdUnit
-        publisherId="pub-9098691343505810" 
-        slotId="3028978587"                 
-        layout="display"                    
-        />
+    <AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="3028978587"
+              />
 
       
       <HomeListAll />
