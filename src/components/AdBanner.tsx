@@ -1,26 +1,37 @@
 "use client";
 
-import { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-const AdBanner = (props) => {
+type AdBannerTypes = {
+  dataAdSlot: string;
+  dataAdFormat: string;
+  dataFullWidthResponsive: boolean;
+};
+
+const AdBanner = ({
+  dataAdSlot,
+  dataAdFormat,
+  dataFullWidthResponsive,
+}: AdBannerTypes) => {
   useEffect(() => {
     try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (err) {
-      console.log(err);
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+        {}
+      );
+    } catch (error: any) {
+      console.log(error.message);
     }
   }, []);
 
   return (
     <ins
-      className="adsbygoogle adbanner-customize"
-      style={{
-        display: 'block',
-        overflow: 'hidden',
-      }}
-      data-ad-client=ca-pub-9098691343505810
-      {...props}
-    />
+      className="adsbygoogle"
+      style={{ display: "block" }}
+      data-ad-client="ca-pub-9098691343505810"
+      data-ad-slot={dataAdSlot}
+      data-ad-format={dataAdFormat}
+      data-full-width-responsive={dataFullWidthResponsive.toString()}
+    ></ins>
   );
 };
 
