@@ -7,7 +7,6 @@ import MovieCardSmall from "../MovieCardSmall";
 import { getContinueWatching } from "@/Utils/continueWatching";
 import { useInView } from "react-intersection-observer";
 import { MdChevronLeft, MdChevronRight, MdLink } from "react-icons/md";
-import { ResponsiveAdUnit } from "nextjs-google-adsense";
 import AdBanner from "@/components/AdBanner";
 
 const externalImageLoader = ({ src }: { src: string }) => 
