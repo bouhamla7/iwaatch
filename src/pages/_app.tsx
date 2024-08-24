@@ -12,7 +12,6 @@ import NProgress from "nprogress";
 import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { GoogleAdSense } from "next-google-adsense";
 
 
 export default function App({ Component, pageProps }: any) {
@@ -102,7 +101,6 @@ export default function App({ Component, pageProps }: any) {
           position="top-center"
         />
         <Tooltip id="tooltip" className="react-tooltip" />
-        <GoogleAdSense publisherId="pub-9098691343505810" />
         <Component {...pageProps} />
       </Layout>
       <GoogleAnalytics gaId={GTag} />
