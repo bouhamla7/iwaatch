@@ -12,7 +12,6 @@ import NProgress from "nprogress";
 import "@/styles/nprogress.scss";
 import "react-loading-skeleton/dist/skeleton.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import AdBanner from "@/components/AdBanner";
 
 export default function App({ Component, pageProps }: any) {
   const [isLoading, setIsLoading] = useState(false);
@@ -83,11 +82,19 @@ export default function App({ Component, pageProps }: any) {
       </Head> 
 
 
-    <AdBanner
-                dataAdFormat="auto"
-                dataFullWidthResponsive={true}
-                dataAdSlot="3028978587"
-              />
+<script type='text/javascript'>
+
+$(document).ready(function() {$('img#closed').click(function(){$('#bl_banner').hide(90);});});
+
+</script>
+
+<div id='fixedban' style='width:100%;margin:auto;text-align:center;float:none;overflow:hidden;display:scroll;position:fixed;bottom:0;z-index:999;-webkit-transform:translateZ(0);'>
+
+<div>
+
+<a id='close-fixedban' onclick='document.getElementById("fixedban").style.display = "none";' style='cursor:pointer;'><img alt='close' src=' https://www.rakeshtechsolutions.com/assets/img/btn_close.gif ' title='close button' style='vertical-align:middle;'/></a></div>
+
+<div style='text-align:center;display:block;max-width:728px;height:auto;overflow:hidden;margin:auto'>
 
       
       <Layout>
