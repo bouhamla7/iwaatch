@@ -38,6 +38,8 @@ export default function Home() {
   }, [isMobile, isTablet, isDesktop, isTV]);
   // discord Invitation
   return (
+     <>
+
     <Head>
     </Head>
 
