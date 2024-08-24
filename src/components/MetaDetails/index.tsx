@@ -316,6 +316,18 @@ const MetaDetails = ({ id, type, data }: any) => {
                 <h4>
                   <q>{data?.tagline}</q>
                 </h4>
+
+
+<AdBanner
+                dataAdFormat="auto"
+                dataFullWidthResponsive={true}
+                dataAdSlot="3028978587"
+              />
+
+
+
+
+              
               ) : null}
               <p dangerouslySetInnerHTML={{ __html: data?.overview }}></p>
               {release_date.getDate() ? (
@@ -400,22 +412,6 @@ const MetaDetails = ({ id, type, data }: any) => {
               {production_companies?.length > 0 ? (
                 <>
                   <h3>Production Companies</h3>
-
-
-
-
-  <AdBanner
-                dataAdFormat="auto"
-                dataFullWidthResponsive={true}
-                dataAdSlot="3028978587"
-              />
-
-
-
-
-
-
-
                   
                   <p>{production_companies?.join(", ")}</p>
                 </>     
