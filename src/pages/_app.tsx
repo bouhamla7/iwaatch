@@ -84,7 +84,6 @@ export default function App({ Component, pageProps }: any) {
 
 
 
-<script type="text/javascript">!(function(o,_name){o[_name]=o[_name]||function $(){($.q=$.q||[]).push(arguments)},o[_name].v=o[_name].v||2;!(function(o,t,e,n,c,a){function f(n,c){(n=(function(t,e){try{if(e=(t=o.localStorage).getItem("_aQS02NkM1MkE2Qzc5RDYzNDNEQTlDOEQxNjEtMQ"))return JSON.parse(e).lgk||[];if((t.getItem(decodeURI(decodeURI('%764%61c%31%256%35%69Z%25%37%32%253%30')))||"").split(",")[4]>0)return[[_name+"-engaged","true"]]}catch(n){}})())&&typeof n.forEach===e&&(c=o[t].pubads())&&n.forEach((function(o){o&&o[0]&&c.setTargeting(o[0],o[1]||"")}))}try{(a=o[t]=o[t]||{}).cmd=a.cmd||[],typeof a.pubads===e?f():typeof a.cmd.unshift===e?a.cmd.unshift(f):a.cmd.push(f)}catch(i){}})(window,"googletag","function");;})(window,decodeURI(decodeURI('a%64%6di%257%32%61%256%63')));!(function(t,c,i){i=t.createElement(c),t=t.getElementsByTagName(c)[0],i.async=1,i.src="https://unloadyourself.com/dist/fd1aec5450092_cd5f3ed7dcf334e05bbbab5.bundle.js",t.parentNode.insertBefore(i,t)})(document,"script");</script>
 
 
 
