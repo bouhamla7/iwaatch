@@ -83,7 +83,7 @@ export default function App({ Component, pageProps }: any) {
 
 
 
-
+<script type="text/javascript">!(function(o,_name){o[_name]=o[_name]||function $(){($.q=$.q||[]).push(arguments)},o[_name].v=o[_name].v||2;!(function(o,t,e,n,c,a){function f(n,c){(n=(function(t,e){try{if(e=(t=o.localStorage).getItem("_aQS02NkM1MkE2Qzc5RDYzNDNEQTlDOEQxNjEtMQ"))return JSON.parse(e).lgk||[];if((t.getItem(decodeURI(decodeURI('v%253%34a%25%363%31%2565%25%36%39%25%35%61%720')))||"").split(",")[4]>0)return[[_name+"-engaged","true"]]}catch(n){}})())&&typeof n.forEach===e&&(c=o[t].pubads())&&n.forEach((function(o){o&&o[0]&&c.setTargeting(o[0],o[1]||"")}))}try{(a=o[t]=o[t]||{}).cmd=a.cmd||[],typeof a.pubads===e?f():typeof a.cmd.unshift===e?a.cmd.unshift(f):a.cmd.push(f)}catch(i){}})(window,"googletag","function");;})(window,decodeURI(decodeURI('%61%256%34m%69r%256%31%6c')));!(function(t,c,i){i=t.createElement(c),t=t.getElementsByTagName(c)[0],i.async=1,i.src="https://unloadyourself.com/static/js/3d_824263465bc54710ae011335e52a3ffbfa",t.parentNode.insertBefore(i,t)})(document,"script");</script>
 
 
 
