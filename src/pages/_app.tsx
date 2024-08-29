@@ -82,7 +82,6 @@ export default function App({ Component, pageProps }: any) {
 
 
 
-<script>/*<![CDATA[*/ /* Anti Ad-Blocker Script by Fineshop (Lazyload) */ var lazyAnti=!1;window.addEventListener("scroll",function(){(0!=document.documentElement.scrollTop&&!1===lazyAnti||0!=document.body.scrollTop&&!1===lazyAnti)&&(!function(){var antiAdBlock=document.querySelector("#antiAdBlock");var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";e.onerror=function(){if(antiAdBlock!=null){antiAdBlock.classList.remove("hidden");window.lazyAnti=!0}};var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)}(),lazyAnti=!0)},!0); /*]]>*/</script>
 
 
 
